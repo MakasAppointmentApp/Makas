@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakasUI.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace MakasUI
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new WelcomePage();
         }
 
         protected override void OnStart()

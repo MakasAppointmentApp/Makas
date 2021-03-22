@@ -4,7 +4,7 @@
              x:Class="MakasUI.Views.WelcomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome Deneme aşaması"
+            <Label Text="Welcome MEO Page"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

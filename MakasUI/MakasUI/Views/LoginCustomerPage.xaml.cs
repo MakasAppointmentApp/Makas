@@ -10,17 +10,18 @@ using Xamarin.Forms.Xaml;
 namespace MakasUI.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomePage : ContentPage
+    public partial class LoginCustomerPage : ContentPage
     {
-        public WelcomePage()
+        public LoginCustomerPage()
         {
             InitializeComponent();
+            backclick();
+            registerclick();
             Device.StartTimer(TimeSpan.FromSeconds(4), () => {
-                
+
                 Device.BeginInvokeOnMainThread(() => Effect());
                 return true;
             });
-
         }
         private async void Effect()
         {
@@ -35,27 +36,30 @@ namespace MakasUI.Views
                 logo.FadeTo(1, transitionTime, Easing.Linear),
                 logo.TranslateTo(0, logo.Y, transitionTime, Easing.CubicInOut));
         }
-        private async void Customer_Clicked(object sender, EventArgs e)
+        void backclick()
         {
-            await Navigation.PushAsync(new LoginCustomerPage());
-        }
-        private async void Saloon_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new LoginSaloonPage());
-        }
-        private void Quit_Clicked(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
-        }
-        private void HelpedButton(object sender, EventArgs e)
-        {
-            popUpImageView.IsVisible = false;
-        }
+            back.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(async () =>
+                {
+                    await Navigation.PopAsync();
 
-        private void HelpButton_Clicked(object sender, EventArgs e)
-        {
-            popUpImageView.IsVisible = true;
+                })
+            });
         }
-
+        void registerclick()
+        {
+            var signup_tap = new TapGestureRecognizer();
+            signup_tap.Tapped += async (s, e) =>
+            {
+                await Navigation.PushAsync(new RegisterCustomerPage());
+            };
+            register.GestureRecognizers.Add(signup_tap);
+        }
+        public void ShowPass(object sender, EventArgs args)
+        {
+            Password.IsPassword = Password.IsPassword ? false : true;
+            EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
+        }
     }
 }

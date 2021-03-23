@@ -10,8 +10,7 @@ namespace MakasUI
         public App()
         {
             InitializeComponent();
-
-            MainPage = new WelcomePage();
+            MainPage = new NavigationPage(new WelcomePage());
         }
 
         protected override void OnStart()

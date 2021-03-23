@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakasUI.Views.SaloonListPage"
+             >
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <AbsoluteLayout  VerticalOptions="Start" HeightRequest="65" BackgroundColor="#fa7a5a" >
+                <Image Source="back.png" HeightRequest="30" AbsoluteLayout.LayoutBounds="10,18" x:Name="back"></Image>
+
+                <Label Text="Kuaförler" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Start" FontSize="29" FontAttributes="Bold" AbsoluteLayout.LayoutBounds="150,12"/>
+
+
+            </AbsoluteLayout>
+
+            <ListView x:Name="KuaforListView" 
+                                          Margin="10,0"
+                                          RowHeight="90" 
+                                          IsPullToRefreshEnabled="True" 
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame  BackgroundColor="#9ca7b3" CornerRadius="20"  Margin="0,5" Padding="5,0">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                                        EndPoint="1,0">
+                                        <GradientStop Color="#e8eef1"
+                                                                         Offset="0.1"/>
+                                        <GradientStop Color="#67b9cb"
+                                                                         Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <StackLayout Orientation="Horizontal"  Padding="0">
+                                    <StackLayout Padding="20">
+                                        <Image Source="{Binding kuaforPP}" Aspect="AspectFit"  WidthRequest="40" HeightRequest="40" HorizontalOptions="Center"></Image>
+                                    </StackLayout>
+
+
+                                        <Frame BackgroundColor="#fa7a5a" CornerRadius="11" WidthRequest="47" Padding="10,5" Margin="0,26,0,26" >
+                                            <Label Text="{Binding kuaforRate}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                                        </Frame>
+                                    <Label Text="{Binding kuaforName}" FontAttributes="Bold" TextColor="Black" FontSize="23" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+
+                                    <Image Source="rightArrow.png" WidthRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Image>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -42,7 +42,7 @@
                             </Image>
                         </StackLayout>
                     </Frame>
-                    <Button Text="GİRİŞ YAP" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" TextColor="White"/>
+                    <Button Text="GİRİŞ YAP" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" TextColor="White" Clicked="Login_Clicked"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Padding="0,0,0,50">
                         <Label Text="Hesabın yok mu? Hemen " TextColor="#16353b" FontSize="15"></Label>
                         <Label x:Name="register" Text="Kayıt Ol" TextColor="#fa7a5a" FontAttributes="Bold" FontSize="15"></Label>

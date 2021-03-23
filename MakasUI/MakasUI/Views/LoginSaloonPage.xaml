@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakasUI.Views.LoginSaloonPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Content>
+        <StackLayout>
+            <yummy:PancakeView CornerRadius="0,0,0,90" BackgroundColor="#a5d3e3" VerticalOptions="StartAndExpand">
+                <yummy:PancakeView.BackgroundGradientStops>
+                    <yummy:GradientStopCollection>
+                        <yummy:GradientStop Color="#67b9cb" Offset="0"/>
+                        <yummy:GradientStop Color="#a5d3e3" Offset="1"/>
+
+                    </yummy:GradientStopCollection>
+                </yummy:PancakeView.BackgroundGradientStops>
+
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="back.png" Margin="10,20,0,0" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Start" x:Name="back" />
+                    <StackLayout  VerticalOptions="StartAndExpand">
+                        <Image x:Name="logo"  HeightRequest="200" HorizontalOptions="Center"  Source="logo.png" />
+                        <Label Text="Makas" FontSize="40" CharacterSpacing="1" TextColor="#fa7a5a"  HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                    <Frame x:Name="phoneFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="user.png" HeightRequest="25" HorizontalOptions="Start"/>
+                            <Entry x:Name ="phone" MaxLength="10" Keyboard="Telephone" Placeholder="Telefon Numarası" PlaceholderColor="Gray" WidthRequest="300" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="password.png" HeightRequest="25" HorizontalOptions="Start"/>
+                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="Gray" WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                            <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                    <Button Text="GİRİŞ YAP" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" TextColor="White"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Padding="0,0,0,50">
+                        <Label Text="Salonun mu var? Hemen " TextColor="#16353b" FontSize="15"></Label>
+                        <Label x:Name="register" Text="Kayıt Ol" TextColor="#fa7a5a" FontAttributes="Bold" FontSize="15"></Label>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </yummy:PancakeView>
+            <StackLayout BackgroundColor="#e8eef1" VerticalOptions="End">
+
+                <ImageButton Source="quit.png"  HeightRequest="40" VerticalOptions="End" BackgroundColor="#e8eef1 "></ImageButton>
+                <Label Text="Uygulamadan Çık" TextColor="#fa7a5a" FontSize="13" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

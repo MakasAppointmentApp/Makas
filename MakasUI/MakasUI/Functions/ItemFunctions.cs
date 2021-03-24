@@ -33,7 +33,7 @@ namespace MakasUI.Functions
                 })
             });
         }
-        public void registerclick(Label register, INavigation Navigation)
+        public void registerCustomerclick(Label register, INavigation Navigation)
         {
             var signup_tap = new TapGestureRecognizer();
             signup_tap.Tapped += async (s, e) =>
@@ -42,9 +42,18 @@ namespace MakasUI.Functions
             };
             register.GestureRecognizers.Add(signup_tap);
         }
-       
-           
-        
-       
+        public void registerSaloonclick(Label register, INavigation Navigation)
+        {
+            var signup_tap = new TapGestureRecognizer();
+            signup_tap.Tapped += async (s, e) =>
+            {
+                await Navigation.PushAsync(new RegisterSaloonPage());
+            };
+            register.GestureRecognizers.Add(signup_tap);
+        }
+
+
+
+
     }
 }

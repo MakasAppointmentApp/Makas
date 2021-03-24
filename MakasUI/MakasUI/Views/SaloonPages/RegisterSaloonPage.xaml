@@ -1,12 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MakasUI.Views.RegisterSaloonPage">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MakasUI.Views.RegisterSaloonPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <yummy:PancakeView CornerRadius="0,0,0,90" BackgroundColor="#a5d3e3" VerticalOptions="StartAndExpand" Margin="0,0,0,40">
+                    <yummy:PancakeView.BackgroundGradientStops>
+                        <yummy:GradientStopCollection>
+                            <yummy:GradientStop Color="#67b9cb" Offset="0"/>
+                            <yummy:GradientStop Color="#a5d3e3" Offset="1"/>
+                        </yummy:GradientStopCollection>
+
+
+                    </yummy:PancakeView.BackgroundGradientStops>
+
+                    <yummy:PancakeView.Shadow>
+                        <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                    </yummy:PancakeView.Shadow>
+
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="back.png" Margin="0,20,0,0" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Start" x:Name="back" />
+                        <Label Text="Kayıt Ol" 
+                               FontSize="36" 
+                               
+                               TextColor="#16353b" 
+                               FontAttributes="Bold" 
+                               FontFamily=""
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,15"
+                               ></Label>
+
+                        <Frame x:Name="isletmeFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="İşletme adı:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                        </Frame>
+
+                        <Frame x:Name="vergiNoFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Entry x:Name ="vergiNo" MaxLength="30" Keyboard="Email" Placeholder="Vergi numarası:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="emailFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="genderFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Picker x:Name="gender" Title="Cinsiyet seçiniz:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Kadın</x:String>
+                                            <x:String>Erkek</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="cityFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Picker x:Name="city" Title="Şehir:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>İstanbul</x:String>
+                                            <x:String>Ankara</x:String>
+                                            <x:String>Eskişehir</x:String>
+                                            <x:String>İzmir</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="districtFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Picker x:Name="district" Title="İlçe:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Trabya</x:String>
+                                            <x:String>Esenyurt</x:String>
+                                            <x:String>Kızılay</x:String>
+                                            <x:String>Sancak</x:String>
+                                            <x:String>Tepebaşı</x:String>
+                                            <x:String>Odun Pazarı</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                                <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Entry x:Name ="checkPasswordEntry" MaxLength="30"  Placeholder="Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Button x:Name="main" Text="KAYIT OL" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="20" Margin="80,10" TextColor="White"/>
+
+                    </StackLayout>
+
+                </yummy:PancakeView>
+
+                <StackLayout BackgroundColor="#e8eef1" VerticalOptions="End">
+
+                    <ImageButton Source="quit.png"  HeightRequest="40" VerticalOptions="End" BackgroundColor="#e8eef1 "></ImageButton>
+                    <Label Text="Uygulamadan Çık" TextColor="#fa7a5a" FontSize="13" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

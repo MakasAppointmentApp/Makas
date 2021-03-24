@@ -1,29 +1,15 @@
-﻿using System;
+﻿using MakasUI.Views;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-namespace MakasUI.Views
+namespace MakasUI.Functions
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginSaloonPage : ContentPage
+    public class ItemFunctions
     {
-        public LoginSaloonPage()
-        {
-            InitializeComponent();
-            backclick();
-            registerclick();
-            Device.StartTimer(TimeSpan.FromSeconds(4), () => {
-
-                Device.BeginInvokeOnMainThread(() => Effect());
-                return true;
-            });
-        }
-        private async void Effect()
+        public async void Effect(Image logo)
         {
             uint transitionTime = 600;
             double displacement = logo.Width;
@@ -36,7 +22,7 @@ namespace MakasUI.Views
                 logo.FadeTo(1, transitionTime, Easing.Linear),
                 logo.TranslateTo(0, logo.Y, transitionTime, Easing.CubicInOut));
         }
-        void backclick()
+        public void backclick(Image back, INavigation Navigation)
         {
             back.GestureRecognizers.Add(new TapGestureRecognizer()
             {
@@ -47,19 +33,18 @@ namespace MakasUI.Views
                 })
             });
         }
-        void registerclick()
+        public void registerclick(Label register, INavigation Navigation)
         {
             var signup_tap = new TapGestureRecognizer();
             signup_tap.Tapped += async (s, e) =>
             {
-                await Navigation.PushAsync(new RegisterSaloonPage());
+                await Navigation.PushAsync(new RegisterCustomerPage());
             };
             register.GestureRecognizers.Add(signup_tap);
         }
-        public void ShowPass(object sender, EventArgs args)
-        {
-            Password.IsPassword = Password.IsPassword ? false : true;
-            EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
-        }
+       
+           
+        
+       
     }
 }

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MakasUI.Views.CustomerHomePage"
+       Shell.BackgroundColor="#e8eef1"
+       Shell.ForegroundColor="#F83B25"
+       Shell.TabBarDisabledColor="#F83B25"
+       Shell.TitleColor="#F83B25"
+       Shell.UnselectedColor="#fa7a5a"
+       Shell.NavBarIsVisible="False">
+    <FlyoutItem>
+        <Tab Icon="search.png" Title="Kuaförler" FlyoutIcon="search.png">
+            <ShellContent>
+                <ContentPage>
+                    <AbsoluteLayout>
+                        <Image Source="logo.png" HeightRequest="75" Opacity="0.7" AbsoluteLayout.LayoutBounds="0,0"></Image>
+
+                        <yummy:PancakeView CornerRadius="120,0,0,90"   Padding="0,150,0,100" Margin="5,5,5,5" VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                        <yummy:PancakeView.BackgroundGradientStops>
+                            <yummy:GradientStopCollection>
+                                <yummy:GradientStop Color="#67b9cb" Offset="0"/>
+                                <yummy:GradientStop Color="#a5d3e3" Offset="1"/>
+                            </yummy:GradientStopCollection>
+                        </yummy:PancakeView.BackgroundGradientStops>
+                        <yummy:PancakeView.Shadow>
+                            <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                        </yummy:PancakeView.Shadow>
+
+                        <StackLayout Padding="40,0,40,20" VerticalOptions="Center">
+                            <StackLayout  VerticalOptions="StartAndExpand" >
+
+                                <Label Text="Kuaför Listele" Margin="15,0,0,10" FontSize="25" FontAttributes="Bold" TextColor="Black"  HorizontalOptions="Start"></Label>
+                            </StackLayout>
+                            <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="city.png" HeightRequest="25" WidthRequest="25"></Image>
+                                    <Picker HorizontalTextAlignment="Start" x:Name="cityPicker" Title="Şehir" TitleColor="Black" FontAttributes="Bold" FontSize="15"  >
+                                        <Picker.Items>
+                                            <x:String>Eskişehir</x:String>
+                                            <x:String>İstanbul</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="location.png" HeightRequest="25" WidthRequest="25"></Image>
+                                    <Picker HorizontalTextAlignment="Start" x:Name="districtPicker"  Title="İlçe" TitleColor="Black" FontAttributes="Bold" FontSize="15"  >
+                                        <Picker.Items>
+                                            <x:String>Tepebaşı</x:String>
+                                            <x:String>Bağlar</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Frame CornerRadius="13" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="gender.png" HeightRequest="25" WidthRequest="25"></Image>
+                                    <Picker HorizontalTextAlignment="Start" x:Name="genderPicker" Title="Cinsiyet" TitleColor="Black" FontAttributes="Bold" FontSize="15" >
+                                        <Picker.Items>
+                                            <x:String>Erkek</x:String>
+                                            <x:String>Kadın</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Button Text="LİSTELE" FontSize="17" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" Clicked="Listele_Clicked" TextColor="White" />
+                        </StackLayout>
+                    </yummy:PancakeView>
+                    </AbsoluteLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Icon="like.png" Title="Favoriler" FlyoutIcon="like.png">
+            <ShellContent>
+                <ContentPage>
+                    <ContentPage.Resources>
+                        <StyleSheetExtension>
+                            <![CDATA[
+                                 .favButton{
+                            text-transform: lowercase;
+                            }
+                             ]]>
+                        </StyleSheetExtension>
+                    </ContentPage.Resources>
+                    <StackLayout Spacing="0" Padding="0">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#a5d3e3" Padding="5,0">
+                            <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
+                                <Label Text="Favoriler"  TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <ListView x:Name="FavoriteListView" 
+                                          Margin="1,5"
+                      
+                                          RowHeight="90" 
+                                          IsPullToRefreshEnabled="True" 
+                      SeparatorVisibility="None"
+                      >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Frame BorderColor="#707070" BackgroundColor="#9ca7b3" CornerRadius="9"  Margin="3" Padding="0">
+                                            <Frame.Background>
+                                                <LinearGradientBrush StartPoint="0,0"
+                                                                        EndPoint="1,0">
+                                                    <GradientStop Color="#e8eef1"
+                                                                         Offset="0.1"/>
+                                                    <GradientStop Color="#e8eef1"
+                                                                         Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>
+                                            <StackLayout Orientation="Horizontal"  Padding="0">
+                                                <StackLayout Padding="3">
+                                                    <Frame Padding="0" CornerRadius="6" BorderColor="#16353b" Margin="3" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                                                        <Image Source="{Binding kuaforPP}" Aspect="AspectFill" HeightRequest="60" WidthRequest="90" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
+                                                    </Frame>
+                                                </StackLayout>
+
+                                                <Frame  CornerRadius="10" WidthRequest="47" Padding="10,5" Margin="0,26,0,26" >
+                                                    <Frame.Background>
+                                                        <RadialGradientBrush >
+                                                            <GradientStop Color="#F83B25"
+                                                                         Offset="0.1"/>
+                                                            <GradientStop Color="#fa7a5a"
+                                                                         Offset="1.0"/>
+                                                        </RadialGradientBrush>
+                                                    </Frame.Background>
+                                                    <Label Text="{Binding kuaforRate}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                                                </Frame>
+                                                <StackLayout VerticalOptions="Center">
+                                                    <Label Text="{Binding kuaforName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                                                    <Label Text="{Binding kuaforName}" TextColor="#7e4e41" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                                                </StackLayout>
+                                                <StackLayout HorizontalOptions="EndAndExpand"  Padding="5,5" Spacing="10">
+                                                   
+                                                    <Image Source="rightArrow.png" WidthRequest="30"  VerticalOptions="StartAndExpand"></Image>
+                                                    <ImageButton Clicked="Fav_Delete_Clicked"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="End" HeightRequest="25" >
+                                                       
+                                                    </ImageButton>
+                                                </StackLayout>
+                                                
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Icon="history.png" Title="Randevularım" FlyoutIcon="history.png">
+            <ShellContent>
+                <ContentPage>
+                    <StackLayout>
+                        <AbsoluteLayout  VerticalOptions="StartAndExpand" HeightRequest="65" BackgroundColor="#fa7a5a">
+                            <Image Source="back.png" HeightRequest="30" AbsoluteLayout.LayoutBounds="10,15" x:Name="back"></Image>
+
+                            <Label Text="B Kuaför Salonu" TextColor="Black"  HorizontalOptions="Center" VerticalOptions="Start" FontSize="25" FontAttributes="Bold" AbsoluteLayout.LayoutBounds="100,15"/>
+
+                            <Frame BackgroundColor="#e8eef1" AbsoluteLayout.LayoutBounds="328,10" WidthRequest="40" Padding="10,5" Margin="0,10,0,0"  CornerRadius="15">
+                                <Label Text="8,1" TextColor="#fa7a5a" HorizontalTextAlignment="Center"/>
+                            </Frame>
+                        </AbsoluteLayout>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+        <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png">
+            <ShellContent>
+                <ContentPage>
+                    <StackLayout>
+                        <Label Text="Çıkış yap sayfası ??"/>
+                    </StackLayout>
+                </ContentPage>
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+</Shell>

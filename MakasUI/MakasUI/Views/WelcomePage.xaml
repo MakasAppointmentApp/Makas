@@ -34,10 +34,8 @@
                     </StackLayout>
 
                 </yummy:PancakeView>
-                <StackLayout BackgroundColor="#e8eef1" VerticalOptions="End">
-
+                <StackLayout BackgroundColor="#e8eef1" Margin="0,5,0,0" VerticalOptions="End">
                     <ImageButton Source="quit.png"  HeightRequest="40" VerticalOptions="End" BackgroundColor="#e8eef1 "></ImageButton>
-                    <Label Text="Uygulamadan Çık" TextColor="#fa7a5a" FontSize="13" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
                 </StackLayout>
 
             </StackLayout>
@@ -52,14 +50,14 @@
 
                         </yummy:PancakeView.BackgroundGradientStops>
                         <StackLayout WidthRequest="300" HeightRequest="400" Orientation="Vertical"  >
-                            <Label Text="Makas Nedir?" TextColor="White" FontSize="20" FontAttributes="Bold"></Label>
-                            <BoxView HeightRequest="1" BackgroundColor="White" Opacity="0.5"></BoxView>
-                            <Label Text="Makas kuaför ya da berber salonlarından hızlı randevu alma uygulamasıdır." TextColor="White" FontSize="14" FontAttributes="Bold"></Label>
-                            <Label Text="Neden Makas'a ihtiyacım var?" TextColor="White" FontSize="20" FontAttributes="Bold"></Label>
-                            <BoxView HeightRequest="1" BackgroundColor="White" Opacity="0.5"></BoxView>
-                            <Label Text="İçişleri Bakanlığı tarafından güzellik işletmelerinin tekrar açılmasına Randevuyla Çalışma Şartıyla izin verildi." TextColor="White" FontSize="14" FontAttributes="Bold"></Label>
-                            <Label Text="Makas sayesinde kolaylıkla randevu alabilirsiniz." TextColor="White" FontSize="14" FontAttributes="Bold"></Label>
-                            <Label Text="Eğer salon sahibiyseniz randevularınızı rahatlıkla yönetebilirsiniz." TextColor="White" FontSize="14" FontAttributes="Bold"></Label>
+                            <Label Text="Makas Nedir?" TextColor="#16353b" FontSize="20" FontAttributes="Bold"></Label>
+                            <BoxView HeightRequest="1" BackgroundColor="#16353b" Opacity="0.5"></BoxView>
+                            <Label Text="Makas kuaför ya da berber salonlarından hızlı randevu alma uygulamasıdır." TextColor="#16353b" FontSize="14" FontAttributes="Bold"></Label>
+                            <Label Text="Neden Makas'a ihtiyacım var?" TextColor="#16353b" FontSize="20" FontAttributes="Bold"></Label>
+                            <BoxView HeightRequest="1" BackgroundColor="#16353b" Opacity="0.5"></BoxView>
+                            <Label Text="İçişleri Bakanlığı tarafından güzellik işletmelerinin tekrar açılmasına Randevuyla Çalışma Şartıyla izin verildi." TextColor="#16353b" FontSize="14" FontAttributes="Bold"></Label>
+                            <Label Text="Makas sayesinde kolaylıkla randevu alabilirsiniz." TextColor="#16353b" FontSize="14" FontAttributes="Bold"></Label>
+                            <Label Text="Eğer salon sahibiyseniz randevularınızı rahatlıkla yönetebilirsiniz." TextColor="#16353b" FontSize="14" FontAttributes="Bold"></Label>
                             <Button Text="OK" Clicked="HelpedButton" TextColor="Black"  VerticalOptions="EndAndExpand" HorizontalOptions="End" Margin="5" CornerRadius="25" BackgroundColor="white"/>
                         </StackLayout>
                     </yummy:PancakeView>

@@ -20,8 +20,6 @@
                                           RowHeight="90" 
                                           IsPullToRefreshEnabled="True" 
                       SeparatorVisibility="None"
-                      
-                      
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>

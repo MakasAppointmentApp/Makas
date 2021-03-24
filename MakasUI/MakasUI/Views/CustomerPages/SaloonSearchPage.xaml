@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakasUI.Views.CustomerPages.SaloonSearchPage"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="logo.png" HeightRequest="120" Opacity="0.7" AbsoluteLayout.LayoutBounds="0,0"></Image>
+
+            <yummy:PancakeView CornerRadius="360,0,0,0"   Padding="0,150,0,160" Margin="0,5,0,0" VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <yummy:PancakeView.BackgroundGradientStops>
+                    <yummy:GradientStopCollection>
+                        <yummy:GradientStop Color="#a5d3e3" Offset="0"/>
+                        <yummy:GradientStop Color="#728287" Offset="1"/>
+                    </yummy:GradientStopCollection>
+                </yummy:PancakeView.BackgroundGradientStops>
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="40,40"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+
+                <StackLayout Padding="40,0,40,20" VerticalOptions="Center">
+                    <StackLayout  VerticalOptions="StartAndExpand" >
+
+                        <Label Text="Kuaför Listele" Margin="15,0,0,10" FontSize="25" FontAttributes="Bold" TextColor="#16353b"  HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                    <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="city.png" HeightRequest="25" WidthRequest="25"></Image>
+                            <Picker HorizontalTextAlignment="Start" x:Name="cityPicker" WidthRequest="250" Title="Şehir" TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15"  >
+                                <Picker.Items>
+                                    <x:String>Eskişehir</x:String>
+                                    <x:String>İstanbul</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="location.png" HeightRequest="25" WidthRequest="25"></Image>
+                            <Picker HorizontalTextAlignment="Start" x:Name="districtPicker"  Title="İlçe" WidthRequest="250"  TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15"  >
+                                <Picker.Items>
+                                    <x:String>Tepebaşı</x:String>
+                                    <x:String>Bağlar</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame CornerRadius="13" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="gender.png" HeightRequest="25" WidthRequest="25"></Image>
+                            <Picker HorizontalTextAlignment="Start" WidthRequest="250" x:Name="genderPicker" Title="Cinsiyet" TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15" >
+                                <Picker.Items>
+                                    <x:String>Erkek</x:String>
+                                    <x:String>Kadın</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Button Text="LİSTELE" FontSize="17" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" Clicked="Listele_Clicked" TextColor="White" />
+                </StackLayout>
+            </yummy:PancakeView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

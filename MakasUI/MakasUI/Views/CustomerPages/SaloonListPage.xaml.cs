@@ -19,15 +19,15 @@ namespace MakasUI.Views
             backclick();
 
 
-            var Categories = new List<Kuafor>
+            var SaloonList = new List<Saloon>
             {
-                new Kuafor {kuaforName="MEO kuafor",kuaforPP="chair.png",kuaforRate="8,2" },
-                new Kuafor {kuaforName="DAN kuafor",kuaforPP="help.png",kuaforRate="4,2" },
-                new Kuafor {kuaforName="GWEN kuafor",kuaforPP="user.png",kuaforRate="5,2" }
+                new Saloon {SaloonName="A Kuaför Salonu",SaloonImage="chair.png", WorkerCount=3, SaloonRate=8.0 },
+                new Saloon {SaloonName="B Kuaför Salonu",SaloonImage="help.png", WorkerCount=4, SaloonRate=4.2 },
+                new Saloon {SaloonName="C Kuaför Salonu",SaloonImage="user.png",WorkerCount=5, SaloonRate=5.2 }
 
             };
 
-            KuaforListView.ItemsSource = Categories;
+            KuaforListView.ItemsSource = SaloonList;
         }
 
         void backclick()

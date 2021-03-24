@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakasUI.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,25 +16,13 @@ namespace MakasUI.Views
         public WelcomePage()
         {
             InitializeComponent();
+            ItemFunctions functions = new ItemFunctions();
             Device.StartTimer(TimeSpan.FromSeconds(4), () => {
-                
-                Device.BeginInvokeOnMainThread(() => Effect());
+
+                Device.BeginInvokeOnMainThread(() => functions.Effect(logo));
                 return true;
             });
 
-        }
-        private async void Effect()
-        {
-            uint transitionTime = 600;
-            double displacement = logo.Width;
-
-            await Task.WhenAll(
-                logo.FadeTo(0, transitionTime, Easing.Linear),
-                logo.TranslateTo(-displacement, logo.Y, transitionTime, Easing.CubicInOut));
-            await logo.TranslateTo(displacement, 0, 0);
-            await Task.WhenAll(
-                logo.FadeTo(1, transitionTime, Easing.Linear),
-                logo.TranslateTo(0, logo.Y, transitionTime, Easing.CubicInOut));
         }
         private async void Customer_Clicked(object sender, EventArgs e)
         {

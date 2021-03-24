@@ -61,5 +61,10 @@ namespace MakasUI.Views
             Password.IsPassword = Password.IsPassword ? false : true;
             EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
         }
+        private async void Login_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new CustomerHomePage();
+        }
+        
     }
 }

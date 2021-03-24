@@ -1,26 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MakasUI.Views.SaloonListPage"
-             >
+             x:Class="MakasUI.Views.CustomerPages.MyFavoritesPage">
     <ContentPage.Content>
         <StackLayout Spacing="0" Padding="0">
-            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0,35,0">
-                <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
-
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#a5d3e3" Padding="5,0">
                 <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
-                    <Label Text="Kuaförler"  TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Favoriler"  TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
                 </StackLayout>
 
             </StackLayout>
-
-            <ListView x:Name="KuaforListView" 
-                                          Margin="1,5"
-                      
-                                          RowHeight="90" 
-                                          IsPullToRefreshEnabled="True" 
-                      SeparatorVisibility="None"
-                      >
+            <ListView x:Name="FavoriteListView" Margin="1,5"
+                      RowHeight="90" IsPullToRefreshEnabled="True" 
+                      SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -54,10 +46,12 @@
                                     </Frame>
                                     <StackLayout VerticalOptions="Center">
                                         <Label Text="{Binding SaloonName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
-                                        <Label Text="{Binding WorkerCount, StringFormat='{0} Aktif Kuaför'}" TextColor="#7e4e41" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5" Spacing="10">
+                                        <ImageButton Clicked="Fav_Delete_Clicked"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
 
                                     </StackLayout>
-                                    <Image Source="rightArrow.png" WidthRequest="30" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,10,0"></Image>
+
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
@@ -65,6 +59,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

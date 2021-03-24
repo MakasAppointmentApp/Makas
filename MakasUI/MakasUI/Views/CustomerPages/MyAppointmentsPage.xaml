@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakasUI.Views.CustomerPages.MyAppointmentsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="0">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#a5d3e3" Padding="5,0">
+                <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
+                    <Label Text="Randevularım"  TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                </StackLayout>
+
+            </StackLayout>
+            <ListView x:Name="AppointmentsListView" Margin="1,5"
+                      RowHeight="90" IsPullToRefreshEnabled="True" 
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Frame BorderColor="#707070" BackgroundColor="#9ca7b3" CornerRadius="9"  Margin="3" Padding="0">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                                        EndPoint="1,0">
+                                        <GradientStop Color="#e8eef1"
+                                                                         Offset="0.1"/>
+                                        <GradientStop Color="#e8eef1"
+                                                                         Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <StackLayout Orientation="Horizontal"  Padding="0">
+                                    <StackLayout VerticalOptions="Center" >
+                                        <Frame  CornerRadius="10" WidthRequest="47" Padding="10,5" Margin="10,0,0,0" >
+                                            <Frame.Background>
+                                                <RadialGradientBrush >
+                                                    <GradientStop Color="#F83B25"
+                                                                         Offset="0.1"/>
+                                                    <GradientStop Color="#fa7a5a"
+                                                                         Offset="1.0"/>
+                                                </RadialGradientBrush>
+                                            </Frame.Background>
+                                            <Label Text="{Binding Rate}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding SaloonName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                                        <StackLayout Orientation="Horizontal" Padding="0" Margin="10,0">
+                                            <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="-" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding Hour, StringFormat='{}{0:hh\\:mm}'}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                        </StackLayout>
+                                        
+                                        <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
+                                        <Label Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
+                                        <ImageButton   BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

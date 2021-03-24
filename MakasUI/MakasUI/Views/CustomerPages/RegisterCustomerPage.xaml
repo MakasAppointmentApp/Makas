@@ -1,12 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MakasUI.Views.RegisterCustomerPage">
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MakasUI.Views.RegisterCustomerPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <yummy:PancakeView CornerRadius="0,0,0,90" BackgroundColor="#a5d3e3" VerticalOptions="StartAndExpand">
+
+                <yummy:PancakeView.BackgroundGradientStops>
+                    <yummy:GradientStopCollection>
+                        <yummy:GradientStop Color="#67b9cb" Offset="0"/>
+                        <yummy:GradientStop Color="#a5d3e3" Offset="1"/>
+                    </yummy:GradientStopCollection>
+
+
+                </yummy:PancakeView.BackgroundGradientStops>
+
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="back.png" Margin="0,20,0,0" HeightRequest="30" HorizontalOptions="Start" VerticalOptions="Start" x:Name="back" />
+                    <Label Text="Kayıt Ol" 
+                               FontSize="36" 
+                               TextColor="#16353b" 
+                               FontAttributes="Bold" 
+                               FontFamily=""
+                               HorizontalOptions="Center"
+                               Margin="0,0,0,15"
+                               ></Label>
+                    <Frame x:Name="nameFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Adınız:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="surnameFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name ="surname" MaxLength="30" Keyboard="Email" Placeholder="Soyadınız:" PlaceholderColor="#6b6c6c"   WidthRequest="300" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="emailFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                            <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name ="checkPasswordEntry" MaxLength="30"  Placeholder="Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Button x:Name="register" 
+                            Text="KAYIT OL" 
+                            BackgroundColor="#fa7a5a" 
+                            FontAttributes="Bold"                             
+                            CornerRadius="20" 
+                            Margin="80,10" 
+                            TextColor="White"
+                            />
+                </StackLayout>
+
+            </yummy:PancakeView>
+
+            <StackLayout BackgroundColor="#e8eef1" VerticalOptions="End">
+
+                <ImageButton Source="quit.png"  HeightRequest="40" VerticalOptions="End" BackgroundColor="#e8eef1 "></ImageButton>
+                <Label Text="Uygulamadan Çık" TextColor="#fa7a5a" FontSize="13" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

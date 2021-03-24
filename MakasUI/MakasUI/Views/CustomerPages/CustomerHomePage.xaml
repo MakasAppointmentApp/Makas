@@ -30,7 +30,7 @@
                         <StackLayout Padding="40,0,40,20" VerticalOptions="Center">
                             <StackLayout  VerticalOptions="StartAndExpand" >
 
-                                <Label Text="Kuaför Listele" Margin="15,0,0,10" FontSize="25" FontAttributes="Bold" TextColor="Black"  HorizontalOptions="Start"></Label>
+                                <Label Text="Kuaför Listele" Margin="15,0,0,10" FontSize="25" FontAttributes="Bold" TextColor="Black"  HorizontalOptions="Center"></Label>
                             </StackLayout>
                             <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Horizontal">
@@ -134,12 +134,9 @@
                                                     <Label Text="{Binding kuaforName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                                     <Label Text="{Binding kuaforName}" TextColor="#7e4e41" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                                 </StackLayout>
-                                                <StackLayout HorizontalOptions="EndAndExpand"  Padding="5,5" Spacing="10">
-                                                   
-                                                    <Image Source="rightArrow.png" WidthRequest="30"  VerticalOptions="StartAndExpand"></Image>
-                                                    <ImageButton Clicked="Fav_Delete_Clicked"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="End" HeightRequest="25" >
-                                                       
-                                                    </ImageButton>
+                                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5" Spacing="10">
+                                                    <ImageButton Clicked="Fav_Delete_Clicked"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
+
                                                 </StackLayout>
                                                 
                                             </StackLayout>

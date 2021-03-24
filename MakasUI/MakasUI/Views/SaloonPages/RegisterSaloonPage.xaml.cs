@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakasUI.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,13 @@ namespace MakasUI.Views
         public RegisterSaloonPage()
         {
             InitializeComponent();
+            ItemFunctions functions = new ItemFunctions();
+            functions.backclick(back, Navigation);
         }
-
+        public void ShowPass(object sender, EventArgs args)
+        {
+            Password.IsPassword = Password.IsPassword ? false : true;
+            EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
+        }
     }
 }

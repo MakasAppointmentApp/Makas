@@ -18,7 +18,7 @@ namespace MakasUI.Views
             InitializeComponent();
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
-            functions.registerclick(register, Navigation);
+            functions.registerSaloonclick(register, Navigation);
             Device.StartTimer(TimeSpan.FromSeconds(4), () => {
 
                 Device.BeginInvokeOnMainThread(() => functions.Effect(logo));

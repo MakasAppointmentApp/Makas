@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MakasUI.Views.CommentsPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <yummy:PancakeView CornerRadius="0,0,20,20"  VerticalOptions="Start">
+                
+                <yummy:PancakeView.BackgroundGradientStops>
+                    <yummy:GradientStopCollection>
+                        <yummy:GradientStop Color="#e8eef1" Offset="0"/>
+                        <yummy:GradientStop Color="#e8eef1" Offset="1"/>
+                    </yummy:GradientStopCollection>
+
+
+                </yummy:PancakeView.BackgroundGradientStops>
+
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+
+                <StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0">
+                        <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
+
+                        <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
+                            <Label x:Name="sName" TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+
+                        </StackLayout>
+                        <Frame  CornerRadius="20" Padding="30,0" Margin="0,8" HorizontalOptions="End"   BackgroundColor="#EEEEEE">
+                            <Label x:Name="sRate" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,-6,0,0">
+                        <BoxView HeightRequest="1" BackgroundColor="#16353b"></BoxView>
+                    </StackLayout>
+
+                    <StackLayout Padding="0,13,0,10">
+                        <Label HorizontalOptions="Center" 
+                               Text="Kuaföre yapılan yorumlar"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#16353b"
+                               ></Label>
+                    </StackLayout>
+               
+                </StackLayout>
+
+            </yummy:PancakeView>
+
+
+            <ListView x:Name="CommentsListView"                      
+                      SeparatorVisibility="None"                                         
+                      RowHeight="170">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Frame x:Name="listFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0" Margin="3,5" BackgroundColor="#f8fbfd" HeightRequest="100" >
+                                <StackLayout Orientation="Vertical"  Padding="10,0,0,0">
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label Text="{Binding CustomerName}" HorizontalOptions="StartAndExpand" TextColor="#16353b" FontSize="16" FontAttributes="Bold"   VerticalOptions="End"  HorizontalTextAlignment="Start"></Label>
+                                        <Label  Text="{Binding Date, StringFormat='{0} gün önce' }" HorizontalOptions="End"  TextColor="#16353b" FontSize="14"  VerticalOptions="End"  HorizontalTextAlignment="End"></Label>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Start" Margin="0,0,0,0">
+                                        <Label Text="{Binding CustomerRate, StringFormat='Kuaföre Puanı: {0}'}"  TextColor="#fa7a5a" FontSize="14"   VerticalOptions="End"  HorizontalTextAlignment="Center"></Label>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Start" Margin="0,0,0,5">
+                                        <Label Text="{Binding CustomerComment}"                          
+                                                   TextColor="#16353b" 
+                                                   FontSize="12"                                
+                                                   VerticalOptions="End"  
+                                                   HorizontalTextAlignment="Start"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

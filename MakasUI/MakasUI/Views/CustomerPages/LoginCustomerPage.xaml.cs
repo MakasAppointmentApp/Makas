@@ -36,5 +36,10 @@ namespace MakasUI.Views
             App.Current.MainPage = new CustomerHomePage();
         }
 
+       int Topla(int a, int b)
+        {
+            return a + b;
+        }
+
     }
 }

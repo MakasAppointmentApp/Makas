@@ -26,7 +26,7 @@
                     <StackLayout Orientation="Horizontal"  >
                         <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
                             <Label Text="32 Yorum" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
-                            <ImageButton BackgroundColor="Transparent" Source="comment.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
+                            <ImageButton Clicked="Comments_Clicked" BackgroundColor="Transparent" Source="comment.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="End" >
                             <Label Text="Favorilere Ekle" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
@@ -38,7 +38,7 @@
            
             <Label Text="Randevu Almak İçin Kuaför Seçiniz" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15"></Label>
             <StackLayout VerticalOptions="Center" Padding="0" >
-                <CarouselView x:Name="workers" VerticalScrollBarVisibility="Always" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
+                <CarouselView x:Name="workers"  IsScrollAnimated="True"  HorizontalScrollBarVisibility="Always" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Padding="10,0" Spacing="5">
@@ -72,7 +72,7 @@
             </StackLayout>
             <StackLayout VerticalOptions="Start" Padding="0" >
                 
-                        <Frame BackgroundColor="#e8eef1" CornerRadius="10" HeightRequest="250" Margin="5,0">
+                        <Frame BackgroundColor="#e8eef1" CornerRadius="10" HeightRequest="230" Margin="5,5">
                             <ListView x:Name="PriceListView">
                             <ListView.ItemTemplate>
                                 <DataTemplate>

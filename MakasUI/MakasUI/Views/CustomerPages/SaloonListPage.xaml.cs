@@ -36,9 +36,9 @@ namespace MakasUI.Views
         {
             ImageButton btn = (ImageButton)sender;
 
-            var ob = btn.CommandParameter as Saloon;
+            Saloon ob = btn.CommandParameter as Saloon;
            
-            await Navigation.PushAsync(new SaloonProfilePage(ob.SaloonName, ob.SaloonImage, ob.SaloonRate));
+            await Navigation.PushAsync(new SaloonProfilePage(ob));
             //await Navigation.PushAsync(new SaloonProfilePage());
         }
     }

@@ -28,11 +28,7 @@
         </Tab>
         <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png">
             <ShellContent>
-                <ContentPage>
-                    <StackLayout>
-                        <Label Text="Çıkış yap sayfası ??"/>
-                    </StackLayout>
-                </ContentPage>
+                <local:RateAppointmentPage></local:RateAppointmentPage>
             </ShellContent>
         </Tab>
     </FlyoutItem>

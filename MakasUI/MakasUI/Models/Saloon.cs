@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MakasUI.Models
 {
-    class Saloon
+    public class Saloon
     {
 
         public string SaloonImage { get; set; }

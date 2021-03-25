@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MakasUI.Views.CustomerPages.RateAppointmentPage"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             BackgroundColor="#e8eef1"
              >
     <ContentPage.Content>
         <StackLayout >
@@ -19,7 +20,7 @@
                                                                          Offset="1.0"/>
                     </LinearGradientBrush>
                 </Frame.Background>
-                <StackLayout Orientation="Horizontal"  Padding="0" Spacing="30">
+                <StackLayout Orientation="Horizontal"  Padding="0" Spacing="30" BackgroundColor="White">
                     <Frame  CornerRadius="10" WidthRequest="47" Padding="10,5" Margin="20,26,0,26" >
                         <Frame.Background>
                             <RadialGradientBrush >
@@ -31,23 +32,23 @@
                         </Frame.Background>
                         <Label Text="8,2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
                     </Frame>
-                    <StackLayout VerticalOptions="Center">
+                    <StackLayout VerticalOptions="Center" >
                         <Label Text="A Kuaför Salonu" FontAttributes="Bold" TextColor="#16353b" FontSize="22" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
-                        <Label Text="Kuaför Adı" TextColor="#7e4e41" FontSize="14" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                        <Label Text="Kuaför Adı" TextColor="#7e4e41" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
 
                     </StackLayout>
                 </StackLayout>
             </Frame>
             
             <StackLayout Margin="0,30,0,0">
-                <Label Text="Kuaförü Değerlendirin" Margin="20,0,0,0" HorizontalOptions="Start" TextColor="#728287" FontSize="14"/>
-                <Frame BackgroundColor="#e8eef1">
+                <Label Text="Kuaförü Değerlendirin" Margin="20,0,0,0" HorizontalOptions="Start" FontAttributes="Bold"  TextColor="#6b6c6c" FontSize="14"/>
+                <Frame BackgroundColor="white">
                     
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" Padding="0">
 
-                            <Label Text="Kuaföre puanınız : " />
-                            <Label x:Name="RateLabel" />
+                            <Label Text="Kuaföre puanınız :" TextColor="#16353b" />
+                            <Label x:Name="RateLabel" TextColor="#16353b"/>
                         </StackLayout>
 
                         <rating:SfRating x:Name="rating" ItemCount="10" Value="5" ItemSize="32" ValueChanged="rating_ValueChanged" />
@@ -56,13 +57,11 @@
 
                 </Frame>
             </StackLayout>
-            <StackLayout Margin="0,30,0,0">
-                <Label Text="Yorum Yapın" Margin="20,0,0,0" HorizontalOptions="Start" TextColor="#728287" FontSize="14"/>
-                <Frame BackgroundColor="#e8eef1">
-                    <StackLayout>
-                        <Label Text="Lütfen kuaför hakkında denetiminizi yazınız, &#10;Hem kuaförle hem de diğer kullanıcılarla paylaşınız." />
-
-                        <Entry />
+            <StackLayout Margin="0,0,0,0">
+                <Label Text="Yorum Yapın" Margin="20,0,0,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="#6b6c6c " FontSize="14"/>
+                <Frame BackgroundColor="white" Padding="20,0">
+                    <StackLayout Padding="0">
+                        <Editor HeightRequest="120" Placeholder="Lütfen kuaför hakkında denetiminizi yazınız, &#10;Hem kuaförle hem de diğer kullanıcılarla paylaşınız." FontSize="14" TextColor="#16353b" PlaceholderColor="#16353b" />
                     </StackLayout>
 
 

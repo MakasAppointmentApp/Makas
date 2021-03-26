@@ -1,42 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MakasUI.Views.CustomerPages.SaloonProfilePage"
+             x:Class="MakasUI.Views.SaloonPages.ProfilePageSaloon"             
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
 >
     <ContentPage.Content>
         <StackLayout Padding="0" Margin="0">
             <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0">
-                <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
 
                 <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
-                    <Label x:Name="sName" TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                    <Label x:Name="sName" TextColor="#16353b" Text="B Kuaför Salonu"  FontSize="20" FontAttributes="Bold" Margin="70,0,0,0"/>
 
                 </StackLayout>
                 <Frame  CornerRadius="20" Padding="30,0" Margin="0,8" HorizontalOptions="End"   BackgroundColor="#EEEEEE">
-                    <Label x:Name="sRate" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
+                    <Label x:Name="sRate" Text="8,1" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
                 </Frame>
             </StackLayout>
             <ScrollView Padding="0">
                 <StackLayout BackgroundColor="White">
-                    <Image x:Name="sImage" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="500" HeightRequest="200"></Image>
+                    <Image x:Name="sImage" Source="https://static.desygner.com/wp-content/uploads/sites/13/2019/11/07164536/Hairdresser-Header.jpg" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="500" HeightRequest="200"></Image>
                     <Label Text="Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, 26555 Tepebaşı/Eskişehir" Margin="20,0" FontSize="15" TextColor="Black" HorizontalOptions="Center"></Label>
                     <StackLayout Padding="0" VerticalOptions="Start">
                         <Frame BackgroundColor="#e8eef1" CornerRadius="5" Padding="10,0" Margin="5,0">
                             <StackLayout Orientation="Horizontal"  >
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                                     <Label Text="32 Yorum" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
                                     <ImageButton Clicked="Comments_Clicked" BackgroundColor="Transparent" Source="comment.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" >
-                                    <Label Text="Favorilere Ekle" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
-                                    <ImageButton BackgroundColor="Transparent" Source="heartFilled.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
-                                </StackLayout>
+
                             </StackLayout>
                         </Frame>
                     </StackLayout>
 
-                    <Label Text="Randevu Almak İçin Kuaför Seçiniz" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Text="Salonunuzda Çalışan Kuaförler" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15"></Label>
                     <StackLayout VerticalOptions="Center" Padding="0" >
                         <CarouselView x:Name="workers"  IsScrollAnimated="True"  HorizontalScrollBarVisibility="Always" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
                             <CarouselView.ItemTemplate>
@@ -63,13 +59,13 @@
                                                     <Label Text="{Binding WorkerRate, StringFormat='{0:N} '}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
                                                 </Frame>
                                                 <Label Text="{Binding WorkerName}" TextColor="Black" FontSize="14"  HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
-                                                <Button Clicked="Get_Appointment_Clicked"  CommandParameter="{Binding .}"  Text="Randevu Al" TextColor="#67b9cb" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"></Button>
                                             </StackLayout>
                                         </yummy:PancakeView>
                                     </StackLayout>
                                 </DataTemplate>
                             </CarouselView.ItemTemplate>
                         </CarouselView>
+
                     </StackLayout>
                     <StackLayout VerticalOptions="Start" Padding="0" >
 
@@ -89,6 +85,15 @@
                         </Frame>
 
                     </StackLayout>
+                    <Button x:Name="Edit" 
+                            Text="DÜZENLE" 
+                            BackgroundColor="#fa7a5a" 
+                            FontAttributes="Bold"                             
+                            CornerRadius="20" 
+                            Margin="80,10" 
+                            TextColor="White"
+                            Clicked="EditClicked"
+                            />
 
                 </StackLayout>
             </ScrollView>

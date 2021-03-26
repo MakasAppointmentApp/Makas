@@ -71,7 +71,7 @@
 
 
             <Button Text="GÖNDER" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="110,5" FontSize="18" TextColor="White" />
-            <Image Source="logo.png" HeightRequest="50" Opacity="0.6"/>
+            <Image Source="logo.png" HeightRequest="80" Opacity="0.6"/>
 
         </StackLayout>
     </ContentPage.Content>

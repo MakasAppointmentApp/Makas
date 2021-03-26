@@ -1,4 +1,5 @@
 ﻿using MakasUI.Functions;
+using MakasUI.Views.SaloonPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,12 @@ namespace MakasUI.Views
         {
             Password.IsPassword = Password.IsPassword ? false : true;
             EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
+        }
+
+
+        private void LoginClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new SaloonHomePage();
         }
     }
 }

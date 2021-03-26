@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="MakasUI.Views.SaloonPages.FutureAppointmentsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="0">
+            <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="240" CornerRadius="0,0,30,30">
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+                <StackLayout>
+                <Frame BorderColor="#707070" HasShadow="True" BackgroundColor="#9ca7b3" CornerRadius="9"  Margin="40,10" Padding="0">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                                                                        EndPoint="1,0">
+                            <GradientStop Color="#e8eef1"
+                                                                         Offset="0.1"/>
+                            <GradientStop Color="#e8eef1"
+                                                                         Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <StackLayout Padding="3">
+                            <Frame Padding="0" CornerRadius="6" BorderColor="#16353b" BackgroundColor="Transparent" Margin="3" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Image Source="user.png" Aspect="AspectFill" HeightRequest="70" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
+                            </Frame>
+                        </StackLayout>
+                        <Label Text="Kuaför Adı" FontAttributes="Bold" TextColor="#16353b" FontSize="19" HorizontalTextAlignment="Start" Margin="15,0" VerticalTextAlignment="Center"></Label>
+                        <Frame HorizontalOptions="EndAndExpand" CornerRadius="10" Padding="20,5" Margin="0,26,20,26" >
+                            <Frame.Background>
+                                <RadialGradientBrush >
+                                    <GradientStop Color="#F83B25"
+                                                                         Offset="0.1"/>
+                                    <GradientStop Color="#fa7a5a"
+                                                                         Offset="1.0"/>
+                                </RadialGradientBrush>
+                            </Frame.Background>
+                            <Label Text="9,0" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"></Label>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+                    <Frame BorderColor="#707070" HasShadow="True" BackgroundColor="#e8eef1" CornerRadius="9"  Margin="120,5" Padding="5">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <DatePicker TextColor="Black" FontAttributes="Bold"/>
+                            <BoxView HeightRequest="1" WidthRequest="3" Color="#fa7a5a"/>
+                            <Image Source="calendar.png" HeightRequest="30"/>
+                        </StackLayout>
+
+                    </Frame>
+                    <Button x:Name="Edit" 
+                            Text="LİSTELE" 
+                            BackgroundColor="#fa7a5a" 
+                            FontAttributes="Bold"                             
+                            CornerRadius="20" 
+                            Margin="120,2,120,10" 
+                            TextColor="White"
+                            FontSize="18"
+                            />
+                </StackLayout>
+            </yummy:PancakeView>
+            <ListView x:Name="FavoriteListView" Margin="1,5"
+                      RowHeight="90" IsPullToRefreshEnabled="True" 
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Frame BorderColor="#707070" BackgroundColor="#9ca7b3" CornerRadius="9"  Margin="3" Padding="0">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                                                        EndPoint="1,0">
+                                        <GradientStop Color="#e8eef1"
+                                                                         Offset="0.1"/>
+                                        <GradientStop Color="#e8eef1"
+                                                                         Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <StackLayout Orientation="Horizontal"  Padding="0">
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding CustomerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="21" HorizontalTextAlignment="Start" Margin="30,0,0,0" VerticalTextAlignment="Center"></Label>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5">
+                                        <Label Text="{Binding Date}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="18" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

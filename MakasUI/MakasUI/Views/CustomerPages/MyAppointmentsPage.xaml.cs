@@ -16,6 +16,7 @@ namespace MakasUI.Views.CustomerPages
         public MyAppointmentsPage()
         {
             InitializeComponent();
+
             var MyAppointments = new List<Appointment>
             {
                 new Appointment { SaloonName="A Kuaför Salonu", WorkerName="Muhammed Güven", Date = DateTime.Now, Hour = DateTime.Now, Rate=7.5, Review="Değerlendirmem" },
@@ -23,6 +24,13 @@ namespace MakasUI.Views.CustomerPages
                 new Appointment { SaloonName="C Kuaför Salonu", WorkerName="Danyel Kar", Date = DateTime.Now, Hour = DateTime.Now, Rate=7.7, Review="Değerlendir" },
             };
             AppointmentsListView.ItemsSource = MyAppointments;
+
+
+        }
+
+        async void Review_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RateAppointmentPage());
         }
     }
 }

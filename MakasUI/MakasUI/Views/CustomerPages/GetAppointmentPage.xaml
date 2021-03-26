@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakasUI.Views.CustomerPages.GetAppointmentPage"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0">
+                <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
+
+                <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
+                    <Label x:Name="sName" TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+
+                </StackLayout>
+                <Frame  CornerRadius="20" Padding="30,0" Margin="0,8" HorizontalOptions="End"   BackgroundColor="#EEEEEE">
+                    <Label x:Name="sRate" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
+                </Frame>
+            </StackLayout>
+            <yummy:PancakeView BackgroundColor="#e8eef1 " CornerRadius="20" Padding="10" Margin="5,5">
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="80,40"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+                <StackLayout Orientation="Horizontal">
+
+                    <yummy:PancakeView CornerRadius="90" HorizontalOptions="Start"  BackgroundColor="black" Padding="0" HeightRequest="50"  Margin="0,0">
+                        <Image x:Name="workerImage" Aspect="AspectFit" />
+                    </yummy:PancakeView>
+                    <Label x:Name="workerName" FontSize="16" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#16353B"></Label>
+                    <Frame  CornerRadius="20" Padding="20,5" Margin="0,5,0,5" HorizontalOptions="End" >
+                        <Frame.Background>
+                            <RadialGradientBrush >
+                                <GradientStop Color="#F83B25"
+                                                                         Offset="0.1"/>
+                                <GradientStop Color="#fa7a5a"
+                                                                         Offset="1.0"/>
+                            </RadialGradientBrush>
+                        </Frame.Background>
+                        <Label x:Name="workerRate" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                    </Frame>
+                </StackLayout>
+            </yummy:PancakeView>
+            <yummy:PancakeView  CornerRadius="10" Margin="50,10" BackgroundColor="#e8eef1" HorizontalOptions="Center" Padding="15,0">
+                <yummy:PancakeView.Shadow>
+                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                </yummy:PancakeView.Shadow>
+                <StackLayout Orientation="Horizontal">
+                    <DatePicker TextColor="#16353B" DateSelected="DatePicker_DateSelected"></DatePicker>
+                    <BoxView WidthRequest="1" Color="#fa7a5a"></BoxView>
+                    <Image Source="calendar.png" HeightRequest="25"></Image>
+                </StackLayout>
+            </yummy:PancakeView>
+            <CollectionView x:Name="hourList" Margin="20,0" SelectionMode="Single" HeightRequest="250">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="40,10" HeightRequest="40" Padding="10,0">
+                        <yummy:PancakeView   BackgroundColor="#e8eef1"  Padding="0,10"  CornerRadius="20">
+                                <yummy:PancakeView.Shadow>
+                                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
+                                </yummy:PancakeView.Shadow>
+                                <Label TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="RANDEVU AL" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

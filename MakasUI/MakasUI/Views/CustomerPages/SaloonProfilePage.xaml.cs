@@ -46,15 +46,15 @@ namespace MakasUI.Views.CustomerPages
         }
 
         private async void Comments_Clicked(object sender, EventArgs e)
-        {
-           
-
-           
-
+        {   
             await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text));
-
-           
-
+        }
+        private void Get_Appointment_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var model = button.BindingContext as Worker;
+            var saloon = new Saloon { SaloonName = sName.Text, SaloonRate = Convert.ToDouble(sRate.Text) };
+            Navigation.PushAsync(new GetAppointmentPage(model,saloon));
         }
     }
 }

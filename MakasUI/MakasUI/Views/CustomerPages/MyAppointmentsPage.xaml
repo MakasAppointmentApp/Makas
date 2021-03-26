@@ -6,7 +6,7 @@
         <StackLayout Spacing="0" Padding="0">
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#a5d3e3" Padding="5,0">
                 <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
-                    <Label Text="Randevularım"  TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Randevularım" x:Name="label3" TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
                 </StackLayout>
 
             </StackLayout>
@@ -51,8 +51,8 @@
                                         <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
-                                        <Label Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
-                                        <ImageButton   BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
+                                        <Label x:Name="label1" Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
+                                        <ImageButton Clicked="Review_Clicked"  BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
 
                                     </StackLayout>
 

@@ -1,29 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MakasUI.Views.CustomerPages"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="MakasUI.Views.CustomerHomePage"
-       Shell.BackgroundColor="#164e60"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MakasUI.Views.SaloonPages" 
+       x:Class="MakasUI.Views.SaloonPages.SaloonHomePage"       
+             Shell.BackgroundColor="#164e60"
        Shell.ForegroundColor="#F83B25"
        Shell.TabBarDisabledColor="#F83B25"
        Shell.TitleColor="#F83B25"
        Shell.UnselectedColor="#fa7a5a"
        Shell.NavBarIsVisible="False">
     <FlyoutItem>
-        <Tab Icon="search.png" Title="Kuaförler" FlyoutIcon="search.png">
+        <Tab Icon="user.png" Title="Profilim" FlyoutIcon="user.png">
             <ShellContent>
-                <local:SaloonSearchPage></local:SaloonSearchPage>
+                <local:ProfilePageSaloon></local:ProfilePageSaloon>
             </ShellContent>
         </Tab>
-        <Tab Icon="like.png" Title="Favoriler" FlyoutIcon="like.png">
+        <Tab Icon="history.png" Title="Gelecek Randevularım" FlyoutIcon="history.png">
             <ShellContent>
-                <local:MyFavoritesPage></local:MyFavoritesPage>
+                <local:FutureAppointmentsPage></local:FutureAppointmentsPage>
             </ShellContent>
         </Tab>
-        <Tab Icon="history.png" Title="Randevularım" FlyoutIcon="history.png">
+        <Tab Icon="history.png" Title="Geçmiş Randevularım" FlyoutIcon="history.png">
             <ShellContent>
-                <local:MyAppointmentsPage></local:MyAppointmentsPage>
+                <local:PastAppointmentsPage></local:PastAppointmentsPage>
             </ShellContent>
         </Tab>
         <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png">
@@ -31,7 +29,7 @@
                 <ContentPage>
                     <StackLayout>
                         <Button x:Name="Edit" 
-                            Text="Çıkış" 
+                            Text="çıkış" 
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
@@ -40,10 +38,11 @@
                             FontSize="18"
                                 Clicked="ExitClicked"
                             />
+
                     </StackLayout>
                 </ContentPage>
             </ShellContent>
         </Tab>
     </FlyoutItem>
 
-</Shell>
+    </Shell>

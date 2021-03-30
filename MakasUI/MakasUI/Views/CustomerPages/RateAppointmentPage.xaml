@@ -7,8 +7,12 @@
              >
     <ContentPage.Content>
         <StackLayout >
-            <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="40" CornerRadius="0,0,30,30">
-                <Label Text="Randevularım" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+            <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="40" >
+                <StackLayout Orientation="Horizontal" Padding="10,0">
+                    <Image Source="back.png"  HeightRequest="30" x:Name="back" HorizontalOptions="StartAndExpand"></Image>
+                    <Label Text="Randevularım" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25" Padding="0,0,120,0"/>
+                </StackLayout>
+
             </yummy:PancakeView>
             <Frame BorderColor="#707070" BackgroundColor="#9ca7b3" CornerRadius="12"  Margin="15,3" Padding="0">
                 <Frame.Background>

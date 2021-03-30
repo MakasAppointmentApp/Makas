@@ -58,12 +58,13 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Margin="40,10" HeightRequest="40" Padding="10,0">
-                        <yummy:PancakeView   BackgroundColor="#e8eef1"  Padding="0,10"  CornerRadius="20">
+                        <StackLayout Margin="40,10" HeightRequest="40"  Padding="10,0">
+
+                            <yummy:PancakeView x:Name="hourFrame"   BackgroundColor="#e8eef1"  Padding="0,10"  CornerRadius="20">
                                 <yummy:PancakeView.Shadow>
                                     <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
                                 </yummy:PancakeView.Shadow>
-                                <Label TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
+                                <Label x:Name="hourLabel" TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
                             </yummy:PancakeView>
                         </StackLayout>
                     </DataTemplate>

@@ -12,7 +12,7 @@
             </StackLayout>
             <ListView x:Name="FavoriteListView" Margin="1,5"
                       RowHeight="90" IsPullToRefreshEnabled="True" 
-                      SeparatorVisibility="None">
+                      SeparatorVisibility="None" ItemTapped="FavoriteListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -48,8 +48,8 @@
                                         <Label Text="{Binding SaloonName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5" Spacing="10">
-                                        <ImageButton Clicked="Fav_Delete_Clicked"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
-
+                                        <ImageButton  Clicked="Fav_Delete_Clicked" CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
+                                      
                                     </StackLayout>
 
                                 </StackLayout>

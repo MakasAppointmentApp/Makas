@@ -24,8 +24,8 @@
                 <local:PastAppointmentsPage></local:PastAppointmentsPage>
             </ShellContent>
         </Tab>
-        <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png">
-            <ShellContent>
+        <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png" >
+            <ShellContent >
                 <ContentPage>
                     <StackLayout>
                         <Button x:Name="Edit" 

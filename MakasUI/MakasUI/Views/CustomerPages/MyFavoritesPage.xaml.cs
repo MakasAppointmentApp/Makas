@@ -13,26 +13,38 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyFavoritesPage : ContentPage
     {
+        public List<Saloon> Categories = new List<Saloon>();
         public MyFavoritesPage()
         {
             InitializeComponent();
-            var Categories = new List<Saloon>
-            {
-                new Saloon {SaloonName="MEO kuafor",SaloonImage="chair.png",SaloonRate=8.2 },
-                new Saloon {SaloonName="DAN kuafor",SaloonImage="help.png",SaloonRate=5.6 },
-                new Saloon {SaloonName="GWEN kuafor",SaloonImage="user.png",SaloonRate=4.4 }
 
-            };
+            Categories.Add(new Saloon { SaloonName = "MEO kuafor", SaloonImage = "chair.png", SaloonRate = 8.2 });
+            Categories.Add(new Saloon { SaloonName = "DAN kuafor", SaloonImage = "help.png", SaloonRate = 5.6 });
+            Categories.Add(new Saloon { SaloonName = "GWEN kuafor", SaloonImage = "user.png", SaloonRate = 4.4 });
 
             FavoriteListView.ItemsSource = Categories;
         }
         private void Fav_Delete_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("asd", "Test", "OK");
-            /*Button btn = (Button)sender;
+           // DisplayAlert("asd", "Test", "OK");
+            ImageButton btn = (ImageButton)sender;
+            var ob = btn.CommandParameter as Saloon;
+            Categories.Remove(ob);
+            FavoriteListView.ItemsSource = Categories;
 
-            var ob = btn.CommandParameter as Kuafor;
-            */
+
+        }
+
+        private async void FavoriteListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedInstructor = e.Item as Saloon;
+            await Navigation.PushAsync(new SaloonProfilePage(selectedInstructor));
+
+        }
+
+        private void ImageButton_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
         }
     }
 }

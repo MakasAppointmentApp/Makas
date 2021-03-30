@@ -24,7 +24,7 @@
                         <ImageButton BackgroundColor="Transparent" Clicked="HelpButton_Clicked" Source="help.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" VerticalOptions="Start" Padding="0,10,10,0"></ImageButton>
                         <StackLayout  >
                             <Image  x:Name="logo" HeightRequest="200" HorizontalOptions="Center" Source="logo.png" />
-                            <Label  Text="Makas"  FontSize="50" CharacterSpacing="2" TextColor="#fa7a5a"  HorizontalOptions="Center"></Label>
+                            <Label  Text="Makas"   FontSize="50" CharacterSpacing="2" TextColor="#fa7a5a"  HorizontalOptions="Center"></Label>
                         </StackLayout>
 
                         <StackLayout Padding="0,60">

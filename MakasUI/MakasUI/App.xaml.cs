@@ -1,4 +1,5 @@
 ﻿using MakasUI.Views;
+using MakasUI.Views.SaloonPages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

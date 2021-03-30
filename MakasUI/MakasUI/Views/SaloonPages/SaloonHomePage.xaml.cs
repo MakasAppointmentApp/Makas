@@ -15,11 +15,15 @@ namespace MakasUI.Views.SaloonPages
         public SaloonHomePage()
         {
             InitializeComponent();
+            
+
+
         }
+        
 
         private void ExitClicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new WelcomePage());
+                App.Current.MainPage = new NavigationPage(new WelcomePage());
         }
     }
 }

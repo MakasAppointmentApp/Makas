@@ -6,10 +6,10 @@
 >
     <ContentPage.Content>
         <StackLayout Padding="0" Margin="0">
-            <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0">
-
-                <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
-                    <Label x:Name="sName" TextColor="#16353b" Text="B Kuaför Salonu"  FontSize="20" FontAttributes="Bold" Margin="70,0,0,0"/>
+            <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="0">
+                <Button Text="DÜZENLE" BackgroundColor="#EEEEEE" VerticalOptions="Fill" FontSize="16" FontAttributes="Bold"  HorizontalOptions="StartAndExpand" TextColor="#16353b" Clicked="EditClicked"/>
+                <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Padding="0,0,10,0">
+                    <Label x:Name="sName" TextColor="#16353b" Text="B Kuaför Salonu"  FontSize="20" FontAttributes="Bold"/>
 
                 </StackLayout>
                 <Frame  CornerRadius="20" Padding="30,0" Margin="0,8" HorizontalOptions="End"   BackgroundColor="#EEEEEE">
@@ -85,15 +85,7 @@
                         </Frame>
 
                     </StackLayout>
-                    <Button x:Name="Edit" 
-                            Text="DÜZENLE" 
-                            BackgroundColor="#fa7a5a" 
-                            FontAttributes="Bold"                             
-                            CornerRadius="20" 
-                            Margin="80,10" 
-                            TextColor="White"
-                            Clicked="EditClicked"
-                            />
+                   
 
                 </StackLayout>
             </ScrollView>

@@ -36,17 +36,16 @@
                         </Frame>
                     </StackLayout>
 
-                    <Label Text="Randevu Almak İçin Kuaför Seçiniz" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15"></Label>
-                    <StackLayout VerticalOptions="Center" Padding="0" >
-                        <CarouselView x:Name="workers"  IsScrollAnimated="True"  HorizontalScrollBarVisibility="Always" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
+                    <StackLayout VerticalOptions="Center" >
+                        <CarouselView x:Name="workers"  IsScrollAnimated="True"   HeightRequest="200" PeekAreaInsets="100" Margin="1,0,0,0" >
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Padding="10,0" >
-                                        <yummy:PancakeView CornerRadius="30" Padding="0" BackgroundColor="#e8eef1" >
+                                        <yummy:PancakeView CornerRadius="30" VerticalOptions="Fill" Padding="0" BackgroundColor="#e8eef1" >
                                             <yummy:PancakeView.Shadow>
                                                 <yummy:DropShadow Color="Black" Offset="10,10"></yummy:DropShadow>
                                             </yummy:PancakeView.Shadow>
-                                            <StackLayout Padding="5,5" Margin="0,0,0,10">
+                                            <StackLayout Padding="5,0" Margin="0,0,5,10">
 
                                                 <yummy:PancakeView CornerRadius="90"  BackgroundColor="black" Padding="0"  Margin="55,0">
                                                     <Image Source="{Binding WorkerImage}" Aspect="AspectFit" />
@@ -63,7 +62,7 @@
                                                     <Label Text="{Binding WorkerRate, StringFormat='{0:N} '}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
                                                 </Frame>
                                                 <Label Text="{Binding WorkerName}" TextColor="Black" FontSize="14"  HorizontalTextAlignment="Center" FontAttributes="Bold"></Label>
-                                                <Button Clicked="Get_Appointment_Clicked"  CommandParameter="{Binding .}"  Text="Randevu Al" TextColor="#67b9cb" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"></Button>
+                                                <Button Clicked="Get_Appointment_Clicked"  CommandParameter="{Binding .}" Margin="0" Padding="0" HeightRequest="40"  Text="Randevu Al" TextColor="#67b9cb" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="14"></Button>
                                             </StackLayout>
                                         </yummy:PancakeView>
                                     </StackLayout>

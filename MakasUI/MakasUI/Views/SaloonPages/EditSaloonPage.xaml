@@ -3,66 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"              
              x:Class="MakasUI.Views.SaloonPages.EditSaloonPage"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#e8eef1"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="White"
              >
-   <ContentPage.Content>
-        <ScrollView>
+    <ContentPage.Content>
+        
             <StackLayout>
- 
-                <Frame x:Name="editFrame" HasShadow="True" CornerRadius="20" Padding="0,10,10,0" BackgroundColor="#67b9cb " HeightRequest="350" >
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#a5d3e3" Padding="5,0">
+                    <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
+                    <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
+                        <Label Text="Profil Düzenle" x:Name="label3" TextColor="#16353b"   FontSize="20" FontAttributes="Bold" />
+                    </StackLayout>
+                </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                <Frame HasShadow="True"  CornerRadius="20" Margin="10,0" Padding="5,10"   BackgroundColor="#e8eef1" >
+                    <StackLayout Padding="0">
+                            <Label HorizontalOptions="Start" 
+                                   Text="Kuaför Adı Düzenle:" FontSize="14" FontAttributes="Bold" TextColor="#16353b"></Label>
+                            <StackLayout Orientation="Horizontal" Margin="10,0"  Padding="0">
+                            <Frame  CornerRadius="20" BorderColor="LightGray" Margin="0" BackgroundColor="#FFFFFF" Padding="0" >
+                                <Entry x:Name ="saloonName"  MaxLength="30" Margin="5,0" FontSize="14" Keyboard="Text" VerticalOptions="Center"  PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
+                            </Frame>
+                            <Button  Text="GÜNCELLE" BackgroundColor="Transparent" VerticalOptions="Center" FontAttributes="Bold" TextColor="#fa7a5a"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    </Frame>
+                <Frame HasShadow="True" CornerRadius="20" Padding="5,10" Margin="10,0" BackgroundColor="#e8eef1"  >
                     <StackLayout>
-                            <StackLayout Orientation="Horizontal" Padding="10,0">
-                                <StackLayout  HorizontalOptions="Start"  VerticalOptions="Center">
-                                    <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
-                                </StackLayout>
-
-                                <StackLayout   HorizontalOptions="CenterAndExpand" Padding="0,0,30,5">
-                                    <Label HorizontalOptions="Center" 
-                                   Text="Profil Düzenle"
-                                   FontSize="24"
-                                   FontAttributes="Bold"
-                                   TextColor="#16353b"
-                                   ></Label>
-                                </StackLayout>
-                            </StackLayout>
-
-                            <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" Padding="20,0,0,10">
-                                <StackLayout   VerticalOptions="Center" >
-                                    <Frame  x:Name="isletmeFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="40,0">
-                                        <Entry x:Name ="saloonName"  MaxLength="30" Keyboard="Email"  PlaceholderColor="#6b6c6c"  WidthRequest="200" TextColor="Black"/>
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout  VerticalOptions="Start" Padding="5,0,10,0" >
-                                    <Button x:Name="updatePhoto" Text="GÜNCELLE" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="40"  TextColor="White"/>
-                                </StackLayout>
-                            </StackLayout>
-
-                            <StackLayout Orientation="Vertical" Padding="0,0,0,10">
-                                <StackLayout Padding="10,0">
-                                    <Label HorizontalOptions="Start" 
+                        <StackLayout >
+                            <StackLayout>
+                                <Label HorizontalOptions="Start" 
                                    Text="Fotoğraf Düzenle:"
                                    FontSize="14"
                                    FontAttributes="Bold"
                                    TextColor="#16353b"
                                    ></Label>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10,0,0,5">
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                                 <StackLayout>
                                     <Image   HeightRequest="150" x:Name="sPhoto" ></Image>
                                 </StackLayout>
                             </StackLayout>
-                                <StackLayout VerticalOptions="Start" Padding="120,0">
-                                    <Button x:Name="deletePhoto" Text="FOTOĞRAF SEÇ" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="50" HeightRequest="40" FontSize="16" TextColor="White"/>
-                                </StackLayout>
+                            <StackLayout VerticalOptions="Start" Orientation="Horizontal" HorizontalOptions="Center">
+                                <ImageButton Source="camera.png" BackgroundColor="Transparent"  HeightRequest="30"></ImageButton>
                             </StackLayout>
-
+                        </StackLayout>
                     </StackLayout>
 
                 </Frame>
 
-                <Frame x:Name="editPasswordFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0"  BackgroundColor="#67b9cb " HeightRequest="260" >
+                <Frame HasShadow="True" CornerRadius="20" Padding="5,10" Margin="10,0" BackgroundColor="#e8eef1" >
                     <StackLayout Orientation="Vertical">
-                        <StackLayout Padding="15,5,0,10">
+                        <StackLayout >
                             <Label HorizontalOptions="Start" 
                                        Text="Şifre Değiştir:"
                                        FontSize="14"
@@ -71,9 +65,9 @@
                                 ></Label>
                         </StackLayout>
                         <StackLayout >
-                            <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="LightGray" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                                    <Entry  Placeholder="Şifre:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
                                     <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
@@ -83,165 +77,86 @@
                             </Frame>
                         </StackLayout>
                         <StackLayout>
-                            <Frame x:Name="newPasswordFrame" CornerRadius="20"  BorderColor="#fa7a5a" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame CornerRadius="20"  BorderColor="LightGray" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Horizontal">
                                     <Entry x:Name ="checkPasswordEntry" MaxLength="30"  Placeholder="Yeni Şifreniz:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
                         <StackLayout>
-                            <Frame x:Name="checkPasswordFrame" CornerRadius="20"  BorderColor="#fa7a5a" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame x:Name="checkPasswordFrame" CornerRadius="20"  BorderColor="LightGray" Margin="30,0,30,5" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Horizontal">
                                     <Entry x:Name ="UpdatePasswordEntry" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
                         <StackLayout Margin="120,0">
-                            <Button x:Name="passwordSave" Text="KAYDET" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="50" HeightRequest="40" FontSize="16" TextColor="White"/>
+                            <Button x:Name="passwordSave" Text="KAYDET" BackgroundColor="Transparent" FontAttributes="Bold"  CornerRadius="50" HeightRequest="40" FontSize="16" TextColor="#fa7a5a"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
 
-                <Frame x:Name="editLocationFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0"  BackgroundColor="#67b9cb " HeightRequest="130" >
+                <Frame HasShadow="True" CornerRadius="20" Padding="5,10" Margin="10,0" BackgroundColor="#e8eef1" >
                     <StackLayout Orientation="Vertical">
-                        <StackLayout Padding="15,5,0,0">
-                            <Label HorizontalOptions="Start" 
+                        <Label HorizontalOptions="Start" 
                                        Text="Konum Bilgisini Düzenle:"
                                        FontSize="14"
                                        FontAttributes="Bold"
                                        TextColor="#16353b"
                                 ></Label>
-                        </StackLayout>
-
-                        <StackLayout Padding="30,5">
-                            <Label HorizontalOptions="Start" 
-                                       x:Name="locName"
-                                       FontSize="14"
-                                       FontAttributes="Bold"
-                                       TextColor="#16353b"
-                                ></Label>
-                        </StackLayout>
-
-                        <StackLayout  Margin="120,0" >
-                            <Button x:Name="getLocation" 
-                                    Text="KONUM SEÇ" 
-                                    BackgroundColor="#6b6c6c" 
-                                    FontAttributes="Bold"  
-                                    CornerRadius="50" 
-                                    HeightRequest="40" 
-                                    FontSize="16" 
-                                    TextColor="White"
+                        <Frame Margin="30,0" CornerRadius="10" Padding="0" BorderColor="LightGray" HeightRequest="80">
+                            <Editor x:Name="locName" HorizontalOptions="Center" BackgroundColor="White"  WidthRequest="300"  FontSize="14" TextColor="#16353b"></Editor>
+                        </Frame>
+                        <Button x:Name="getLocation" Text="Güncelle" BackgroundColor="Transparent" FontAttributes="Bold"   FontSize="16" TextColor="#fa7a5a" HorizontalOptions="Center"
                                     />
-                        </StackLayout>
                     </StackLayout>
                 </Frame>
 
-                <Frame x:Name="editKuaförFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0"  BackgroundColor="#67b9cb " HeightRequest="150" >
-                    <StackLayout Orientation="Vertical">
-                        
-                        <StackLayout Padding="15,5,0,10">
-                            <Label HorizontalOptions="Start" 
-                                       Text="Çalışan Düzenle:"
-                                       FontSize="14"
-                                       FontAttributes="Bold"
-                                       TextColor="#16353b"
-                                ></Label>
+                <Frame HasShadow="True" CornerRadius="20" Padding="5,10" Margin="10,0" BackgroundColor="#e8eef1" >
+                    <StackLayout >
+                        <Label HorizontalOptions="Start" Text="Çalışan Düzenle:" FontSize="14" FontAttributes="Bold" TextColor="#16353b"></Label>
+                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Frame  CornerRadius="20"  BorderColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="#FFFFFF" WidthRequest="200" Padding="0" HeightRequest="40">
+                                <Entry x:Name ="kuaförName" Margin="5,0" MaxLength="30" Keyboard="Email" Placeholder="Kuaför adı:" PlaceholderColor="#6b6c6c"  WidthRequest="100" TextColor="Black"/>
+                            </Frame>
+                            <Image Source="camera.png"  HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            <Button Text="EKLE" BackgroundColor="Transparent" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="#fa7a5a" HorizontalOptions="End"  VerticalOptions="Center"/>
                         </StackLayout>
-
-                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center" Padding="30,0,0,0">
-                            <StackLayout   HorizontalOptions="Start" VerticalOptions="Center">
-                                <Frame  x:Name="KuaförEklemeFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="60,0" HeightRequest="40">
-                                    <Entry x:Name ="kuaförName" MaxLength="30" Keyboard="Email" Placeholder="Kuaför adı:" PlaceholderColor="#6b6c6c"  WidthRequest="100" TextColor="Black"/>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image Source="back.png"  HeightRequest="40" ></Image>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="End"  VerticalOptions="Center" Padding="10,0,10,0" >
-                                <Button x:Name="addKuaför" Text="EKLE" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="White"/>
-                            </StackLayout>
-                        </StackLayout>
-
-                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center" Padding="30,0,0,10">
-                            <StackLayout   HorizontalOptions="Start" VerticalOptions="Center">
-                                <Frame  x:Name="kuaförPickerFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="80,0" HeightRequest="40">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Picker x:Name="kuaförPicker" Title="Kuaför Adı 1" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
-                                            <Picker.ItemsSource >
-                                                <x:Array Type="{x:Type x:String}">
-                                                    <x:String>Mustafa Emre Orbağ</x:String>
-                                                    <x:String>Muhammed Güven</x:String>
-                                                    <x:String>Danyel Kar</x:String>
-                                                </x:Array>
-                                            </Picker.ItemsSource>
-                                        </Picker>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="End"  VerticalOptions="Center" Padding="10,0,10,0" >
-                                <Button x:Name="deleteKuaför" Text="SİL" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="White"/>
-                            </StackLayout>
+                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Frame CornerRadius="20" HorizontalOptions="StartAndExpand"  BorderColor="LightGray" BackgroundColor="#FFFFFF" WidthRequest="240" Padding="0" HeightRequest="40">
+                                <Picker x:Name="kuaförPicker" Margin="5,0" Title="Kuaför Adı 1" TitleColor="#6b6c6c" TextColor="#16353b" >
+                                </Picker>
+                            </Frame>
+                            <Button Text="SİL" BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" HeightRequest="40"  TextColor="#fa7a5a"/>
                         </StackLayout>
                         
                     </StackLayout>
                 </Frame>
 
-                <Frame x:Name="editFİyatFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0"  BackgroundColor="#67b9cb " HeightRequest="150" >
-                    <StackLayout Orientation="Vertical">
-
-                        <StackLayout Padding="15,5,0,10">
-                            <Label HorizontalOptions="Start" 
-                                       Text="Fiyat Listesini Düzenle:"
-                                       FontSize="14"
-                                       FontAttributes="Bold"
-                                       TextColor="#16353b"
-                                ></Label>
+                <Frame HasShadow="True" CornerRadius="20" Padding="5,10" Margin="10,0" BackgroundColor="#e8eef1" >
+                    <StackLayout >
+                        <Label HorizontalOptions="Start" Text="Fiyat Listesini Düzenle:" FontSize="14" FontAttributes="Bold" TextColor="#16353b"></Label>
+                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Frame  CornerRadius="20"  BorderColor="LightGray" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="#FFFFFF" WidthRequest="200" Padding="0" HeightRequest="40">
+                                <Entry MaxLength="30" Margin="5,0" Keyboard="Text" Placeholder="İşlem adı:" PlaceholderColor="#6b6c6c"  WidthRequest="100" TextColor="Black"/>
+                            </Frame>
+                            <Image Source="camera.png"  HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            <Button Text="EKLE" BackgroundColor="Transparent" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="#fa7a5a" HorizontalOptions="End"  VerticalOptions="Center"/>
                         </StackLayout>
+                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Frame CornerRadius="20" HorizontalOptions="StartAndExpand"  BorderColor="LightGray" BackgroundColor="#FFFFFF" WidthRequest="240" Padding="0" HeightRequest="40">
+                                <Picker Margin="5,0" Title="İşlem Adı" TitleColor="#6b6c6c" TextColor="#16353b" >
 
-                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center" Padding="30,0,0,0">
-                            <StackLayout   HorizontalOptions="Start" VerticalOptions="Center">
-                                <Frame  x:Name="islemEklemeFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="45,0" HeightRequest="40">
-                                    <Entry x:Name ="islemName" MaxLength="30" Keyboard="Email" Placeholder="İşlem adı:" PlaceholderColor="#6b6c6c"  WidthRequest="100" TextColor="Black"/>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
-                                <Frame  x:Name="FiyatEklemeFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="20,0" HeightRequest="40">
-                                    <Entry x:Name ="fiyatFrameName" MaxLength="30" Keyboard="Email" Placeholder="TL" PlaceholderColor="#6b6c6c" FontSize="18"  WidthRequest="25" Margin="-2" TextColor="Black"/>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="End"  VerticalOptions="Center" Padding="20,0,10,0" >
-                                <Button x:Name="addFiyat" Text="EKLE" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="White"/>
-                            </StackLayout>
-                        </StackLayout>
-
-                        <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center" Padding="30,0,0,10">
-                            <StackLayout   HorizontalOptions="Start" VerticalOptions="Center">
-                                <Frame  x:Name="fiyatPickerFrame" CornerRadius="20"  BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="85,0" HeightRequest="40">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Picker x:Name="sacKesim" Title="Saç Kesim" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
-                                            <Picker.ItemsSource >
-                                                <x:Array Type="{x:Type x:String}">
-                                                    <x:String>Saç Kesim</x:String>
-                                                    <x:String>Saç Boyama</x:String>
-                                                    <x:String>Manikür</x:String>
-                                                    <x:String>Pedikür</x:String>
-                                                    <x:String>Masaj</x:String>
-                                                </x:Array>
-                                            </Picker.ItemsSource>
-                                        </Picker>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="End"  VerticalOptions="Center" Padding="17,0,10,0" >
-                                <Button x:Name="deleteFİyat" Text="SİL" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="60" FontSize="16" HeightRequest="40"  TextColor="White"/>
-                            </StackLayout>
+                                </Picker>
+                            </Frame>
+                            <Button Text="SİL" BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" HeightRequest="40"  TextColor="#fa7a5a"/>
                         </StackLayout>
 
                     </StackLayout>
                 </Frame>
-
-
-            </StackLayout>
-        </ScrollView>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+       
     </ContentPage.Content>
 </ContentPage>

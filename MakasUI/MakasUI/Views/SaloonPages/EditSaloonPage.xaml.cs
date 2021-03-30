@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MakasUI.Functions;
+using MakasUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,29 @@ namespace MakasUI.Views.SaloonPages
         public EditSaloonPage()
         {
             InitializeComponent();
+            
+
+            ItemFunctions function = new ItemFunctions();
+            function.backclick(back, Navigation);
         }
+        public EditSaloonPage(string text, ImageSource profilePhoto, string saloonLocation)
+        {
+            InitializeComponent();
+            this.saloonName.Text = text;
+            this.sPhoto.Source = profilePhoto;
+            this.locName.Text = saloonLocation;
+
+            ItemFunctions function = new ItemFunctions();
+            function.backclick(back,Navigation);
+        }
+
+      
+
+        public void ShowPass(object sender, EventArgs args)
+        {
+            Password.IsPassword = Password.IsPassword ? false : true;
+            EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
+        }
+
     }
 }

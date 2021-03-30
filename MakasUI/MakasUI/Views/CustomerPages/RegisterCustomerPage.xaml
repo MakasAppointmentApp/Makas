@@ -79,12 +79,6 @@
 
             </yummy:PancakeView>
 
-            <StackLayout BackgroundColor="#e8eef1" VerticalOptions="End">
-
-                <ImageButton Source="quit.png"  HeightRequest="40" VerticalOptions="End" BackgroundColor="#e8eef1 "></ImageButton>
-                <Label Text="Uygulamadan Çık" TextColor="#fa7a5a" FontSize="13" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
-            </StackLayout>
-
 
         </StackLayout>
     </ContentPage.Content>

@@ -35,6 +35,8 @@ namespace MakasUI.Views.SaloonPages
                 new Price { PriceName="Masaj" , PriceNumber = 20},
             };
             PriceListView.ItemsSource = Prices;
+
+
         }
         private async void Comments_Clicked(object sender, EventArgs e)
         {
@@ -43,7 +45,10 @@ namespace MakasUI.Views.SaloonPages
 
         private async void EditClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditSaloonPage());
+                
+                await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text));
+
+
         }
     }
 }

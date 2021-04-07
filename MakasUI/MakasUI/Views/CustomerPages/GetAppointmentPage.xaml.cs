@@ -17,6 +17,8 @@ namespace MakasUI.Views.CustomerPages
         public GetAppointmentPage(Worker worker, Saloon saloon)
         {
             InitializeComponent();
+            datePicker.MinimumDate = DateTime.Now;
+            datePicker.MaximumDate = DateTime.Now.AddYears(1);
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
             sName.Text = saloon.SaloonName;
@@ -58,6 +60,11 @@ namespace MakasUI.Views.CustomerPages
             };
             hourList.ItemsSource = Hours;
             //Burada date değiştiğinde backendden yeni date e göre değerler gelecek
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            datePicker.Focus();
         }
     }
 }

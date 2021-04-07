@@ -51,8 +51,8 @@
                                         <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
-                                        <Label x:Name="label1" Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
-                                        <ImageButton Clicked="Review_Clicked"  BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
+                                        <Label Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
+                                        <ImageButton Clicked="Review_Clicked" CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
 
                                     </StackLayout>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MakasUI.Functions;
 using MakasUI.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +16,9 @@ namespace MakasUI.Views.SaloonPages
         public ProfilePageSaloon()
         {
             InitializeComponent();
+            ItemFunctions functions = new ItemFunctions();
 
+            functions.ButtonsLabelClick(commentLabel,commentButton);
             var Workers = new List<Worker>
             {
                 new Worker {WorkerName="Muhammed Güven",WorkerImage="chair.png",WorkerRate=8.2 },

@@ -34,11 +34,11 @@
                                                                          Offset="1.0"/>
                             </RadialGradientBrush>
                         </Frame.Background>
-                        <Label Text="8,2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                        <Label x:Name="sRate" Text="8,2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
                     </Frame>
                     <StackLayout VerticalOptions="Center" >
-                        <Label Text="A Kuaför Salonu" FontAttributes="Bold" TextColor="#16353b" FontSize="22" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
-                        <Label Text="Kuaför Adı" TextColor="#7e4e41" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                        <Label x:Name="sName" Text="A Kuaför Salonu" FontAttributes="Bold" TextColor="#16353b" FontSize="22" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
+                        <Label x:Name="wName" Text="Kuaför Adı" TextColor="#7e4e41" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
 
                     </StackLayout>
                 </StackLayout>

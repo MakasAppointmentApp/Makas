@@ -45,9 +45,9 @@
                     <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
                 </yummy:PancakeView.Shadow>
                 <StackLayout Orientation="Horizontal">
-                    <DatePicker TextColor="#16353B" DateSelected="DatePicker_DateSelected"></DatePicker>
+                    <DatePicker x:Name="datePicker" TextColor="#16353B" DateSelected="DatePicker_DateSelected"></DatePicker>
                     <BoxView WidthRequest="1" Color="#fa7a5a"></BoxView>
-                    <Image Source="calendar.png" HeightRequest="25"></Image>
+                    <ImageButton Clicked="ImageButton_Clicked" BackgroundColor="Transparent" Source="calendar.png" HeightRequest="25"></ImageButton>
                 </StackLayout>
             </yummy:PancakeView>
             <CollectionView x:Name="hourList" Margin="20,0" SelectionMode="Single" HeightRequest="250">

@@ -13,10 +13,12 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RateAppointmentPage : ContentPage
     {
-        public RateAppointmentPage()
+        public RateAppointmentPage(string saloonName, string workerName, double saloonRate)
         {
-            
             InitializeComponent();
+            sName.Text = saloonName;
+            wName.Text = workerName;
+            sRate.Text = saloonRate.ToString();
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back,Navigation);
         }

@@ -15,7 +15,8 @@ namespace MakasUI.Views.SaloonPages
         public PastAppointmentsPage()
         {
             InitializeComponent();
-
+            datePicker.MaximumDate = DateTime.Now;
+            
             var CustomersAppointments = new List<Customers>
             {
                 new Customers {CustomerName="MEORBAG",Date="15:00"},
@@ -26,6 +27,10 @@ namespace MakasUI.Views.SaloonPages
             };
 
             FavoriteListView.ItemsSource = CustomersAppointments;
+        }
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {//datein yanındaki image
+            datePicker.Focus();
         }
     }
 }

@@ -24,6 +24,8 @@ namespace MakasUI.Views.CustomerPages
             this.sRate.Text = Convert.ToString(ob.SaloonRate);
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
+            functions.ButtonsLabelClick(labelComment, butComment);
+            functions.ButtonsLabelClick(labelFav, butFav);
             var Workers = new List<Worker>
             {
                 new Worker {WorkerName="Muhammed Güven",WorkerImage="chair.png",WorkerRate=8.2 },
@@ -49,12 +51,15 @@ namespace MakasUI.Views.CustomerPages
         {   
             await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text));
         }
-        private void Get_Appointment_Clicked(object sender, EventArgs e)
+        private async void Get_Appointment_Clicked(object sender, EventArgs e)
         {
+            
             var button = sender as Button;
             var model = button.BindingContext as Worker;
+            await button.ScaleTo(1.2, 250, Easing.SpringIn);
             var saloon = new Saloon { SaloonName = sName.Text, SaloonRate = Convert.ToDouble(sRate.Text) };
-            Navigation.PushAsync(new GetAppointmentPage(model,saloon));
+            await Navigation.PushAsync(new GetAppointmentPage(model,saloon));
+            await button.ScaleTo(1.0, 50, Easing.SpringOut);
         }
     }
 }

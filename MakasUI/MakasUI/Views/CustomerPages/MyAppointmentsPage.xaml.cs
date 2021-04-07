@@ -1,4 +1,5 @@
-﻿using MakasUI.Models;
+﻿using MakasUI.Functions;
+using MakasUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace MakasUI.Views.CustomerPages
         public MyAppointmentsPage()
         {
             InitializeComponent();
-
+            ItemFunctions functions = new ItemFunctions();
             var MyAppointments = new List<Appointment>
             {
                 new Appointment { SaloonName="A Kuaför Salonu", WorkerName="Muhammed Güven", Date = DateTime.Now, Hour = DateTime.Now, Rate=7.5, Review="Değerlendirmem" },
@@ -30,7 +31,20 @@ namespace MakasUI.Views.CustomerPages
 
         async void Review_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RateAppointmentPage());
+            ImageButton btn = (ImageButton)sender;
+            await btn.ScaleTo(1.2, 250, Easing.SpringIn);
+            Appointment ob = btn.CommandParameter as Appointment;
+            if (ob.Review == "Değerlendir")
+            {
+                await Navigation.PushAsync(new RateAppointmentPage(ob.SaloonName, ob.WorkerName, ob.Rate));
+                await btn.ScaleTo(1.0, 50, Easing.SpringOut);
+            }
+            else
+            {//Burada değerlendirmem sayfasına gitmeli
+                await Navigation.PushAsync(new RateAppointmentPage(ob.SaloonName, ob.WorkerName, ob.Rate));
+                await btn.ScaleTo(1.0, 50, Easing.SpringOut);
+            }
+           
         }
     }
 }

@@ -33,12 +33,27 @@ namespace MakasUI.Functions
                 })
             });
         }
+        public  void ButtonsLabelClick(Label lbl, ImageButton image)
+        {
+            var signup_tap = new TapGestureRecognizer();
+            signup_tap.Tapped += async (s, e) =>
+            {
+                await lbl.ScaleTo(1.2, 250, Easing.SpringIn);
+                image.PropagateUpClicked();
+                await lbl.ScaleTo(1.0, 50, Easing.SpringOut);
+            };
+            lbl.GestureRecognizers.Add(signup_tap);
+            
+        }
+        
         public void registerCustomerclick(Label register, INavigation Navigation)
         {
             var signup_tap = new TapGestureRecognizer();
             signup_tap.Tapped += async (s, e) =>
             {
+                await register.ScaleTo(1.2, 250, Easing.SpringIn);
                 await Navigation.PushAsync(new RegisterCustomerPage());
+                await register.ScaleTo(1.0, 50, Easing.SpringOut);
             };
             register.GestureRecognizers.Add(signup_tap);
         }
@@ -47,7 +62,9 @@ namespace MakasUI.Functions
             var signup_tap = new TapGestureRecognizer();
             signup_tap.Tapped += async (s, e) =>
             {
+                await register.ScaleTo(1.2, 250, Easing.SpringIn);
                 await Navigation.PushAsync(new RegisterSaloonPage());
+                await register.ScaleTo(1.0, 50, Easing.SpringOut);
             };
             register.GestureRecognizers.Add(signup_tap);
         }

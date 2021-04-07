@@ -24,13 +24,17 @@ namespace MakasUI.Views.CustomerPages
 
             FavoriteListView.ItemsSource = Categories;
         }
-        private void Fav_Delete_Clicked(object sender, EventArgs e)
+        private async void Fav_Delete_Clicked(object sender, EventArgs e)
         {
-           // DisplayAlert("asd", "Test", "OK");
+            // DisplayAlert("asd", "Test", "OK");
+            
             ImageButton btn = (ImageButton)sender;
+            await btn.ScaleTo(1.2, 250, Easing.SpringIn);
             var ob = btn.CommandParameter as Saloon;
             Categories.Remove(ob);
             FavoriteListView.ItemsSource = Categories;
+            await btn.ScaleTo(1.0, 50, Easing.SpringOut);
+
 
 
         }

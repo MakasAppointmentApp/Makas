@@ -15,7 +15,8 @@ namespace MakasUI.Views.SaloonPages
         public FutureAppointmentsPage()
         {
             InitializeComponent();
-
+            datePicker.MinimumDate = DateTime.Now;
+            datePicker.MaximumDate = DateTime.Now.AddYears(1);
             var CustomersAppointments = new List<Customers>
             {
                 new Customers {CustomerName="Mustafa Emre Orbağ",Date="15:00"},
@@ -26,6 +27,11 @@ namespace MakasUI.Views.SaloonPages
             };
 
             FavoriteListView.ItemsSource = CustomersAppointments;
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {//datein yanındaki image
+            datePicker.Focus();
         }
     }
 }

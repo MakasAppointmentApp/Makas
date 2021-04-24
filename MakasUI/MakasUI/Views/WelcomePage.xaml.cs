@@ -26,6 +26,7 @@ namespace MakasUI.Views
         }
         private async void Customer_Clicked(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new LoginCustomerPage());
         }
         private async void Saloon_Clicked(object sender, EventArgs e)

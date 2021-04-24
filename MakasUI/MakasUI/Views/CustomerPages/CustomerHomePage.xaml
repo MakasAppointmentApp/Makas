@@ -26,22 +26,9 @@
                 <local:MyAppointmentsPage></local:MyAppointmentsPage>
             </ShellContent>
         </Tab>
-        <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png">
+        <Tab Icon="setting.png" Title="Ayarlar" FlyoutIcon="setting.png">
             <ShellContent>
-                <ContentPage>
-                    <StackLayout>
-                        <Button x:Name="Edit" 
-                            Text="Çıkış" 
-                            BackgroundColor="#fa7a5a" 
-                            FontAttributes="Bold"                             
-                            CornerRadius="20" 
-                            Margin="120,2,120,10" 
-                            TextColor="White"
-                            FontSize="18"
-                                Clicked="ExitClicked"
-                            />
-                    </StackLayout>
-                </ContentPage>
+                <local:CustomerProfilePage></local:CustomerProfilePage>
             </ShellContent>
         </Tab>
     </FlyoutItem>

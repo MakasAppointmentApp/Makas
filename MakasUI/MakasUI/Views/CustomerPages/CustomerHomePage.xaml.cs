@@ -20,10 +20,6 @@ namespace MakasUI.Views
 
         }
 
-        private void ExitClicked(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new NavigationPage(new WelcomePage());
-
-        }
+      
     }
 }

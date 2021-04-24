@@ -17,6 +17,7 @@ namespace MakasUI.Views.CustomerPages
         public MyAppointmentsPage()
         {
             InitializeComponent();
+            
             ItemFunctions functions = new ItemFunctions();
             var MyAppointments = new List<Appointment>
             {
@@ -41,7 +42,7 @@ namespace MakasUI.Views.CustomerPages
             }
             else
             {//Burada değerlendirmem sayfasına gitmeli
-                await Navigation.PushAsync(new RateAppointmentPage(ob.SaloonName, ob.WorkerName, ob.Rate));
+                await Navigation.PushAsync(new EvaluationPage());
                 await btn.ScaleTo(1.0, 50, Easing.SpringOut);
             }
            

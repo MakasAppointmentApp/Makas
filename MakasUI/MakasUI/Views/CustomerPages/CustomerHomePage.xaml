@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:MakasUI.Views.CustomerPages"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MakasUI.Views.CustomerHomePage"
-       Shell.BackgroundColor="#164e60"
+       Shell.BackgroundColor="#16353b"
        Shell.ForegroundColor="#F83B25"
        Shell.TabBarDisabledColor="#F83B25"
        Shell.TitleColor="#F83B25"

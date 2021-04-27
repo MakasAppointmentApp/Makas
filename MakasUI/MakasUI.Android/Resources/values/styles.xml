@@ -18,12 +18,12 @@
 		<item name="colorControlActivated">#16353b</item>
 		<item name="colorAccent">#16353b</item>
 		<item name="colorControlNormal">@android:color/transparent</item>"
-
 		<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
 
-		
+
 	</style>
-<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-			<item name="colorAccent">#2196F3</item>
-		</style>
+	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+		<item name="colorAccent">#2196F3</item>
+	</style>
+
 </resources>

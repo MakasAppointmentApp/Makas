@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -60,6 +60,22 @@ namespace MakasUI.Views.CustomerPages
             var saloon = new Saloon { SaloonName = sName.Text, SaloonRate = Convert.ToDouble(sRate.Text) };
             await Navigation.PushAsync(new GetAppointmentPage(model,saloon));
             await button.ScaleTo(1.0, 50, Easing.SpringOut);
+        }
+
+        private async void Map_Button_Clicked(object sender, EventArgs e)
+        {
+            
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+            
+                await Launcher.OpenAsync("http://maps.apple.com/?q="+ addressLabel.Text);
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                // open the maps app directly
+                await Launcher.OpenAsync("geo:0,0?q="+ addressLabel.Text);
+            }
         }
     }
 }

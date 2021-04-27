@@ -26,22 +26,23 @@
                     <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="city.png" HeightRequest="25" WidthRequest="25"></Image>
-                            <Picker HorizontalTextAlignment="Start" x:Name="cityPicker" WidthRequest="250" Title="Şehir" TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15"  >
-                                <Picker.Items>
-                                    <x:String>Eskişehir</x:String>
-                                    <x:String>İstanbul</x:String>
-                                </Picker.Items>
+                            <Picker HorizontalTextAlignment="Start"  x:Name="cityPicker" WidthRequest="250" Title="Şehir"
+                                TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15"  
+                                ItemsSource="{Binding CitiesList}"
+                                ItemDisplayBinding="{Binding Value}"
+                                SelectedItem="{Binding SelectedCity}">
                             </Picker>
                         </StackLayout>
                     </Frame>
                     <Frame CornerRadius="13" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="location.png" HeightRequest="25" WidthRequest="25"></Image>
-                            <Picker HorizontalTextAlignment="Start" x:Name="districtPicker"  Title="İlçe" WidthRequest="250"  TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15"  >
-                                <Picker.Items>
-                                    <x:String>Tepebaşı</x:String>
-                                    <x:String>Bağlar</x:String>
-                                </Picker.Items>
+                            <Picker HorizontalTextAlignment="Start" x:Name="districtPicker"  Title="İlçe" WidthRequest="250"  
+                                    TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15" 
+                                    ItemsSource="{Binding MyCity}"
+                                    ItemDisplayBinding="{Binding Value}"
+                                    >
+                                
                             </Picker>
                         </StackLayout>
                     </Frame>

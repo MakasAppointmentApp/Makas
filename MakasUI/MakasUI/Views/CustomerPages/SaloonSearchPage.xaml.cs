@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakasUI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,16 @@ namespace MakasUI.Views.CustomerPages
         public SaloonSearchPage()
         {
             InitializeComponent();
+                BindingContext = new SaloonSearchViewModel();
+            
+
+
         }
         async void Listele_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SaloonListPage());
         }
+
+
     }
 }

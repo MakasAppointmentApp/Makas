@@ -2,7 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MakasUI.Views.SaloonPages" 
        x:Class="MakasUI.Views.SaloonPages.SaloonHomePage"       
-             Shell.BackgroundColor="#164e60"
+             Shell.BackgroundColor="#16353b"
        Shell.ForegroundColor="#F83B25"
        Shell.TabBarDisabledColor="#F83B25"
        Shell.TitleColor="#F83B25"
@@ -26,9 +26,11 @@
         </Tab>
         <Tab Icon="quit.png" Title="Çıkış" FlyoutIcon="quit.png" >
             <ShellContent >
-                <ContentPage>
-                    <StackLayout>
-                        <Button x:Name="Edit" 
+                <ContentPage BackgroundColor="#EEE">
+                    <StackLayout Padding="0,40,0,0">
+                        <StackLayout VerticalOptions="StartAndExpand">
+                            <Label Text="Çıkış yapmak istediğinize emin misiniz?" FontSize="16" TextColor="Black" HorizontalOptions="Center" Padding="0,10"></Label>
+                            <Button x:Name="Edit" 
                             Text="çıkış" 
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
@@ -38,6 +40,13 @@
                             FontSize="18"
                                 Clicked="ExitClicked"
                             />
+                        </StackLayout>
+                       
+                        <StackLayout VerticalOptions="End">
+                            <Image Source="logo.png" HeightRequest="200" HorizontalOptions="Center" Opacity="0.6"/>
+                            <Label Text="Version 1.0.0" TextColor="#16353b" HorizontalOptions="Center" FontSize="14" Opacity="0.6" Padding="0,0,0,30"></Label>
+                        </StackLayout>
+                        
 
                     </StackLayout>
                 </ContentPage>

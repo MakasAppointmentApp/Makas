@@ -4,11 +4,11 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="MakasUI.Views.CustomerPages.CustomerProfilePage"
-             BackgroundColor="#e8eef1">
+             BackgroundColor="#eee">
     <ContentPage.Content>
 
-        
-        
+
+        <ScrollView>
         <StackLayout>
             <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="40" >
                 <StackLayout Orientation="Horizontal" Padding="25,0" HorizontalOptions="Center">
@@ -33,35 +33,26 @@
                                     <ImageButton  BackgroundColor="Transparent" Source="user.png"  HeightRequest="30" ></ImageButton>
                              </StackLayout>
                              <StackLayout>
-                                <Label Text="İsim ve Soyadı" TextColor="#000000" FontSize="20" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changeName" Text="Dan Bilzerian" TextColor="#000000" FontSize="16" ></Label>
+                                <Label Text="Ad Soyad" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                <Label x:Name="changeName" Text="Danyel kar" TextColor="#16353b" FontSize="14" ></Label>
                              </StackLayout>
                         </StackLayout>
                     </xct:Expander.Header>
 
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0">
 
-                        <Label Text="İsim ve Soyadınızı Düzenleyiniz" 
-                               FontSize="18" 
-                               TextColor="#16353b" 
-                               FontAttributes="Bold" 
-                               FontFamily=""
-                               HorizontalOptions="Center"
-                               Margin="0,0,0,5"
-                               ></Label>
-
-                        <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                        <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isim ve soyadınız:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                                <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isim ve soyadınız:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
                             </StackLayout>
                         </Frame>
 
                         <Button x:Name="isimGüncelle" 
                             Text="GÜNCELLE" 
-                            BackgroundColor="#fa7a5a" 
+                            BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="80,10" 
+                            Margin="90,5" 
                             TextColor="White"
                             />
                     </StackLayout>
@@ -74,35 +65,26 @@
                                 <ImageButton  BackgroundColor="Transparent" Source="email.png"  HeightRequest="30" ></ImageButton>
                             </StackLayout>
                             <StackLayout>
-                                <Label Text="Email" TextColor="#000000" FontSize="20" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changeEmail" Text="danbilzerina@gmail.com" TextColor="#000000" FontSize="16" ></Label>
+                                <Label Text="Email" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                <Label x:Name="changeEmail" Text="danyelkar@gmail.com" TextColor="#16353b" FontSize="14" ></Label>
                             </StackLayout>
                         </StackLayout>
                     </xct:Expander.Header>
 
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0" >
 
-                        <Label Text="Emalinizi Düzenleyiniz" 
-                               FontSize="18" 
-                               TextColor="#16353b" 
-                               FontAttributes="Bold" 
-                               FontFamily=""
-                               HorizontalOptions="Center"
-                               Margin="0,0,0,5"
-                               ></Label>
-
-                        <Frame x:Name="emailEditFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame x:Name="emailEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
                             </StackLayout>
                         </Frame>
 
                         <Button x:Name="emailGüncelle" 
                             Text="GÜNCELLE" 
-                            BackgroundColor="#fa7a5a" 
+                            BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="80,10" 
+                            Margin="90,5" 
                             TextColor="White"
                             />
                     </StackLayout>
@@ -115,26 +97,17 @@
                                 <ImageButton  BackgroundColor="Transparent" Source="password.png"  HeightRequest="30" ></ImageButton>
                             </StackLayout>
                             <StackLayout>
-                                <Label Text="Şİfre" TextColor="#000000" FontSize="20" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changePassword" Text="*********" TextColor="#000000" FontSize="16" ></Label>
+                                <Label Text="Şifre" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                <Label x:Name="changePassword" Text="*********" TextColor="#16353b" FontSize="13" ></Label>
                             </StackLayout>
                         </StackLayout>
                     </xct:Expander.Header>
 
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
 
-                        <Label Text="Şifrenizi Düzenleyiniz" 
-                               FontSize="18" 
-                               TextColor="#16353b" 
-                               FontAttributes="Bold" 
-                               FontFamily=""
-                               HorizontalOptions="Center"
-                               Margin="0,0,0,15"
-                               ></Label>
-
-                        <Frame x:Name="passwordEditFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,5" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame x:Name="passwordEditFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="60,0,60,5" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry  Placeholder="Yeni Şifreniz:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                                <Entry  Placeholder="Yeni Şifreniz:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="220" TextColor="#16353b" x:Name="Password"/>
                                 <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
@@ -143,18 +116,18 @@
                             </StackLayout>
                         </Frame>
 
-                        <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                            <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="editPasswordEntry" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                                <Entry x:Name ="editPasswordEntry" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
                             </StackLayout>
                         </Frame>
 
                         <Button x:Name="passwordGüncelle" 
                             Text="GÜNCELLE" 
-                            BackgroundColor="#fa7a5a" 
+                            BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="80,10" 
+                            Margin="90,5" 
                             TextColor="White"
                             />
                     </StackLayout>
@@ -175,13 +148,10 @@
                             Clicked="ExitClicked"
                             />
             
-            <StackLayout HorizontalOptions="Center">
-                <Image Source="logo.png" HeightRequest="80" Opacity="0.6"/>
-            </StackLayout>
-            <StackLayout HorizontalOptions="Center">
-                <Label Text="Version 1.0.0" TextColor="#16353b" FontSize="14"></Label>
-            </StackLayout>
+                    <Image Source="logo.png" HeightRequest="200" HorizontalOptions="Center" Opacity="0.6"/>
+                    <Label Text="Version 1.0.0" TextColor="#16353b" HorizontalOptions="Center" FontSize="14" Opacity="0.6" Padding="0,0,0,30"></Label>
 
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

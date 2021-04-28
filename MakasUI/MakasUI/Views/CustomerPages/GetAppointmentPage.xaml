@@ -50,28 +50,21 @@
                     <ImageButton Clicked="ImageButton_Clicked" BackgroundColor="Transparent" Source="calendar.png" HeightRequest="25"></ImageButton>
                 </StackLayout>
             </yummy:PancakeView>
-            <CollectionView x:Name="hourList" Margin="20,0" SelectionMode="Single" HeightRequest="250">
-
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="3" />
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>
+            <ListView x:Name="hourList" Margin="10,0" SelectionMode="Single" HasUnevenRows="True" >
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Margin="40,10" HeightRequest="40"  Padding="10,0">
-
-                            <yummy:PancakeView x:Name="hourFrame"   BackgroundColor="#e8eef1"  Padding="0,10"  CornerRadius="20">
-                                <yummy:PancakeView.Shadow>
-                                    <yummy:DropShadow Color="Black" Offset="20,20"></yummy:DropShadow>
-                                </yummy:PancakeView.Shadow>
-                                <Label x:Name="hourLabel" TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
-                            </yummy:PancakeView>
-                        </StackLayout>
+                        <ViewCell Tapped="ViewCell_Tapped" >
+                            <Frame x:Name="hourFrame" BorderColor="#e8eef1" HasShadow="True" BackgroundColor="#e8eef1" CornerRadius="20" Margin="0,5"  Padding="0,10">
+                                <StackLayout VerticalOptions="Center">
+                                    <Label x:Name="hourLabel" TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="RANDEVU AL" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
-          
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

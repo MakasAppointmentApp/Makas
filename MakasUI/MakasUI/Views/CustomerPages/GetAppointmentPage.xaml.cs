@@ -14,6 +14,8 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GetAppointmentPage : ContentPage
     {
+        ViewCell lastCell;
+
         public GetAppointmentPage(Worker worker, Saloon saloon)
         {
             InitializeComponent();
@@ -65,6 +67,18 @@ namespace MakasUI.Views.CustomerPages
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             datePicker.Focus();
+        }
+
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            if (lastCell != null)
+                lastCell.View.BackgroundColor = Color.FromHex("#e8eef1");
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null)
+            {
+                viewCell.View.BackgroundColor = Color.FromHex("#fa7a5a");
+                lastCell = viewCell;
+            }
         }
     }
 }

@@ -15,7 +15,6 @@ namespace MakasUI.Views.SaloonPages
         public SaloonHomePage()
         {
             InitializeComponent();
-            
 
 
         }
@@ -25,5 +24,6 @@ namespace MakasUI.Views.SaloonPages
         {
                 App.Current.MainPage = new NavigationPage(new WelcomePage());
         }
+        
     }
 }

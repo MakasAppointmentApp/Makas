@@ -10,8 +10,8 @@
             <yummy:PancakeView CornerRadius="360,0,0,0"   Padding="0,150,0,160" Margin="0,0,0,0" VerticalOptions="StartAndExpand" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
                 <yummy:PancakeView.BackgroundGradientStops>
                     <yummy:GradientStopCollection>
-                        <yummy:GradientStop Color="#a5d3e3" Offset="0"/>
-                        <yummy:GradientStop Color="#728287" Offset="1"/>
+                        <yummy:GradientStop Color="#ff724f" Offset="0"/>
+                        <yummy:GradientStop Color="#fa7a5a" Offset="1"/>
                     </yummy:GradientStopCollection>
                 </yummy:PancakeView.BackgroundGradientStops>
                 <yummy:PancakeView.Shadow>
@@ -57,7 +57,7 @@
                             </Picker>
                         </StackLayout>
                     </Frame>
-                    <Button Text="LİSTELE" FontSize="17" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" Clicked="Listele_Clicked" TextColor="White" />
+                    <Button Text="LİSTELE" FontSize="17" BackgroundColor="#16353b" FontAttributes="Bold" CornerRadius="20" Margin="80,10" Clicked="Listele_Clicked" TextColor="White" />
                 </StackLayout>
             </yummy:PancakeView>
         </AbsoluteLayout>

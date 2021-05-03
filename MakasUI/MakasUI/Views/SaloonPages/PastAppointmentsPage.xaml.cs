@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MakasUI.Models;
+using MakasUI.Models.DtosForSaloon;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,32 +17,34 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PastAppointmentsPage : ContentPage
     {
+        int saloonId = 2;//ÖNEMLİ BURADA BUNU TUTMAYIP LOGİN YAPAN KULLANICININ IDYİ ÇEKECEĞİZ
         ViewCell lastCell;
+        public ObservableCollection<WorkerAppointmentDto> AppointmentsCollection { get; set; }
+
         public PastAppointmentsPage()
         {
             InitializeComponent();
-            datePicker.MaximumDate = DateTime.Now;
-            var Workers = new List<Worker>
+            AppointmentsCollection = new ObservableCollection<WorkerAppointmentDto>();
+
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            HttpClient client = new HttpClient(clientHandler);
+            try
             {
-                new Worker {WorkerName="Muhammed Güven",WorkerImage="chair.png",WorkerRate=8.2 },
-                new Worker {WorkerName="Danyel Kar",WorkerImage="help.png",WorkerRate=5.6 },
-                new Worker {WorkerName="Mustafa Emre Orbağ",WorkerImage="user.png",WorkerRate=4.4 },
-                new Worker {WorkerName="Mustafa Orbağ",WorkerImage="user.png",WorkerRate=5.4 }
-
-            };
-            workers.ItemsSource = Workers;
-            var CustomersAppointments = new List<Customers>
-            {
-                new Customers {CustomerName="MEORBAG",Date="15:00"},
-                new Customers {CustomerName="KARDANYEL",Date="17:00"},
-                new Customers {CustomerName="GWENSTACY",Date="19:00"},
-                new Customers {CustomerName="Muhammed Güven",Date="20:00"}
-
-            };
-
-            FavoriteListView.ItemsSource = CustomersAppointments;
-
+                var result = await client.GetStringAsync(App.API_URL + $"Saloon/saloonworkers?id={saloonId}");
+                var result2 = JsonConvert.DeserializeObject<List<Worker>>(result);
+                workers.ItemsSource = result2;
             }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Hata", "Çalışan bulunamadı", "Ok");
+            }
+        }
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
             if (lastCell != null)
@@ -49,6 +55,32 @@ namespace MakasUI.Views.SaloonPages
                 viewCell.View.BackgroundColor = Color.FromHex("#fa7a5a");
                 lastCell = viewCell;
             }
+        }
+        
+        private async void workers_ItemSelected(object senderObj, SelectedItemChangedEventArgs e)
+        {
+            
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            HttpClient client = new HttpClient(clientHandler);
+            var worker = e.SelectedItem as Worker;
+            string workerId = worker.Id.ToString();
+            try
+            {
+                var result = await client.GetStringAsync(App.API_URL + $"Saloon/pastappointments?workerId={workerId}");
+                var result2 = JsonConvert.DeserializeObject<List<WorkerAppointmentDto>>(result);
+                foreach (var item in result2)
+                {
+                    AppointmentsCollection.Add(item);
+                }
+                PastAppListView.ItemsSource = AppointmentsCollection;//üst üste biniyor olabilir
+            }
+            catch (Exception)
+            {
+                AppointmentsCollection.Clear();
+                await DisplayAlert("Hata", "Geçmiş randevu bulunamadı", "Ok");
+            }
+            
         }
     }
 }

@@ -31,11 +31,11 @@ namespace MakasUI.Views.SaloonPages
 
             var Prices = new List<Price>
             {
-                new Price { PriceName="Saç Kesim" , PriceNumber = 50},
-                new Price { PriceName="Saç Boyama" , PriceNumber = 60},
-                new Price { PriceName="Manikür" , PriceNumber = 40},
-                new Price { PriceName="Pedikür" , PriceNumber = 10},
-                new Price { PriceName="Masaj" , PriceNumber = 20},
+                new Price { PriceName="Saç Kesim" , PriceAmount = 50},
+                new Price { PriceName="Saç Boyama" , PriceAmount = 60},
+                new Price { PriceName="Manikür" , PriceAmount = 40},
+                new Price { PriceName="Pedikür" , PriceAmount = 10},
+                new Price { PriceName="Masaj" , PriceAmount = 20},
             };
             PriceListView.ItemsSource = Prices;
 

@@ -52,13 +52,7 @@
 
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Picker x:Name="gender" Title="Cinsiyet seçiniz:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
-                                    <Picker.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                            <x:String>Kadın</x:String>
-                                            <x:String>Erkek</x:String>
-                                        </x:Array>
-                                    </Picker.ItemsSource>
+                                <Picker x:Name="gender"  ItemDisplayBinding="{Binding Value}" SelectedIndexChanged="gender_SelectedIndexChanged" Title="Cinsiyet seçiniz:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
                                 </Picker>
                             </StackLayout>
                         </Frame>

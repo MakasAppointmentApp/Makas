@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MakasUI.Models
+namespace MakasUI.Models.DtosForSaloon
 {
-    public class Price
+    public class AddPriceDto
     {
-        public int Id { get; set; }
         public int SaloonId { get; set; }
         public string PriceName { get; set; }
         public double PriceAmount { get; set; }
-        public Saloon Saloon { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace MakasUI.Views
         {
             InitializeComponent();
             ItemFunctions functions = new ItemFunctions();
-           /* Device.StartTimer(TimeSpan.FromSeconds(4), () => {
+            Device.StartTimer(TimeSpan.FromSeconds(4), () => {
 
                 Device.BeginInvokeOnMainThread(() => functions.Effect(logo));
                 return true;
-            });*/
+            });
 
         }
         private async void Customer_Clicked(object sender, EventArgs e)

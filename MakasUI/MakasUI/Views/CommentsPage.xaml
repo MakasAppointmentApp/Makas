@@ -64,14 +64,14 @@
                             <Frame x:Name="listFrame" HasShadow="True" CornerRadius="20" Padding="0,0,10,0" Margin="3,5" BackgroundColor="#f8fbfd" HeightRequest="100" >
                                 <StackLayout Orientation="Vertical"  Padding="10,0,0,0">
                                     <StackLayout Orientation="Horizontal" >
-                                        <Label Text="{Binding CustomerName}" HorizontalOptions="StartAndExpand" TextColor="#16353b" FontSize="16" FontAttributes="Bold"   VerticalOptions="End"  HorizontalTextAlignment="Start"></Label>
-                                        <Label  Text="{Binding Date, StringFormat='{0} gün önce' }" HorizontalOptions="End"  TextColor="#16353b" FontSize="14"  VerticalOptions="End"  HorizontalTextAlignment="End"></Label>
-                                    </StackLayout>
+                                        <Label Text="Anonim" HorizontalOptions="StartAndExpand" TextColor="#16353b" FontSize="16" FontAttributes="Bold"   VerticalOptions="End"  HorizontalTextAlignment="Start"></Label>
+                                        <Label  Text="{Binding Date, StringFormat='{0:MMMM d, yyyy | HH:mm}'}" TextColor="#16353b" VerticalOptions="End" HorizontalOptions="End" FontSize="14"   HorizontalTextAlignment="End"></Label>
+                                        </StackLayout>
                                     <StackLayout HorizontalOptions="Start" Margin="0,0,0,0">
-                                        <Label Text="{Binding CustomerRate, StringFormat='Kuaföre Puanı: {0}'}"  TextColor="#fa7a5a" FontSize="14"   VerticalOptions="End"  HorizontalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding Rate, StringFormat='Kuaföre Puanı: {0}'}"  TextColor="#fa7a5a" FontSize="16"   VerticalOptions="End"  HorizontalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="Start" Margin="0,0,0,5">
-                                        <Label Text="{Binding CustomerComment}"                          
+                                        <Label Text="{Binding Comment}"                          
                                                    TextColor="#16353b" 
                                                    FontSize="12"                                
                                                    VerticalOptions="End"  

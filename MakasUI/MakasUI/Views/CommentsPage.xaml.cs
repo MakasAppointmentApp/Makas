@@ -17,7 +17,7 @@ namespace MakasUI.Views
 
         public CommentsPage(string saloonName, string saloonRate)
         {
-
+            //BU CTOR SİLİNECEK
             InitializeComponent();
             this.sName.Text = saloonName;          
             this.sRate.Text = saloonRate;
@@ -34,6 +34,16 @@ namespace MakasUI.Views
 
             };
             CommentsListView.ItemsSource  = Comments;
+        }
+        public CommentsPage(string saloonName, string saloonRate, List<Review> comments)
+        {
+            InitializeComponent();
+            this.sName.Text = saloonName;
+            this.sRate.Text = saloonRate;
+
+            ItemFunctions functions = new ItemFunctions();
+            functions.backclick(back, Navigation);
+            CommentsListView.ItemsSource = comments;
         }
 
     }

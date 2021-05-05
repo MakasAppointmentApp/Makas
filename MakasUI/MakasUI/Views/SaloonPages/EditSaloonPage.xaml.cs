@@ -22,7 +22,7 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSaloonPage : ContentPage
     {
-        int saloonId = 2;//BURADA LOGİN YAPAN SALONUN IDSİNİ ÇEKECEĞİZ ASLINDA
+        int saloonId;
 
         public byte[] imagebyte;
         SaloonUpdateService service = new SaloonUpdateService();
@@ -34,9 +34,9 @@ namespace MakasUI.Views.SaloonPages
 
             ItemFunctions function = new ItemFunctions();
             function.backclick(back, Navigation);
-            
+
         }
-        public EditSaloonPage(string text, ImageSource profilePhoto, string saloonLocation)
+        public EditSaloonPage(string text, ImageSource profilePhoto, string saloonLocation, int Id)
         {
             InitializeComponent();
             this.saloonName.Text = text;
@@ -45,7 +45,7 @@ namespace MakasUI.Views.SaloonPages
             PricesObservable = new ObservableCollection<Price>();
             ItemFunctions function = new ItemFunctions();
             function.backclick(back, Navigation);
-            
+            saloonId = Id;
         }
 
 
@@ -65,10 +65,9 @@ namespace MakasUI.Views.SaloonPages
                 if (!CrossMedia.Current.IsPickPhotoSupported || !CrossMedia.Current.IsTakePhotoSupported)
                 {
 
-                    await DisplayAlert("Not supported", "Your device does not currently support this functionality.", "OK");
+                    await DisplayAlert("Desteklenmiyor", "Cihazınız bu özelliği desteklemiyor!", "Tamam");
                     return;
                 }
-
                 var mediaOptions = new PickMediaOptions()
                 {
                     PhotoSize = PhotoSize.Medium
@@ -77,17 +76,21 @@ namespace MakasUI.Views.SaloonPages
 
                 if (selectedImage == null)
                 {
-                    await DisplayAlert("Error", "Could not get the image , please try again.", "OK");
+                    await DisplayAlert("Hata", "Fotoğraf seçilemedi. Tekrar deneyiniz.", "Tamam");
+
                 }
-                selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
-                imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
+                    selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
+                    imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
+
 
 
 
             }
             catch (Exception)
             {
-                await DisplayAlert("Error", "Could not get the image , please try again.", "OK");
+                selectedImage.Source = "camera.png";
+                await DisplayAlert("Hata", "Fotoğraf seçilemedi. Tekrar deneyiniz.", "Tamam");
+
             }
         }
         public byte[] GetImageStreamAsBytes(Stream input)
@@ -106,76 +109,107 @@ namespace MakasUI.Views.SaloonPages
 
         private async void AddWorker_Button_Clicked(object sender, EventArgs e)
         {
-            AddWorkerDto worker = new AddWorkerDto
+            if (kuaförName.Text != null || kuaförName.Text != "")
             {
-                SaloonId = saloonId,
-                WorkerName = kuaförName.Text,
-                WorkerPhoto = imagebyte
-            };
-            var response = await service.AddWorkerAsync(worker);
-            if (response.IsSuccessStatusCode.Equals(true))
-            {
-                await DisplayAlert("Tebrikler", "Yeni çalışan ekledi", "OK");
+                AddWorkerDto worker = new AddWorkerDto
+                {
+                    SaloonId = saloonId,
+                    WorkerName = kuaförName.Text,
+                    WorkerPhoto = imagebyte
+                };
+                var response = await service.AddWorkerAsync(worker);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Yeni çalışan ekledi", "Tamam");
+                }
+                else
+                {
+                    await DisplayAlert("Hata", "Yeni çalışan eklenemedi!", "Tamam");
+                }
+
             }
             else
             {
-                await DisplayAlert("Hata", "Yeni çalışan eklenemedi!", "OK");
+                await DisplayAlert("Hata", "Gerekli yerleri doldurun!", "Tamam");
             }
 
         }
         private async void AddPrice_Button_Clicked(object sender, EventArgs e)
         {
-            AddPriceDto price = new AddPriceDto
+            if (priceName.Text != null || priceName.Text != "" || priceAmount.Text != null || priceAmount.Text != "")
             {
-                SaloonId = saloonId,
-                PriceName = priceName.Text,
-                PriceAmount = Convert.ToDouble(priceAmount.Text)
-            };
-            var response = await service.AddPriceAsync(price);
-            if (response.IsSuccessStatusCode.Equals(true))
-            {
-                await DisplayAlert("Tebrikler", "Yeni işlem ekledi", "OK");
+                AddPriceDto price = new AddPriceDto
+                {
+                    SaloonId = saloonId,
+                    PriceName = priceName.Text,
+                    PriceAmount = Convert.ToDouble(priceAmount.Text)
+                };
+                var response = await service.AddPriceAsync(price);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Yeni işlem ekledi", "Tamam");
+                }
+                else
+                {
+                    await DisplayAlert("Hata", "Yeni işlem eklenemedi!", "Tamam");
+                }
             }
             else
             {
-                await DisplayAlert("Hata", "Yeni işlem eklenemedi!", "OK");
+                await DisplayAlert("Hata", "Gerekli yerleri doldurun!", "Tamam");
             }
 
         }
 
         private async void SalonName_Update_Button_Clicked(object sender, EventArgs e)
         {
-            UpdateSaloonNameDto saloon = new UpdateSaloonNameDto
+            if (saloonName.Text != null || saloonName.Text != "")
             {
-                Id = saloonId,
-                SaloonName = saloonName.Text
-            };
-            var response = await service.UpdateSaloonNameAsync(saloon);
-            if (response.IsSuccessStatusCode.Equals(true))
-            {
-                await DisplayAlert("Tebrikler", "Salon adı değiştirildi", "OK");
+
+                UpdateSaloonNameDto saloon = new UpdateSaloonNameDto
+                {
+                    Id = saloonId,
+                    SaloonName = saloonName.Text
+                };
+                var response = await service.UpdateSaloonNameAsync(saloon);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Salon adı değiştirildi", "Tamam");
+                }
+                else
+                {
+                    await DisplayAlert("Hata", "Salon adı değiştirilemedi", "Tamam");
+                }
+
             }
             else
             {
-                await DisplayAlert("Hata", "Salon adı değiştirilemedi", "OK");
+                await DisplayAlert("Hata", "Gerekli yerleri doldurun!", "Tamam");
             }
         }
 
         private async void SaloonLocation_Button_Clicked(object sender, EventArgs e)
         {
-            UpdateSaloonLocation saloon = new UpdateSaloonLocation
+            if (saloonLocation.Text != null || saloonLocation.Text != "")
             {
-                Id = saloonId,
-                SaloonLocation = saloonLocation.Text
-            };
-            var response = await service.UpdateSaloonLocationAsync(saloon);
-            if (response.IsSuccessStatusCode.Equals(true))
-            {
-                await DisplayAlert("Tebrikler", "Salon konumu değiştirildi", "OK");
+                UpdateSaloonLocation saloon = new UpdateSaloonLocation
+                {
+                    Id = saloonId,
+                    SaloonLocation = saloonLocation.Text
+                };
+                var response = await service.UpdateSaloonLocationAsync(saloon);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Salon konumu değiştirildi", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Hata", "Salon konumu değiştirilemedi", "OK");
+                }
             }
             else
             {
-                await DisplayAlert("Hata", "Salon konumu değiştirilemedi", "OK");
+                await DisplayAlert("Hata", "Gerekli yerleri doldurun!", "Tamam");
             }
         }
 
@@ -185,11 +219,10 @@ namespace MakasUI.Views.SaloonPages
             {
 
                 await CrossMedia.Current.Initialize();
-
                 if (!CrossMedia.Current.IsPickPhotoSupported || !CrossMedia.Current.IsTakePhotoSupported)
                 {
 
-                    await DisplayAlert("Not supported", "Your device does not currently support this functionality.", "OK");
+                    await DisplayAlert("Desteklenmiyor", "Cihazınız bu özelliği desteklemiyor!", "Tamam");
                     return;
                 }
 
@@ -201,10 +234,14 @@ namespace MakasUI.Views.SaloonPages
 
                 if (saloonProfilePhoto == null)
                 {
-                    await DisplayAlert("Error", "Could not get the image , please try again.", "OK");
+                    saloonProfilePhoto.Source = ImageSource.FromResource("camera.png");
+                    await DisplayAlert("Hata", "Fotoğraf seçilemedi. Tekrar deneyiniz.", "Tamam");
                 }
-                saloonProfilePhoto.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
-                imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
+                else
+                {
+                    saloonProfilePhoto.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
+                    imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
+                }
 
                 UpdateSaloonImageDto saloon = new UpdateSaloonImageDto
                 {
@@ -214,23 +251,27 @@ namespace MakasUI.Views.SaloonPages
                 var response = await service.UpdateSaloonPhotoAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
-                    await DisplayAlert("Tebrikler", "Salon fotoğrafı değiştirildi", "OK");
+                    await DisplayAlert("Tebrikler", "Salon fotoğrafı değiştirildi", "Tamam");
                 }
                 else
                 {
-                    await DisplayAlert("Hata", "Salon fotoğrafı değiştirilemedi", "OK");
+                    await DisplayAlert("Hata", "Salon fotoğrafı değiştirilemedi", "Tamam");
                 }
 
             }
             catch (Exception)
             {
-                await DisplayAlert("Error", "Could not get the image , please try again.", "OK");
+                await DisplayAlert("Hata", "Fotoğraf seçilemedi. Tekrar deneyiniz.", "Tamam");
             }
         }
 
         private async void PasswordChange_Button_Clicked(object sender, EventArgs e)
         {
-            if (verifyPassword.Text == newPassword.Text)
+            if (verifyPassword.Text == newPassword.Text &&
+                (verifyPassword.Text !=null || verifyPassword.Text != "") &&
+                (newPassword.Text != null || newPassword.Text != "") &&
+                (oldPassword.Text != null || oldPassword.Text != "")
+                )
             {
                 UpdatePasswordDto saloon = new UpdatePasswordDto
                 {
@@ -241,37 +282,45 @@ namespace MakasUI.Views.SaloonPages
                 var response = await service.UpdateSaloonPasswordAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
-                    await DisplayAlert("Tebrikler", "Şifre değiştirildi", "OK");
+                    await DisplayAlert("Tebrikler", "Şifre değiştirildi", "Tamam");
                 }
                 else
                 {
-                    await DisplayAlert("Hata", "Şifre değiştirilemedi", "OK");
+                    await DisplayAlert("Hata", "Şifre değiştirilemedi", "Tamam");
                 }
             }
             else
             {
-                await DisplayAlert("Hata", "Şifreler uyuşmuyor", "OK");
+                await DisplayAlert("Hata", "Şifreler uyuşmuyor", "Tamam");
             }
         }
 
         private async void DeletePrice_Button_Clicked(object sender, EventArgs e)
         {
-            try
+            if (prices.SelectedItem != null)
             {
-                var price = PricesObservable.FirstOrDefault(p => p.PriceName == prices.SelectedItem.ToString());
-                var response = await service.DeletePriceAsync(price.Id);
-                if (response.IsSuccessStatusCode.Equals(true))
+                try
                 {
-                    await DisplayAlert("Tebrikler", "Fiyat silindi", "OK");
+                    var price = PricesObservable.FirstOrDefault(p => p.PriceName == prices.SelectedItem.ToString());
+                    var response = await service.DeletePriceAsync(price.Id);
+                    if (response.IsSuccessStatusCode.Equals(true))
+                    {
+                        await DisplayAlert("Tebrikler", "Fiyat silindi", "Tamam");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    await DisplayAlert("Hata", "Fiyat silinemedi", "Tamam");
                 }
             }
-            catch (Exception)
+            else
             {
-
-                await DisplayAlert("Hata", "Fiyat silinemedi", "OK");
+                await DisplayAlert("Hata", "Lütfen seçim yapın", "Tamam");
             }
-            
-       
+
+
+
 
         }
         protected async override void OnAppearing()
@@ -288,19 +337,19 @@ namespace MakasUI.Views.SaloonPages
                 {
                     PricesObservable.Add(item);
                 }
-                
+
                 foreach (var item in PricesObservable)
                 {
                     prices.Items.Add(item.PriceName);
                 }
-                
+
             }
             catch (Exception)
             {
-                
-                await DisplayAlert("Hata", "Fiyat listesi bulunamadı", "Ok");
+
+                await DisplayAlert("Hata", "Fiyat listesi bulunamadı", "Tamam");
             }
-            
+
         }
     }
 }

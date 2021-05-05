@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MakasUI.Models
 {
-    class Customers
+    public class Customer
     {
         public string CustomerName { get; set; }
         public string Date { get; set; }

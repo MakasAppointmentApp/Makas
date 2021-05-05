@@ -23,9 +23,9 @@ namespace MakasUI.Views
 
             var SaloonList = new List<Saloon>
             {
-                new Saloon {SaloonName="A Kuaför Salonu",SaloonImage="chair.png", WorkerCount=3, SaloonRate=8.0 },
-                new Saloon {SaloonName="B Kuaför Salonu",SaloonImage="help.png", WorkerCount=4, SaloonRate=4.2 },
-                new Saloon {SaloonName="C Kuaför Salonu",SaloonImage="user.png",WorkerCount=5, SaloonRate=5.2 }
+                new Saloon {SaloonName="A Kuaför Salonu", SaloonRate=8.0 },
+                new Saloon {SaloonName="B Kuaför Salonu", SaloonRate=4.2 },
+                new Saloon {SaloonName="C Kuaför Salonu", SaloonRate=5.2 }
 
             };
 

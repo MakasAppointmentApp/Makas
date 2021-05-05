@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MakasUI.Views.SaloonPages.ProfilePageSaloon"             
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
->
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:Converter="clr-namespace:MakasUI.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ByteArrayToImageSourceConverter x:Key="bic"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="0" Margin="0">
             <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="0">
@@ -18,13 +22,13 @@
             </StackLayout>
             <ScrollView Padding="0">
                 <StackLayout BackgroundColor="White">
-                    <Image x:Name="sImage" Source="https://static.desygner.com/wp-content/uploads/sites/13/2019/11/07164536/Hairdresser-Header.jpg" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="500" HeightRequest="200"></Image>
-                    <Label x:Name="sLocation" Text="Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, 26555 Tepebaşı/Eskişehir" Margin="20,0" FontSize="15" TextColor="Black" HorizontalOptions="Center"></Label>
+                    <Image x:Name="sImage"  HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="500" HeightRequest="200"></Image>
+                    <Label x:Name="sLocation" Margin="20,0" FontSize="15" TextColor="Black" HorizontalOptions="Center"></Label>
                     <StackLayout Padding="0" VerticalOptions="Start">
                         <Frame BackgroundColor="#e8eef1" CornerRadius="5" Padding="10,0" Margin="5,0">
                             <StackLayout Orientation="Horizontal"  >
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                                    <Label x:Name="commentLabel" Text="32 Yorum" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
+                                    <Label x:Name="commentLabel" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
                                     <ImageButton x:Name="commentButton" Clicked="Comments_Clicked" BackgroundColor="Transparent" Source="comment.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
                                 </StackLayout>
 
@@ -45,7 +49,7 @@
                                             <StackLayout Padding="5,5" Margin="0,0,0,10">
 
                                                 <yummy:PancakeView CornerRadius="90"  BackgroundColor="black" Padding="0"  Margin="55,0">
-                                                    <Image Source="{Binding WorkerImage}" Aspect="AspectFit" />
+                                                    <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFit" />
                                                 </yummy:PancakeView>
                                                 <Frame  CornerRadius="10" Padding="5" Margin="50,5" >
                                                     <Frame.Background>
@@ -69,24 +73,21 @@
                     </StackLayout>
                     <StackLayout VerticalOptions="Start" Padding="0" >
 
-                        <Frame BackgroundColor="#e8eef1" CornerRadius="10" HeightRequest="230" Margin="5,5">
-                            <ListView x:Name="PriceListView">
+                        <Frame BackgroundColor="#e8eef1" CornerRadius="10"  Margin="5,5" HeightRequest="300">
+                            <ListView x:Name="PriceListView" >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                                 <Label Text="{Binding PriceName}" TextColor="#16353b" FontSize="15" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
-                                                <Label Text="{Binding PriceNumber, StringFormat='{0:N} TL'}" TextColor="#fa7a5a" FontSize="15" FontAttributes="Bold" HorizontalOptions="End"></Label>
+                                                <Label Text="{Binding PriceAmount, StringFormat='{0:N} TL'}" TextColor="#fa7a5a" FontSize="15" FontAttributes="Bold" HorizontalOptions="End"></Label>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Frame>
-
                     </StackLayout>
-                   
-
                 </StackLayout>
             </ScrollView>
         </StackLayout>

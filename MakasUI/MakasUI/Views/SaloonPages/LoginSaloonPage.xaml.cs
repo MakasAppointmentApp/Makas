@@ -35,7 +35,9 @@ namespace MakasUI.Views
 
         private void LoginClicked(object sender, EventArgs e)
         {
+
             App.Current.MainPage = new SaloonHomePage();
+
         }
     }
 }

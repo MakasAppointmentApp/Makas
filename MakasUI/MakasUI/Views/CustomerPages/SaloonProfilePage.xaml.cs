@@ -20,7 +20,7 @@ namespace MakasUI.Views.CustomerPages
             
             InitializeComponent();
             this.sName.Text = ob.SaloonName;
-            this.sImage.Source = ob.SaloonImage;
+            //this.sImage.Source = ob.SaloonImage;
             this.sRate.Text = Convert.ToString(ob.SaloonRate);
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);

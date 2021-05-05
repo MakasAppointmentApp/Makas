@@ -59,7 +59,7 @@ namespace MakasUI.Views.SaloonPages
 
         private async void workers_ItemSelected(object senderObj, SelectedItemChangedEventArgs e)
         {
-
+            AppointmentsCollection.Clear();
             HttpClientHandler clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
             HttpClient client = new HttpClient(clientHandler);
@@ -77,7 +77,6 @@ namespace MakasUI.Views.SaloonPages
             }
             catch (Exception)
             {
-                AppointmentsCollection.Clear();
                 await DisplayAlert("Hata", "Geçmiş randevu bulunamadı", "Ok");
             }
 

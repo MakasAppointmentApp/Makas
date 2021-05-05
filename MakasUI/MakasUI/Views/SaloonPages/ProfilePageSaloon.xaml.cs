@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MakasUI.Functions;
 using MakasUI.Models;
+using MakasUI.Models.DtosForSaloon;
+using MakasUI.Services.SaloonServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,45 +15,62 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePageSaloon : ContentPage
     {
+        int saloonId = 2;
+        Saloon presentSaloon;
+        
+        SaloonProfileService service = new SaloonProfileService();
+        public ObservableCollection<Worker> WorkersCollection { get; set; }
+        public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
         public ProfilePageSaloon()
         {
             InitializeComponent();
             ItemFunctions functions = new ItemFunctions();
-
             functions.ButtonsLabelClick(commentLabel,commentButton);
-            var Workers = new List<Worker>
-            {
-                new Worker {WorkerName="Muhammed Güven",WorkerImage="chair.png",WorkerRate=8.2 },
-                new Worker {WorkerName="Danyel Kar",WorkerImage="help.png",WorkerRate=5.6 },
-                new Worker {WorkerName="Mustafa Emre Orbağ",WorkerImage="user.png",WorkerRate=4.4 },
-                new Worker {WorkerName="Mustafa Orbağ",WorkerImage="user.png",WorkerRate=5.4 }
-
-            };
-            workers.ItemsSource = Workers;
-
-            var Prices = new List<Price>
-            {
-                new Price { PriceName="Saç Kesim" , PriceAmount = 50},
-                new Price { PriceName="Saç Boyama" , PriceAmount = 60},
-                new Price { PriceName="Manikür" , PriceAmount = 40},
-                new Price { PriceName="Pedikür" , PriceAmount = 10},
-                new Price { PriceName="Masaj" , PriceAmount = 20},
-            };
-            PriceListView.ItemsSource = Prices;
-
+            WorkersCollection = new ObservableCollection<Worker>();
+            PricesCollection = new ObservableCollection<AddPriceDto>();
+            
+            
+           
 
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await GetSaloonProfile();
+            sName.Text = presentSaloon.SaloonName;
+            sRate.Text = presentSaloon.SaloonRate.ToString();
+            sImage.Source = ImageSource.FromStream(() => new MemoryStream(presentSaloon.SaloonImage));
+            sLocation.Text = presentSaloon.SaloonLocation;
+            commentLabel.Text = $"{presentSaloon.Reviews.Count()} Yorum";
+
+        }
+
+        private async Task GetSaloonProfile()
+        {
+            var saloon = await service.GetSaloonAsync(saloonId);
+            foreach (var item in saloon.Prices)
+            {
+                PricesCollection.Add(new AddPriceDto { PriceName = item.PriceName, PriceAmount = item.PriceAmount });
+            }
+            foreach (var item in saloon.Workers)
+            {
+                WorkersCollection.Add(new Worker { WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate=item.WorkerRate });
+            }
+            presentSaloon = saloon;
+            workers.ItemsSource = WorkersCollection;
+            PriceListView.ItemsSource = PricesCollection;
+        }
+
         private async void Comments_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text));
+            await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text, presentSaloon.Reviews));
         }
 
         private async void EditClicked(object sender, EventArgs e)
         {
                 
-                await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text));
-
-
+                await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text, presentSaloon.Id));
         }
     }
 }

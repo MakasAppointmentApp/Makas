@@ -18,9 +18,9 @@ namespace MakasUI.Views.CustomerPages
         {
             InitializeComponent();
 
-            Categories.Add(new Saloon { SaloonName = "MEO kuafor", SaloonImage = "chair.png", SaloonRate = 8.2 });
-            Categories.Add(new Saloon { SaloonName = "DAN kuafor", SaloonImage = "help.png", SaloonRate = 5.6 });
-            Categories.Add(new Saloon { SaloonName = "GWEN kuafor", SaloonImage = "user.png", SaloonRate = 4.4 });
+            Categories.Add(new Saloon { SaloonName = "MEO kuafor",  SaloonRate = 8.2 });
+            Categories.Add(new Saloon { SaloonName = "DAN kuafor",  SaloonRate = 5.6 });
+            Categories.Add(new Saloon { SaloonName = "GWEN kuafor",  SaloonRate = 4.4 });
 
             FavoriteListView.ItemsSource = Categories;
         }

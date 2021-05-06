@@ -72,6 +72,7 @@
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
+                            Clicked="registerClicked"
                             Margin="80,10" 
                             TextColor="White"
                             />

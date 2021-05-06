@@ -72,6 +72,7 @@ namespace MakasUI.Views
                 }
                 else
                 {
+                    phone.Text = "";
                     await DisplayAlert("Hata", "Bu telefon numarası sistemde kayıtlı ya da bir hata oluştu", "OK");
                 }
             }

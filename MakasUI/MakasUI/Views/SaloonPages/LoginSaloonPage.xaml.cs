@@ -53,6 +53,7 @@ namespace MakasUI.Views
             }
             else
             {
+                password.Text = "";
                 await DisplayAlert("Hata", "Telefon numaranız ya da şifreniz yanlış", "Tamam");
             }
 

@@ -8,7 +8,7 @@ namespace MakasUI.Models
     {
         public Worker()
         {
-            //Reviews = new List<Review>();
+            Reviews = new List<Review>();
             Appointments = new List<Appointment>();
         }
         public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace MakasUI.Models
         public double WorkerRate { get; set; }
         public Saloon Saloon { get; set; }
 
-        //public List<Review> Reviews { get; set; }
+        public List<Review> Reviews { get; set; }
         public string WorkerImage { get; set; }//Bu gereksiz statik veriler bozulmasın diye duruyors silinecek
         public List<Appointment> Appointments { get; set; }
     }

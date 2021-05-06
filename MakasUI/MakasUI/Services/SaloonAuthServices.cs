@@ -21,7 +21,19 @@ namespace MakasUI.Services
             var json = JsonConvert.SerializeObject(saloon);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await client.PostAsync(App.API_URL+"SaloonAuth/register", content);
+            var response = await client.PostAsync(App.API_URL + "SaloonAuth/register", content);
+            return response;
+        }
+        public async Task<HttpResponseMessage> PostLoginAsync(SaloonForLoginDto saloon)
+        {
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            var client = new HttpClient(clientHandler);
+
+            var json = JsonConvert.SerializeObject(saloon);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(App.API_URL + "SaloonAuth/login", content);
             return response;
         }
     }

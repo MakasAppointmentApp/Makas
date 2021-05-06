@@ -67,7 +67,7 @@ namespace MakasUI.Views.SaloonPages
             string workerId = worker.Id.ToString();
             try
             {
-                var result = await client.GetStringAsync(App.API_URL + $"Saloon/pastappointments?workerId={workerId}");
+                var result = await client.GetStringAsync(App.API_URL + $"Saloon/futureappointments?workerId={workerId}");
                 var result2 = JsonConvert.DeserializeObject<List<WorkerAppointmentDto>>(result);
                 foreach (var item in result2)
                 {
@@ -77,7 +77,7 @@ namespace MakasUI.Views.SaloonPages
             }
             catch (Exception)
             {
-                await DisplayAlert("Hata", "Geçmiş randevu bulunamadı", "Ok");
+                await DisplayAlert("Hata", "Gelecek randevu bulunamadı", "Ok");
             }
 
         }

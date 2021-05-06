@@ -6,7 +6,7 @@ namespace MakasUI.Models
 {
     public class Hour
     {
-        public string Time { get; set; }
+        public string Time { get; set; }//BÖYLE BİŞEY OLMAYACAK BU MODEL SİLİNECEK
     }
 
 }

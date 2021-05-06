@@ -17,7 +17,7 @@ namespace MakasUI.Views.SaloonPages
     {
         int saloonId = 2;
         Saloon presentSaloon;
-        
+
         SaloonProfileService service = new SaloonProfileService();
         public ObservableCollection<Worker> WorkersCollection { get; set; }
         public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
@@ -25,13 +25,9 @@ namespace MakasUI.Views.SaloonPages
         {
             InitializeComponent();
             ItemFunctions functions = new ItemFunctions();
-            functions.ButtonsLabelClick(commentLabel,commentButton);
+            functions.ButtonsLabelClick(commentLabel, commentButton);
             WorkersCollection = new ObservableCollection<Worker>();
             PricesCollection = new ObservableCollection<AddPriceDto>();
-            
-            
-           
-
         }
 
         protected async override void OnAppearing()
@@ -55,7 +51,7 @@ namespace MakasUI.Views.SaloonPages
             }
             foreach (var item in saloon.Workers)
             {
-                WorkersCollection.Add(new Worker { WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate=item.WorkerRate });
+                WorkersCollection.Add(new Worker { WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate = item.WorkerRate });
             }
             presentSaloon = saloon;
             workers.ItemsSource = WorkersCollection;
@@ -69,8 +65,8 @@ namespace MakasUI.Views.SaloonPages
 
         private async void EditClicked(object sender, EventArgs e)
         {
-                
-                await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text, presentSaloon.Id));
+
+            await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text, presentSaloon.Id));
         }
     }
 }

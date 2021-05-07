@@ -36,9 +36,9 @@ namespace MakasUI.Views
             EyeVisible.Source = password.IsPassword ? "eye.png" : "closedeye.png";
         }
 
-
         private async void LoginClicked(object sender, EventArgs e)
         {
+            var app = Application.Current as App;
             var saloon = new SaloonForLoginDto
             {
                  SaloonPhone = phone.Text,
@@ -48,7 +48,10 @@ namespace MakasUI.Views
             var result = await _apiServices.PostLoginAsync(saloon);
             if (result.IsSuccessStatusCode.Equals(true))
             {
-                string token = result.ToString();//DÜZENLE
+                app.TOKEN = await result.Content.ReadAsStringAsync();
+                
+                app.LoggedIn = "true";
+
                 App.Current.MainPage = new SaloonHomePage();
             }
             else

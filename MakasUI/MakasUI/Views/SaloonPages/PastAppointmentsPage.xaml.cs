@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using MakasUI.Models;
 using MakasUI.Models.DtosForSaloon;
 using Newtonsoft.Json;

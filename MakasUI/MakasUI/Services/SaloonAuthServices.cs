@@ -34,6 +34,7 @@ namespace MakasUI.Services
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await client.PostAsync(App.API_URL + "SaloonAuth/login", content);
+            
             return response;
         }
     }

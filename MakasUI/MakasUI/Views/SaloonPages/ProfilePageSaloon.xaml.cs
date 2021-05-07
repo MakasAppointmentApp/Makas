@@ -45,6 +45,8 @@ namespace MakasUI.Views.SaloonPages
         private async Task GetSaloonProfile()
         {
             var saloon = await service.GetSaloonAsync(saloonId);
+            PricesCollection.Clear();
+            WorkersCollection.Clear();
             foreach (var item in saloon.Prices)
             {
                 PricesCollection.Add(new AddPriceDto { PriceName = item.PriceName, PriceAmount = item.PriceAmount });

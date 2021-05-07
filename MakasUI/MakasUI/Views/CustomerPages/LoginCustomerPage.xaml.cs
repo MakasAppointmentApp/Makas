@@ -1,8 +1,10 @@
 ﻿using MakasUI.Functions;
 using MakasUI.Models.DtosForAuth;
 using MakasUI.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +37,7 @@ namespace MakasUI.Views
         }
         private async void Login_Clicked(object sender, EventArgs e)
         {
+            var app = Application.Current as App;
             var customer = new CustomerForLoginDto
             {
                 CustomerEmail = email.Text,
@@ -43,7 +46,14 @@ namespace MakasUI.Views
             var result = await _apiServices.PostLoginAsync(customer);
             if (result.IsSuccessStatusCode.Equals(true))
             {
-                string token = result.ToString();
+                string response = await result.Content.ReadAsStringAsync();
+                app.TOKEN = JsonConvert.DeserializeObject<string>(response);
+                var jwtHandler = new JwtSecurityTokenHandler();
+                var token = jwtHandler.ReadJwtToken(app.TOKEN);
+                app.USER_ID = token.Claims.FirstOrDefault(c => c.Type == "nameid")?.Value;
+                app.USER_NAME = token.Claims.FirstOrDefault(c => c.Type == "unique_name")?.Value;
+                app.LoggedIn = "true";
+                await DisplayAlert("Hoş geldiniz", app.USER_NAME, "Teşekkürler");
                 App.Current.MainPage = new CustomerHomePage();
             }
             else

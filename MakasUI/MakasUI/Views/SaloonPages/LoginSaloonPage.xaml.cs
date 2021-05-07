@@ -2,8 +2,10 @@
 using MakasUI.Models.DtosForAuth;
 using MakasUI.Services;
 using MakasUI.Views.SaloonPages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,15 +32,29 @@ namespace MakasUI.Views
                 return true;
             });
         }
+        public LoginSaloonPage(string phoneNum, string pass)
+        {
+            InitializeComponent();
+            ItemFunctions functions = new ItemFunctions();
+            functions.backclick(back, Navigation);
+            functions.registerSaloonclick(register, Navigation);
+            Device.StartTimer(TimeSpan.FromSeconds(4), () => {
+
+                Device.BeginInvokeOnMainThread(() => functions.Effect(logo));
+                return true;
+            });
+            phone.Text = phoneNum;
+            password.Text = pass;
+        }
         public void ShowPass(object sender, EventArgs args)
         {
             password.IsPassword = password.IsPassword ? false : true;
             EyeVisible.Source = password.IsPassword ? "eye.png" : "closedeye.png";
         }
 
-
         private async void LoginClicked(object sender, EventArgs e)
         {
+            var app = Application.Current as App;
             var saloon = new SaloonForLoginDto
             {
                  SaloonPhone = phone.Text,
@@ -48,7 +64,14 @@ namespace MakasUI.Views
             var result = await _apiServices.PostLoginAsync(saloon);
             if (result.IsSuccessStatusCode.Equals(true))
             {
-                string token = result.ToString();//DÜZENLE
+                string response = await result.Content.ReadAsStringAsync();
+                app.TOKEN = JsonConvert.DeserializeObject<string>(response);
+                var jwtHandler = new JwtSecurityTokenHandler();
+                var token = jwtHandler.ReadJwtToken(app.TOKEN); 
+                app.USER_ID = token.Claims.FirstOrDefault(c => c.Type == "nameid")?.Value;
+                app.USER_NAME = token.Claims.FirstOrDefault(c => c.Type == "unique_name")?.Value;
+                app.LoggedIn = "true";
+                await DisplayAlert("Hoş geldiniz", app.USER_NAME, "Teşekkürler");
                 App.Current.MainPage = new SaloonHomePage();
             }
             else

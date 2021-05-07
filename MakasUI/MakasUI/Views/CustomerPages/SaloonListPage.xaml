@@ -22,7 +22,6 @@
             <ListView x:Name="KuaforListView" 
                       Margin="1,5"
                       RowHeight="90" 
-                      IsPullToRefreshEnabled="True" 
                       SeparatorVisibility="None"
                       >
                 <ListView.ItemTemplate>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MakasUI.Services.CustomerServices
 {
@@ -19,7 +20,9 @@ namespace MakasUI.Services.CustomerServices
             var json = JsonConvert.SerializeObject(listedSaloon);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await client.GetStringAsync("https://192.168.0.38:45455/api/Customer/locationsaloons?SaloonCity=Eskisehir&SaloonDistrict=Tepebasi&SaloonGender=true");
+            string saloonCity = HttpUtility.UrlEncode(listedSaloon.SaloonCity, System.Text.Encoding.UTF8);
+            string saloonDistrict = HttpUtility.UrlEncode(listedSaloon.SaloonDistrict, System.Text.Encoding.UTF8);
+            var response = await client.GetStringAsync(App.API_URL+$"Customer/locationsaloons?SaloonCity={saloonCity}&SaloonDistrict={saloonDistrict}&SaloonGender=true");
             var result = JsonConvert.DeserializeObject<List<GetSaloonsByLocationDto>>(response);
             return result;
         }

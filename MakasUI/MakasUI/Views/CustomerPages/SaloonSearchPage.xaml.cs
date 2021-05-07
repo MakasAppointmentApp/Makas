@@ -1,4 +1,5 @@
-﻿using MakasUI.ViewModels;
+﻿using MakasUI.Models.DtosForCustomer;
+using MakasUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,67 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SaloonSearchPage : ContentPage
     {
+        bool genderBoolean = false;
         public SaloonSearchPage()
         {
             InitializeComponent();
-                BindingContext = new SaloonSearchViewModel();
-            
+            BindingContext = new SaloonSearchViewModel();
 
+            genderPicker.ItemsSource = new List<Gender>
+            {
+                new Gender {Value="Erkek"},
+                new Gender{Value="Kadın"}
+            };
 
         }
-        async void Listele_Clicked(object sender, EventArgs e)
+        private async void Listele_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SaloonListPage());
+
+            var SelectedCity = "";
+            var SelectedDistrict = "";
+            if (cityPicker.SelectedItem != null && districtPicker.SelectedItem != null)
+            {
+
+                var selectedItem = cityPicker.SelectedItem as City;
+                SelectedCity = selectedItem.Value;
+                var selectedItem2 = districtPicker.SelectedItem as City;
+                SelectedDistrict = selectedItem2.Value;
+
+                var listedSaloon = new SearchSaloonsDto
+                {
+                    SaloonCity = SelectedCity,
+                    SaloonDistrict = SelectedDistrict,
+                    SaloonGender = genderBoolean
+
+                };
+
+                await Navigation.PushAsync(new SaloonListPage(listedSaloon));
+
+
+            }
+            else
+            {
+                await DisplayAlert("Hata", "şehir ve ilçe seçmelisiniz", "OK");
+            }
+        }
+
+        private void gender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Picker picker = sender as Picker;
+            var selectedGender = (Gender)picker.SelectedItem;
+            if (selectedGender.Value == "Erkek")
+            {
+                genderBoolean = true;
+            }
+            else
+            {
+                genderBoolean = false;
+            }
+
+        }
+        internal class Gender
+        {
+            public string Value { get; set; }
         }
 
 

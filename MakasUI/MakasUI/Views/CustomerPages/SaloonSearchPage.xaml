@@ -49,11 +49,7 @@
                     <Frame CornerRadius="13" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="gender.png" HeightRequest="25" WidthRequest="25"></Image>
-                            <Picker HorizontalTextAlignment="Start" WidthRequest="250" x:Name="genderPicker" Title="Cinsiyet" TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15" >
-                                <Picker.Items>
-                                    <x:String>Erkek</x:String>
-                                    <x:String>Kadın</x:String>
-                                </Picker.Items>
+                            <Picker HorizontalTextAlignment="Start" WidthRequest="250" x:Name="genderPicker" ItemDisplayBinding="{Binding Value}" SelectedIndexChanged="gender_SelectedIndexChanged" Title="Cinsiyet" TextColor="#16353b" TitleColor="#16353b" FontAttributes="Bold" FontSize="15" >
                             </Picker>
                         </StackLayout>
                     </Frame>

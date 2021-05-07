@@ -22,9 +22,9 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSaloonPage : ContentPage
     {
-        int saloonId;
 
         public byte[] imagebyte;
+
         SaloonUpdateService service = new SaloonUpdateService();
         public ObservableCollection<Price> PricesObservable { get; set; }
 
@@ -36,7 +36,7 @@ namespace MakasUI.Views.SaloonPages
             function.backclick(back, Navigation);
 
         }
-        public EditSaloonPage(string text, ImageSource profilePhoto, string saloonLocation, int Id)
+        public EditSaloonPage(string text, ImageSource profilePhoto, string saloonLocation)
         {
             InitializeComponent();
             this.saloonName.Text = text;
@@ -45,7 +45,6 @@ namespace MakasUI.Views.SaloonPages
             PricesObservable = new ObservableCollection<Price>();
             ItemFunctions function = new ItemFunctions();
             function.backclick(back, Navigation);
-            saloonId = Id;
         }
 
 
@@ -79,8 +78,8 @@ namespace MakasUI.Views.SaloonPages
                     await DisplayAlert("Hata", "Fotoğraf seçilemedi. Tekrar deneyiniz.", "Tamam");
 
                 }
-                    selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
-                    imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
+                selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
+                imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
 
 
 
@@ -111,9 +110,11 @@ namespace MakasUI.Views.SaloonPages
         {
             if (kuaförName.Text != null || kuaförName.Text != "")
             {
+                var app = Application.Current as App;
                 AddWorkerDto worker = new AddWorkerDto
                 {
-                    SaloonId = saloonId,
+
+                    SaloonId = Convert.ToInt32(app.USER_ID),
                     WorkerName = kuaförName.Text,
                     WorkerPhoto = imagebyte
                 };
@@ -121,6 +122,7 @@ namespace MakasUI.Views.SaloonPages
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Yeni çalışan ekledi", "Tamam");
+                    await Navigation.PopAsync();
                 }
                 else
                 {
@@ -138,9 +140,10 @@ namespace MakasUI.Views.SaloonPages
         {
             if (priceName.Text != null || priceName.Text != "" || priceAmount.Text != null || priceAmount.Text != "")
             {
+                var app = Application.Current as App;
                 AddPriceDto price = new AddPriceDto
                 {
-                    SaloonId = saloonId,
+                    SaloonId = Convert.ToInt32(app.USER_ID),
                     PriceName = priceName.Text,
                     PriceAmount = Convert.ToDouble(priceAmount.Text)
                 };
@@ -148,6 +151,7 @@ namespace MakasUI.Views.SaloonPages
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Yeni işlem ekledi", "Tamam");
+                    await Navigation.PopAsync();
                 }
                 else
                 {
@@ -165,10 +169,10 @@ namespace MakasUI.Views.SaloonPages
         {
             if (saloonName.Text != null || saloonName.Text != "")
             {
-
+                var app = Application.Current as App;
                 UpdateSaloonNameDto saloon = new UpdateSaloonNameDto
                 {
-                    Id = saloonId,
+                    Id = Convert.ToInt32(app.USER_ID),
                     SaloonName = saloonName.Text
                 };
                 var response = await service.UpdateSaloonNameAsync(saloon);
@@ -192,9 +196,10 @@ namespace MakasUI.Views.SaloonPages
         {
             if (saloonLocation.Text != null || saloonLocation.Text != "")
             {
+                var app = Application.Current as App;
                 UpdateSaloonLocation saloon = new UpdateSaloonLocation
                 {
-                    Id = saloonId,
+                    Id = Convert.ToInt32(app.USER_ID),
                     SaloonLocation = saloonLocation.Text
                 };
                 var response = await service.UpdateSaloonLocationAsync(saloon);
@@ -242,10 +247,11 @@ namespace MakasUI.Views.SaloonPages
                     saloonProfilePhoto.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
                     imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
                 }
+                var app = Application.Current as App;
 
                 UpdateSaloonImageDto saloon = new UpdateSaloonImageDto
                 {
-                    Id = saloonId,
+                    Id = Convert.ToInt32(app.USER_ID),
                     SaloonImage = imagebyte
                 };
                 var response = await service.UpdateSaloonPhotoAsync(saloon);
@@ -268,14 +274,15 @@ namespace MakasUI.Views.SaloonPages
         private async void PasswordChange_Button_Clicked(object sender, EventArgs e)
         {
             if (verifyPassword.Text == newPassword.Text &&
-                (verifyPassword.Text !=null || verifyPassword.Text != "") &&
+                (verifyPassword.Text != null || verifyPassword.Text != "") &&
                 (newPassword.Text != null || newPassword.Text != "") &&
                 (oldPassword.Text != null || oldPassword.Text != "")
                 )
             {
+                var app = Application.Current as App;
                 UpdatePasswordDto saloon = new UpdatePasswordDto
                 {
-                    Id = saloonId,
+                    Id = Convert.ToInt32(app.USER_ID),
                     OldPassword = oldPassword.Text,
                     NewPassword = newPassword.Text
                 };
@@ -283,6 +290,7 @@ namespace MakasUI.Views.SaloonPages
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Şifre değiştirildi", "Tamam");
+                    await Navigation.PopAsync();
                 }
                 else
                 {
@@ -306,6 +314,7 @@ namespace MakasUI.Views.SaloonPages
                     if (response.IsSuccessStatusCode.Equals(true))
                     {
                         await DisplayAlert("Tebrikler", "Fiyat silindi", "Tamam");
+                        await Navigation.PopAsync();
                     }
                 }
                 catch (Exception)
@@ -331,7 +340,8 @@ namespace MakasUI.Views.SaloonPages
             HttpClient client = new HttpClient(clientHandler);
             try
             {
-                var result = await client.GetStringAsync(App.API_URL + $"Saloon/saloonprices?id={saloonId}");
+                var app = Application.Current as App;
+                var result = await client.GetStringAsync(App.API_URL + $"Saloon/saloonprices?id={Convert.ToInt32(app.USER_ID)}");
                 var result2 = JsonConvert.DeserializeObject<List<Price>>(result);
                 foreach (var item in result2)
                 {

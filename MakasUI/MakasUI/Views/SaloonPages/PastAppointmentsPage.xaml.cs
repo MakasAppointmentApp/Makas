@@ -14,7 +14,6 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PastAppointmentsPage : ContentPage
     {
-        int saloonId = 2;//ÖNEMLİ BURADA BUNU TUTMAYIP LOGİN YAPAN KULLANICININ IDYİ ÇEKECEĞİZ
         ViewCell lastCell;
         public ObservableCollection<WorkerAppointmentDto> AppointmentsCollection { get; set; }
 
@@ -32,7 +31,8 @@ namespace MakasUI.Views.SaloonPages
             HttpClient client = new HttpClient(clientHandler);
             try
             {
-                var result = await client.GetStringAsync(App.API_URL + $"Saloon/saloonworkers?id={saloonId}");
+                var app = Application.Current as App;
+                var result = await client.GetStringAsync(App.API_URL + $"Saloon/saloonworkers?id={Convert.ToInt32(app.USER_ID)}");
                 var result2 = JsonConvert.DeserializeObject<List<Worker>>(result);
                 workers.ItemsSource = result2;
             }

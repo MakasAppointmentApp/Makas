@@ -11,6 +11,8 @@ namespace MakasUI
         public const string API_URL = "https://192.168.1.21:45455/api/";
         public const string tokenKey = "token";
         public const string loggedInKey = "loggedIn";
+        public const string userId = "userId";
+        public const string userName = "userName";
         public App()
         {
             InitializeComponent();
@@ -23,11 +25,12 @@ namespace MakasUI
 
         protected override void OnStart()
         {
-            if (LoggedIn == "false")
+            MainPage = new NavigationPage(new WelcomePage());
+            /*if (LoggedIn == "false")
                 MainPage = new NavigationPage(new WelcomePage());
 
             if (LoggedIn == "true")
-                MainPage = new SaloonHomePage();
+                MainPage = new SaloonHomePage();*/
         }
 
         protected override void OnSleep()
@@ -52,6 +55,40 @@ namespace MakasUI
             set
             {
                 Properties[tokenKey] = value;
+            }
+        }
+        public string USER_ID
+        {
+            get
+            {
+                if (Properties.ContainsKey(userId))
+                {
+                    SavePropertiesAsync();
+                    return Properties[userId].ToString();
+                }
+
+                return "";
+            }
+            set
+            {
+                Properties[userId] = value;
+            }
+        }
+        public string USER_NAME
+        {
+            get
+            {
+                if (Properties.ContainsKey(userName))
+                {
+                    SavePropertiesAsync();
+                    return Properties[userName].ToString();
+                }
+
+                return "";
+            }
+            set
+            {
+                Properties[userName] = value;
             }
         }
 

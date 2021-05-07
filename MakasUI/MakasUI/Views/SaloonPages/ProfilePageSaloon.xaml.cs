@@ -15,7 +15,6 @@ namespace MakasUI.Views.SaloonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePageSaloon : ContentPage
     {
-        int saloonId = 2;
         Saloon presentSaloon;
 
         SaloonProfileService service = new SaloonProfileService();
@@ -44,7 +43,8 @@ namespace MakasUI.Views.SaloonPages
 
         private async Task GetSaloonProfile()
         {
-            var saloon = await service.GetSaloonAsync(saloonId);
+            var app = Application.Current as App;
+            var saloon = await service.GetSaloonAsync(Convert.ToInt32(app.USER_ID));
             PricesCollection.Clear();
             WorkersCollection.Clear();
             foreach (var item in saloon.Prices)
@@ -68,7 +68,7 @@ namespace MakasUI.Views.SaloonPages
         private async void EditClicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text, presentSaloon.Id));
+            await Navigation.PushAsync(new EditSaloonPage(sName.Text, sImage.Source, sLocation.Text));
         }
     }
 }

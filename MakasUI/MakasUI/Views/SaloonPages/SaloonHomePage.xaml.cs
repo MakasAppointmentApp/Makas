@@ -18,12 +18,19 @@ namespace MakasUI.Views.SaloonPages
 
 
         }
-        
 
-        private void ExitClicked(object sender, EventArgs e)
+
+        private void Logout_Clicked(object sender, EventArgs e)
         {
-                App.Current.MainPage = new NavigationPage(new WelcomePage());
+            // Alert Yes No
+            var app = Application.Current as App;
+            app.USER_ID = "";
+            app.LoggedIn = "false";
+            app.TOKEN = "";
+            app.USER_NAME = "";
+            App.Current.MainPage = new NavigationPage(new WelcomePage());
+
         }
-        
+
     }
 }

@@ -30,7 +30,7 @@
                     <StackLayout Padding="0,40,0,0">
                         <StackLayout VerticalOptions="StartAndExpand">
                             <Label Text="Çıkış yapmak istediğinize emin misiniz?" FontSize="16" TextColor="Black" HorizontalOptions="Center" Padding="0,10"></Label>
-                            <Button x:Name="Edit" 
+                            <Button Clicked="Logout_Clicked" 
                             Text="çıkış" 
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
@@ -38,7 +38,6 @@
                             Margin="120,2,120,10" 
                             TextColor="White"
                             FontSize="18"
-                                Clicked="ExitClicked"
                             />
                         </StackLayout>
                        

@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Converter="clr-namespace:MakasUI.Converters"
              x:Class="MakasUI.Views.SaloonListPage"
              >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ByteArrayToImageSourceConverter x:Key="bic"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="0" Padding="0">
             <StackLayout Orientation="Horizontal" VerticalOptions="Start" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0,35,0">
@@ -36,7 +41,7 @@
                                 <StackLayout Orientation="Horizontal"  Padding="0">
                                     <StackLayout Padding="3">
                                         <Frame Padding="0" CornerRadius="6" BorderColor="#16353b" Margin="3" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                                            <Image Source="{Binding SaloonImage}" Aspect="AspectFill" HeightRequest="60" WidthRequest="90" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
+                                            <Image Source="{Binding SaloonImage,Converter={StaticResource bic}}" Aspect="AspectFill" HeightRequest="60" WidthRequest="90" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
                                         </Frame>
                                     </StackLayout>
 

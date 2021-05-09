@@ -9,135 +9,140 @@
 
 
         <ScrollView>
-        <StackLayout>
-            <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="40" >
-                <StackLayout Orientation="Horizontal" Padding="25,0" HorizontalOptions="Center">
-                    <Image Source="logo.png" HeightRequest="80"/>
-                    <Label Text="Ayarlarım" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+            <StackLayout>
+                <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="40" >
+                    <StackLayout Orientation="Horizontal" Padding="25,0" HorizontalOptions="Center">
+                        <Image Source="logo.png" HeightRequest="80"/>
+                        <Label Text="Ayarlarım" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+
+                <StackLayout Padding="10,0,0,0">
+                    <Label Text="Profile" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="17"></Label>
                 </StackLayout>
-            </yummy:PancakeView>
+                <StackLayout Padding="10,5">
+                    <BoxView HeightRequest="1" BackgroundColor="#6b6c6c" Opacity="0.8"  ></BoxView>
+                </StackLayout>
 
-            <StackLayout Padding="10,0,0,0">
-                <Label Text="Profile" VerticalOptions="Start" TextColor="#16353b" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="17"></Label>
-            </StackLayout>
-            <StackLayout Padding="10,5">
-                <BoxView HeightRequest="1" BackgroundColor="#6b6c6c" Opacity="0.8"  ></BoxView>
-            </StackLayout>
+                <StackLayout Orientation="Vertical" Padding="10,0,0,0">
 
-            <StackLayout Orientation="Vertical" Padding="10,0,0,0">
-
-                <xct:Expander Margin="5,0">
-                    <xct:Expander.Header>
-                        <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
-                             <StackLayout Padding="0,0,15,0">
+                    <xct:Expander Margin="5,0">
+                        <xct:Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
+                                <StackLayout Padding="0,0,15,0">
                                     <ImageButton  BackgroundColor="Transparent" Source="user.png"  HeightRequest="30" ></ImageButton>
-                             </StackLayout>
-                             <StackLayout>
-                                <Label Text="Ad Soyad" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changeName" Text="Danyel kar" TextColor="#16353b" FontSize="14" ></Label>
-                             </StackLayout>
-                        </StackLayout>
-                    </xct:Expander.Header>
-
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0">
-
-                        <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                            <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isim ve soyadınız:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="Ad Soyad" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                    <Label x:Name="changeName" Text="Danyel kar" TextColor="#16353b" FontSize="14" ></Label>
+                                </StackLayout>
                             </StackLayout>
-                        </Frame>
+                        </xct:Expander.Header>
 
-                        <Button x:Name="isimGüncelle" 
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0">
+
+                            <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
+                                <StackLayout Orientation="Vertical">
+                                    <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                    <Entry x:Name ="sName" MaxLength="30" Keyboard="Email"  Placeholder="Yeni soyisminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Button x:Name="isimGüncelle" 
                             Text="GÜNCELLE" 
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
                             Margin="90,5" 
                             TextColor="White"
+                            Clicked="CustomerName_Update_Button_Clicked"
                             />
-                    </StackLayout>
-                </xct:Expander>
-                
-                <xct:Expander Margin="5,0">
-                    <xct:Expander.Header>
-                        <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
-                            <StackLayout Padding="0,0,15,0">
-                                <ImageButton  BackgroundColor="Transparent" Source="email.png"  HeightRequest="30" ></ImageButton>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label Text="Email" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changeEmail" Text="danyelkar@gmail.com" TextColor="#16353b" FontSize="14" ></Label>
-                            </StackLayout>
                         </StackLayout>
-                    </xct:Expander.Header>
+                    </xct:Expander>
 
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0" >
+                    <xct:Expander Margin="5,0">
+                        <xct:Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
+                                <StackLayout Padding="0,0,15,0">
+                                    <ImageButton  BackgroundColor="Transparent" Source="email.png"  HeightRequest="30" ></ImageButton>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="Email" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                    <Label x:Name="changeEmail" Text="danyelkar@gmail.com" TextColor="#16353b" FontSize="14" ></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </xct:Expander.Header>
+
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0" >
 
                             <Frame x:Name="emailEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                            <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
-                            </StackLayout>
-                        </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                </StackLayout>
+                            </Frame>
 
-                        <Button x:Name="emailGüncelle" 
+                            <Button x:Name="emailGüncelle" 
                             Text="GÜNCELLE" 
+                            Clicked="CustomerMail_Update_Button_Clicked"
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
                             Margin="90,5" 
                             TextColor="White"
                             />
-                    </StackLayout>
-                </xct:Expander>
-
-                <xct:Expander Margin="5,0">
-                    <xct:Expander.Header>
-                        <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
-                            <StackLayout Padding="0,0,15,0">
-                                <ImageButton  BackgroundColor="Transparent" Source="password.png"  HeightRequest="30" ></ImageButton>
-                            </StackLayout>
-                            <StackLayout>
-                                <Label Text="Şifre" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                <Label x:Name="changePassword" Text="*********" TextColor="#16353b" FontSize="13" ></Label>
-                            </StackLayout>
                         </StackLayout>
-                    </xct:Expander.Header>
+                    </xct:Expander>
 
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <xct:Expander Margin="5,0">
+                        <xct:Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
+                                <StackLayout Padding="0,0,15,0">
+                                    <ImageButton  BackgroundColor="Transparent" Source="password.png"  HeightRequest="30" ></ImageButton>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="Şifre" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
+                                    <Label x:Name="changePassword" Text="*********" TextColor="#16353b" FontSize="13" ></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </xct:Expander.Header>
+
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
 
                             <Frame x:Name="passwordEditFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="60,0,60,5" BackgroundColor="#FFFFFF" Padding="7,0">
-                            <StackLayout Orientation="Horizontal">
-                                <Entry  Placeholder="Yeni Şifreniz:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="220" TextColor="#16353b" x:Name="Password"/>
-                                <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Frame>
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry  Placeholder="Eski Şifreniz:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="220" TextColor="#16353b" x:Name="oldPassword"/>
+                                    <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
 
                             <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                            <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="editPasswordEntry" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
-                            </StackLayout>
-                        </Frame>
+                                <StackLayout Orientation="Vertical">
+                                    <Entry x:Name ="newPassword" MaxLength="30"  Placeholder="Yeni Şifreniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
+                                    <Entry x:Name ="verifyPassword" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
 
-                        <Button x:Name="passwordGüncelle" 
+                            <Button x:Name="passwordGüncelle" 
                             Text="GÜNCELLE" 
+                            Clicked="PasswordChange_Button_Clicked"
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
                             Margin="90,5" 
                             TextColor="White"
                             />
-                    </StackLayout>
-                </xct:Expander>
-            </StackLayout>
+                        </StackLayout>
+                    </xct:Expander>
+                </StackLayout>
 
-            <StackLayout Padding="10,5">
-                <BoxView HeightRequest="1" BackgroundColor="#6b6c6c" Opacity="0.8"  ></BoxView>
-            </StackLayout>
-            <Button x:Name="Edit" 
+                <StackLayout Padding="10,5">
+                    <BoxView HeightRequest="1" BackgroundColor="#6b6c6c" Opacity="0.8"  ></BoxView>
+                </StackLayout>
+                <Button x:Name="Edit" 
                             Text="Çıkış" 
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
@@ -147,9 +152,9 @@
                             FontSize="18"                         
                             Clicked="ExitClicked"
                             />
-            
-                    <Image Source="logo.png" HeightRequest="200" HorizontalOptions="Center" Opacity="0.6"/>
-                    <Label Text="Version 1.0.0" TextColor="#16353b" HorizontalOptions="Center" FontSize="14" Opacity="0.6" Padding="0,0,0,30"></Label>
+
+                <Image Source="logo.png" HeightRequest="200" HorizontalOptions="Center" Opacity="0.6"/>
+                <Label Text="Version 1.0.0" TextColor="#16353b" HorizontalOptions="Center" FontSize="14" Opacity="0.6" Padding="0,0,0,30"></Label>
 
             </StackLayout>
         </ScrollView>

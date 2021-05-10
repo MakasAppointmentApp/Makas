@@ -9,5 +9,8 @@ namespace MakasUI.Models
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public int SaloonId { get; set; }
+
+        public Customer Customer { get; set; }
+        public Saloon Saloon { get; set; }
     }
 }

@@ -37,5 +37,13 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.UpdateCustomerMailAsync(customer);
         }
+        public Task<List<CustomerAppointmentsDto>> GetCustomerAppointmentAsync(int customerId)
+        {
+            return _customerRestService.GetCustomerAppointmentAsync(customerId);
+        }
+        public Task<List<CustomerFavoritesDto>> GetCustomerFavoritesAsync(int customerId)
+        {
+            return _customerRestService.GetCustomerFavoritesAsync(customerId);
+        }
     }
 }

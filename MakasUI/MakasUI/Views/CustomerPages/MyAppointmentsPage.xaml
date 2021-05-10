@@ -37,7 +37,7 @@
                                                                          Offset="1.0"/>
                                                 </RadialGradientBrush>
                                             </Frame.Background>
-                                            <Label Text="{Binding Rate}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                                            <Label Text="{Binding SaloonRate}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
                                         </Frame>
                                     </StackLayout>
                                     <StackLayout VerticalOptions="Center">
@@ -45,14 +45,14 @@
                                         <StackLayout Orientation="Horizontal" Padding="0" Margin="10,0">
                                             <Label Text="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
                                             <Label Text="-" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
-                                            <Label Text="{Binding Hour, StringFormat='{}{0:hh\\:mm}'}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
+                                            <Label Text="{Binding Date, StringFormat='{}{0:h:mm tt}'}" FontAttributes="Bold" TextColor="#fa7a5a" FontSize="12" VerticalTextAlignment="Center"></Label>
                                         </StackLayout>
                                         
                                         <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
-                                        <Label Text="{Binding Review}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
-                                        <ImageButton Clicked="Review_Clicked" CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
+                                        <Label Text="" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
+                                        <ImageButton   BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
 
                                     </StackLayout>
 

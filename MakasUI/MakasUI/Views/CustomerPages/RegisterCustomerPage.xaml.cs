@@ -16,7 +16,6 @@ namespace MakasUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterCustomerPage : ContentPage
     {
-        CustomerAuthServices _apiServices = new CustomerAuthServices();
         public RegisterCustomerPage()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace MakasUI.Views
                     CustomerEmail = email.Text,
                     CustomerPassword = Password.Text
                 };
-                var result = await _apiServices.PostRegisterAsync(customer);
+                var result = await App.customerAuthManager.PostRegisterAsync(customer);
                 if (result.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Başarıyla kayıt oluşturuldu", "OK");

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MakasUI.Models.DtosForCustomer
 {
-    class UpdateCustomerNameDto
+    public class UpdateCustomerNameDto
     {
         public int Id { get; set; }
         public string CustomerName { get; set; }

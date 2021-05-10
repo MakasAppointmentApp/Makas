@@ -17,8 +17,6 @@ namespace MakasUI.Views
     public partial class SaloonListPage : ContentPage
     {
         SearchSaloonsDto _searched;
-
-        GetSaloonsByLocationService service = new GetSaloonsByLocationService();
         public List<GetSaloonsByLocationDto> ListedSaloon { get; set; }
 
         public SaloonListPage(SearchSaloonsDto searched)
@@ -40,7 +38,7 @@ namespace MakasUI.Views
         }
         public async Task getItems()
         {
-            var response = await service.ListedSaloonLocationAsync(_searched);
+            var response = await App.customerManager.ListSaloonsByLocationAsync(_searched);
             foreach (var item in response)
             {
                 ListedSaloon.Add(item);
@@ -53,7 +51,6 @@ namespace MakasUI.Views
             ImageButton btn = (ImageButton)sender;
             int Id = (int)btn.CommandParameter;
             await Navigation.PushAsync(new SaloonProfilePage(Id));
-            //await Navigation.PushAsync(new SaloonProfilePage());
         }
     }
 }

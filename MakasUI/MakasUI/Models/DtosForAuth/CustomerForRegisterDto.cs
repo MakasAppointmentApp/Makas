@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MakasUI.Models.DtosForAuth
 {
-    class CustomerForRegisterDto
+    public class CustomerForRegisterDto
     {
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }

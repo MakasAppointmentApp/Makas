@@ -16,10 +16,7 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomerProfilePage : ContentPage
     {
-        CustomerUpdateService service2 = new CustomerUpdateService();
         Customer presentCustomer;
-
-        CustomerProfileService service = new CustomerProfileService();
         public CustomerProfilePage()
         {
             InitializeComponent();
@@ -59,7 +56,7 @@ namespace MakasUI.Views.CustomerPages
                     CustomerName = name.Text,
                     CustomerSurName = sName.Text
                 };
-                var response = await service2.UpdateCustomerNameAsync(customer);
+                var response = await App.customerManager.UpdateCustomerNameAsync(customer);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Müsteri adı değiştirildi, lütfen tekrar giriş yapınız.", "Tamam");
@@ -86,7 +83,7 @@ namespace MakasUI.Views.CustomerPages
                     OldPassword = oldPassword.Text,
                     NewPassword = newPassword.Text
                 };
-                var response = await service2.UpdateCustomerPasswordAsync(customer);
+                var response = await App.customerManager.UpdateCustomerPasswordAsync(customer);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Şifre değiştirildi, lütfen giriş yapınız.", "Tamam");
@@ -116,7 +113,7 @@ namespace MakasUI.Views.CustomerPages
                     Id = Convert.ToInt32(app.USER_ID),
                     CustomerMail = email.Text
                 };
-                var response = await service2.UpdateCustomerMailAsync(customer);
+                var response = await App.customerManager.UpdateCustomerMailAsync(customer);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Müsteri Mail adresi değiştirildi, lütfen tekrar giriş yapınız.", "Tamam");
@@ -138,7 +135,7 @@ namespace MakasUI.Views.CustomerPages
         private async Task GetCustomerProfile()
         {
             var app = Application.Current as App;
-            var customer = await service.GetCustomerAsync(Convert.ToInt32(app.USER_ID));
+            var customer = await App.customerManager.GetCustomerAsync(Convert.ToInt32(app.USER_ID));
             presentCustomer = customer;
         }
 

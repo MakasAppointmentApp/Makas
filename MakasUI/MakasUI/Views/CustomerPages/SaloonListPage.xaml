@@ -60,7 +60,7 @@
                                         <Label Text="{Binding WorkerCount, StringFormat='{0} Aktif Kuaför'}" TextColor="#7e4e41" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
 
                                     </StackLayout>
-                                    <ImageButton CommandParameter="{Binding .}" Clicked="Go_Profile_Clicked" BackgroundColor="Transparent" Source="rightArrow.png" WidthRequest="30" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,10,0"></ImageButton>
+                                    <ImageButton CommandParameter="{Binding Id}" Clicked="Go_Profile_Clicked" BackgroundColor="Transparent" Source="rightArrow.png" WidthRequest="30" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Margin="0,0,10,0"></ImageButton>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

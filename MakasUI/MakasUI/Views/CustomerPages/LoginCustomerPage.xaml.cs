@@ -30,6 +30,20 @@ namespace MakasUI.Views
                 return true;
             });
         }
+        public LoginCustomerPage(string CustomerEmail, string CustomerPassword)
+        {
+            InitializeComponent();
+            ItemFunctions functions = new ItemFunctions();
+            functions.backclick(back, Navigation);
+            functions.registerCustomerclick(register, Navigation);
+            Device.StartTimer(TimeSpan.FromSeconds(4), () => {
+
+                Device.BeginInvokeOnMainThread(() => functions.Effect(logo));
+                return true;
+            });
+            email.Text = CustomerEmail;
+            Password.Text = CustomerPassword;
+        }
         public void ShowPass(object sender, EventArgs args)
         {
             Password.IsPassword = Password.IsPassword ? false : true;
@@ -61,11 +75,6 @@ namespace MakasUI.Views
                 Password.Text = "";
                 await DisplayAlert("Hata", "E-Mail'iniz ya da şifreniz yanlış. Lütfen kontrol edin.", "Tamam");
             }
-        }
-
-       int Topla(int a, int b)
-        {
-            return a + b;
         }
 
     }

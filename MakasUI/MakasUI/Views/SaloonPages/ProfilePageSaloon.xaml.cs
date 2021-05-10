@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MakasUI.Functions;
 using MakasUI.Models;
 using MakasUI.Models.DtosForSaloon;
-using MakasUI.Services.SaloonServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,8 +15,6 @@ namespace MakasUI.Views.SaloonPages
     public partial class ProfilePageSaloon : ContentPage
     {
         Saloon presentSaloon;
-
-        SaloonProfileService service = new SaloonProfileService();
         public ObservableCollection<Worker> WorkersCollection { get; set; }
         public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
         public ProfilePageSaloon()
@@ -44,7 +41,7 @@ namespace MakasUI.Views.SaloonPages
         private async Task GetSaloonProfile()
         {
             var app = Application.Current as App;
-            var saloon = await service.GetSaloonAsync(Convert.ToInt32(app.USER_ID));
+            var saloon = await App.saloonManager.GetSaloonAsync(Convert.ToInt32(app.USER_ID));
             PricesCollection.Clear();
             WorkersCollection.Clear();
             foreach (var item in saloon.Prices)

@@ -17,7 +17,6 @@ namespace MakasUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterSaloonPage : ContentPage
     {
-        SaloonAuthServices _apiServices = new SaloonAuthServices();
         bool genderBoolean = false;
         public RegisterSaloonPage()
         {
@@ -64,7 +63,7 @@ namespace MakasUI.Views
                     SaloonPassword = password.Text
 
                 };
-                var result = await _apiServices.PostRegisterAsync(saloon);
+                var result = await App.saloonAuthManager.PostRegisterAsync(saloon);
                 if (result.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Başarıyla kayıt oluşturuldu", "OK");

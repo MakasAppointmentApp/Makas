@@ -1,7 +1,11 @@
 ﻿using MakasUI.Functions;
 using MakasUI.Models;
+using MakasUI.Models.DtosForSaloon;
+using MakasUI.Services.SaloonServices;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,67 +18,78 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SaloonProfilePage : ContentPage
     {
-
-        public SaloonProfilePage(Saloon ob)
+        Saloon presentSaloon;
+        SaloonRestService service = new SaloonRestService();
+        public ObservableCollection<Worker> WorkersCollection { get; set; }
+        public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
+        private int _saloonId;
+        public SaloonProfilePage(int Id)
         {
-            
+            _saloonId = Id;
             InitializeComponent();
-            this.sName.Text = ob.SaloonName;
-            //this.sImage.Source = ob.SaloonImage;
-            this.sRate.Text = Convert.ToString(ob.SaloonRate);
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
             functions.ButtonsLabelClick(labelComment, butComment);
             functions.ButtonsLabelClick(labelFav, butFav);
-            var Workers = new List<Worker>
+            WorkersCollection = new ObservableCollection<Worker>();
+            PricesCollection = new ObservableCollection<AddPriceDto>();
+        }
+        private async Task GetSaloonProfile()
+        {
+            var saloon = await service.GetSaloonAsync(_saloonId);
+            PricesCollection.Clear();
+            WorkersCollection.Clear();
+            foreach (var item in saloon.Prices)
             {
-                new Worker {WorkerName="Muhammed Güven",WorkerImage="chair.png",WorkerRate=8.2 },
-                new Worker {WorkerName="Danyel Kar",WorkerImage="help.png",WorkerRate=5.6 },
-                new Worker {WorkerName="Mustafa Emre Orbağ",WorkerImage="user.png",WorkerRate=4.4 },
-                new Worker {WorkerName="Mustafa Orbağ",WorkerImage="user.png",WorkerRate=5.4 }
-
-            };
-            workers.ItemsSource = Workers;
-
-            var Prices = new List<Price>
+                PricesCollection.Add(new AddPriceDto { PriceName = item.PriceName, PriceAmount = item.PriceAmount });
+            }
+            foreach (var item in saloon.Workers)
             {
-                new Price { PriceName="Saç Kesim" , PriceAmount = 50},
-                new Price { PriceName="Saç Boyama" , PriceAmount = 60},
-                new Price { PriceName="Manikür" , PriceAmount = 40},
-                new Price { PriceName="Pedikür" , PriceAmount = 10},
-                new Price { PriceName="Masaj" , PriceAmount = 20},
-            };
-            PriceListView.ItemsSource = Prices;
+                WorkersCollection.Add(new Worker { WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate = item.WorkerRate });
+            }
+            presentSaloon = saloon;
+            workers.ItemsSource = WorkersCollection;
+            PriceListView.ItemsSource = PricesCollection;
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await GetSaloonProfile();
+            sName.Text = presentSaloon.SaloonName;
+            sRate.Text = presentSaloon.SaloonRate.ToString();
+            sImage.Source = ImageSource.FromStream(() => new MemoryStream(presentSaloon.SaloonImage));
+            addressLabel.Text = presentSaloon.SaloonLocation;
+            labelComment.Text = $"{presentSaloon.Reviews.Count()} Yorum";
+        }
         private async void Comments_Clicked(object sender, EventArgs e)
-        {   
-            await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text));
+        {
+            await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text, presentSaloon.Reviews));
         }
         private async void Get_Appointment_Clicked(object sender, EventArgs e)
         {
-            
+
             var button = sender as Button;
             var model = button.BindingContext as Worker;
+            var worker = WorkersCollection.FirstOrDefault(a => a.WorkerName == model.WorkerName && a.WorkerRate == model.WorkerRate);
+            model.Id = worker.Id;
             await button.ScaleTo(1.2, 250, Easing.SpringIn);
-            var saloon = new Saloon { SaloonName = sName.Text, SaloonRate = Convert.ToDouble(sRate.Text) };
-            await Navigation.PushAsync(new GetAppointmentPage(model,saloon));
+            var saloon = new Saloon { Id=presentSaloon.Id,SaloonName = sName.Text, SaloonRate = Convert.ToDouble(sRate.Text) };
+            await Navigation.PushAsync(new GetAppointmentPage(model, saloon));
             await button.ScaleTo(1.0, 50, Easing.SpringOut);
         }
 
         private async void Map_Button_Clicked(object sender, EventArgs e)
         {
-            
-
             if (Device.RuntimePlatform == Device.iOS)
             {
-            
-                await Launcher.OpenAsync("http://maps.apple.com/?q="+ addressLabel.Text);
+
+                await Launcher.OpenAsync("http://maps.apple.com/?q=" + addressLabel.Text);
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
                 // open the maps app directly
-                await Launcher.OpenAsync("geo:0,0?q="+ addressLabel.Text);
+                await Launcher.OpenAsync("geo:0,0?q=" + addressLabel.Text);
             }
         }
     }

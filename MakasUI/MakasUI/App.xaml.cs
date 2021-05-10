@@ -1,4 +1,7 @@
-﻿using MakasUI.Views;
+﻿using MakasUI.Services;
+using MakasUI.Services.SaloonManagers;
+using MakasUI.Services.SaloonServices;
+using MakasUI.Views;
 using MakasUI.Views.SaloonPages;
 using System;
 using Xamarin.Forms;
@@ -8,14 +11,19 @@ namespace MakasUI
 {
     public partial class App : Application
     {
-        public const string API_URL = "https://192.168.1.50:45455/api/";
+        public const string API_URL = "https://192.168.1.21:45455/api/";
         public const string tokenKey = "token";
         public const string loggedInKey = "loggedIn";
         public const string userId = "userId";
         public const string userName = "userName";
+
+        public static SaloonManager saloonManager { get; private set; }
+        public static SaloonAuthManager saloonAuthManager { get; private set; }
         public App()
         {
             InitializeComponent();
+            saloonManager = new SaloonManager(new SaloonRestService());
+            saloonAuthManager = new SaloonAuthManager(new SaloonAuthServices());
             Device.SetFlags(new[] {
                 "Expander_Experimental"
             });

@@ -1,7 +1,6 @@
 ﻿using MakasUI.Functions;
 using MakasUI.Models;
 using MakasUI.Models.DtosForSaloon;
-using MakasUI.Services.SaloonServices;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -11,9 +10,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,7 +21,6 @@ namespace MakasUI.Views.SaloonPages
 
         public byte[] imagebyte;
 
-        SaloonUpdateService service = new SaloonUpdateService();
         public ObservableCollection<Price> PricesObservable { get; set; }
 
         public EditSaloonPage()
@@ -81,9 +76,6 @@ namespace MakasUI.Views.SaloonPages
                 selectedImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
                 imagebyte = GetImageStreamAsBytes(selectedImageFile.GetStream());
 
-
-
-
             }
             catch (Exception)
             {
@@ -118,7 +110,7 @@ namespace MakasUI.Views.SaloonPages
                     WorkerName = kuaförName.Text,
                     WorkerPhoto = imagebyte
                 };
-                var response = await service.AddWorkerAsync(worker);
+                var response = await App.saloonManager.AddWorkerAsync(worker);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Yeni çalışan ekledi", "Tamam");
@@ -147,7 +139,7 @@ namespace MakasUI.Views.SaloonPages
                     PriceName = priceName.Text,
                     PriceAmount = Convert.ToDouble(priceAmount.Text)
                 };
-                var response = await service.AddPriceAsync(price);
+                var response = await App.saloonManager.AddPriceAsync(price);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Yeni işlem ekledi", "Tamam");
@@ -175,7 +167,7 @@ namespace MakasUI.Views.SaloonPages
                     Id = Convert.ToInt32(app.USER_ID),
                     SaloonName = saloonName.Text
                 };
-                var response = await service.UpdateSaloonNameAsync(saloon);
+                var response = await App.saloonManager.UpdateSaloonNameAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Salon adı değiştirildi", "Tamam");
@@ -202,7 +194,7 @@ namespace MakasUI.Views.SaloonPages
                     Id = Convert.ToInt32(app.USER_ID),
                     SaloonLocation = saloonLocation.Text
                 };
-                var response = await service.UpdateSaloonLocationAsync(saloon);
+                var response = await App.saloonManager.UpdateSaloonLocationAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Salon konumu değiştirildi", "OK");
@@ -254,7 +246,7 @@ namespace MakasUI.Views.SaloonPages
                     Id = Convert.ToInt32(app.USER_ID),
                     SaloonImage = imagebyte
                 };
-                var response = await service.UpdateSaloonPhotoAsync(saloon);
+                var response = await App.saloonManager.UpdateSaloonPhotoAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Salon fotoğrafı değiştirildi", "Tamam");
@@ -286,7 +278,7 @@ namespace MakasUI.Views.SaloonPages
                     OldPassword = oldPassword.Text,
                     NewPassword = newPassword.Text
                 };
-                var response = await service.UpdateSaloonPasswordAsync(saloon);
+                var response = await App.saloonManager.UpdateSaloonPasswordAsync(saloon);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Şifre değiştirildi", "Tamam");
@@ -310,7 +302,7 @@ namespace MakasUI.Views.SaloonPages
                 try
                 {
                     var price = PricesObservable.FirstOrDefault(p => p.PriceName == prices.SelectedItem.ToString());
-                    var response = await service.DeletePriceAsync(price.Id);
+                    var response = await App.saloonManager.DeletePriceAsync(price.Id);
                     if (response.IsSuccessStatusCode.Equals(true))
                     {
                         await DisplayAlert("Tebrikler", "Fiyat silindi", "Tamam");

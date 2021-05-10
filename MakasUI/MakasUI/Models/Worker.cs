@@ -19,7 +19,6 @@ namespace MakasUI.Models
         public Saloon Saloon { get; set; }
 
         public List<Review> Reviews { get; set; }
-        public string WorkerImage { get; set; }//Bu gereksiz statik veriler bozulmasın diye duruyors silinecek
         public List<Appointment> Appointments { get; set; }
     }
 }

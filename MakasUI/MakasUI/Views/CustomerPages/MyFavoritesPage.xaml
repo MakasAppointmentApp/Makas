@@ -29,7 +29,7 @@
                                 <StackLayout Orientation="Horizontal"  Padding="0">
                                     <StackLayout Padding="3">
                                         <Frame Padding="0" CornerRadius="6" BorderColor="#16353b" Margin="3" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                                            <Image Source="{Binding SaloonImage}" Aspect="AspectFill" HeightRequest="60" WidthRequest="90" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
+                                            <Image Source="{Binding SaloonImage}" Aspect="AspectFit" HeightRequest="60" WidthRequest="90" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" ></Image>
                                         </Frame>
                                     </StackLayout>
 
@@ -48,7 +48,7 @@
                                         <Label Text="{Binding SaloonName}" FontAttributes="Bold" TextColor="#16353b" FontSize="17" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5" Spacing="10">
-                                        <ImageButton  Clicked="Fav_Delete_Clicked" CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
+                                        <ImageButton   CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
                                       
                                     </StackLayout>
 

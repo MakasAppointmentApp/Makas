@@ -39,6 +39,12 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var result = JsonConvert.DeserializeObject<List<GetSaloonsByLocationDto>>(response);
             return result;
         }
+        public async Task<List<CustomerAppointmentsDto>> GetCustomerAppointmentAsync(int customerId)
+        {
+            var response = await client.GetStringAsync(App.API_URL + $"Customer/customerappointments?customerId={customerId}");
+            var result = JsonConvert.DeserializeObject<List<CustomerAppointmentsDto>>(response);
+            return result;
+        }
 
         public async Task<HttpResponseMessage> UpdateCustomerNameAsync(UpdateCustomerNameDto customer)
         {
@@ -63,6 +69,13 @@ namespace MakasUI.Services.CustomerServices.Concrete
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await client.PostAsync(App.API_URL + "Customer/updatecustomermail", content);
             return response;
+        }
+
+        public async Task<List<CustomerFavoritesDto>> GetCustomerFavoritesAsync(int customerId)
+        {
+            var response = await client.GetStringAsync(App.API_URL + $"Customer/customerfavorites?customerId={customerId}");
+            var result = JsonConvert.DeserializeObject<List<CustomerFavoritesDto>>(response);
+            return result;
         }
     }
 }

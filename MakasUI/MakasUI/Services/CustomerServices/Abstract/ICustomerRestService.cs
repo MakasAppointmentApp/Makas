@@ -12,6 +12,8 @@ namespace MakasUI.Services.CustomerServices.Abstract
     {
         Task<Customer> GetCustomerAsync(int customerId);
         Task<List<GetSaloonsByLocationDto>> ListSaloonsByLocationAsync(SearchSaloonsDto listedSaloon);
+        Task<List<CustomerAppointmentsDto>> GetCustomerAppointmentAsync(int customerId);
+        Task<List<CustomerFavoritesDto>> GetCustomerFavoritesAsync(int customerId);
         Task<HttpResponseMessage> UpdateCustomerNameAsync(UpdateCustomerNameDto customer);
         Task<HttpResponseMessage> UpdateCustomerPasswordAsync(UpdateCustomerPasswordDto customer);
         Task<HttpResponseMessage> UpdateCustomerMailAsync(UpdateCustomerMailDto customer);

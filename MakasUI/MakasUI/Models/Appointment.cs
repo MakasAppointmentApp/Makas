@@ -6,11 +6,13 @@ namespace MakasUI.Models
 {
     public class Appointment
     {
-        public string SaloonName { get; set; }
-        public string WorkerName { get; set; }
+        public int Id { get; set; }
+        public int CustomerId { get; set; }
+        public int SaloonId { get; set; }
+        public int WorkerId { get; set; }
         public DateTime Date { get; set; }
-        public DateTime Hour { get; set; }
-        public string Review { get; set; }
-        public double Rate { get; set; }
+        public Customer Customer { get; set; }
+        public Saloon Saloon { get; set; }
+        public Worker Worker { get; set; }
     }
 }

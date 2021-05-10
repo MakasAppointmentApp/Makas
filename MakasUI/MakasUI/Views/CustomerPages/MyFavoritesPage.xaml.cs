@@ -1,6 +1,9 @@
-﻿using MakasUI.Models;
+﻿using MakasUI.Functions;
+using MakasUI.Models;
+using MakasUI.Models.DtosForCustomer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +16,16 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyFavoritesPage : ContentPage
     {
-        public List<Saloon> Categories = new List<Saloon>();
+        Customer presentCustomer;
+        public ObservableCollection<CustomerFavoritesDto> AppointmentsCollection { get; set; }
+        //public List<Saloon> Categories = new List<Saloon>();
         public MyFavoritesPage()
         {
             InitializeComponent();
 
-            Categories.Add(new Saloon { SaloonName = "MEO kuafor", SaloonRate = 8.2 });
-            Categories.Add(new Saloon { SaloonName = "DAN kuafor", SaloonRate = 5.6 });
-            Categories.Add(new Saloon { SaloonName = "GWEN kuafor", SaloonRate = 4.4 });
-
-            FavoriteListView.ItemsSource = Categories;
+            AppointmentsCollection = new ObservableCollection<CustomerFavoritesDto>();
         }
-        private async void Fav_Delete_Clicked(object sender, EventArgs e)
+        /*private async void Fav_Delete_Clicked(object sender, EventArgs e)
         {
             // DisplayAlert("asd", "Test", "OK");
 
@@ -38,7 +39,34 @@ namespace MakasUI.Views.CustomerPages
 
 
         }
+        */
+        private async Task GetCustomerProfile()
+        {
+            var app = Application.Current as App;
+            var customer = await App.customerManager.GetCustomerAsync(Convert.ToInt32(app.USER_ID));
+            presentCustomer = customer;
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            AppointmentsCollection.Clear();
+            await GetCustomerProfile();
 
+            try
+            {
+                var result = await App.customerManager.GetCustomerFavoritesAsync(presentCustomer.Id);
+                foreach (var item in result)
+                {
+                    AppointmentsCollection.Add(item);
+                }
+                FavoriteListView.ItemsSource = AppointmentsCollection;
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Hata", "Favori bulunamadı", "Ok");
+            }
+
+        }
         private void FavoriteListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             /* var selectedInstructor = e.Item as Saloon;

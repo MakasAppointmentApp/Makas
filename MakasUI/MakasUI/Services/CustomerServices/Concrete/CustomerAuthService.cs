@@ -1,4 +1,5 @@
 ﻿using MakasUI.Models.DtosForAuth;
+using MakasUI.Services.CustomerServices.Abstract;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,15 +8,20 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MakasUI.Services
+namespace MakasUI.Services.CustomerServices.Concrete
 {
-    class CustomerAuthServices
+    public class CustomerAuthService: ICustomerAuthService
     {
+        HttpClientHandler clientHandler;
+        HttpClient client;
+        public CustomerAuthService()
+        {
+            clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            client = new HttpClient(clientHandler);
+        }
         public async Task<HttpResponseMessage> PostRegisterAsync(CustomerForRegisterDto customer)
         {
-            HttpClientHandler clientHandler = new HttpClientHandler();
-            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-            var client = new HttpClient(clientHandler);
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",accessToken)//access token parametre olarak verilecek
             var json = JsonConvert.SerializeObject(customer);
             HttpContent content = new StringContent(json);
@@ -25,10 +31,6 @@ namespace MakasUI.Services
         }
         public async Task<HttpResponseMessage> PostLoginAsync(CustomerForLoginDto customer)
         {
-            HttpClientHandler clientHandler = new HttpClientHandler();
-            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-            var client = new HttpClient(clientHandler);
-
             var json = JsonConvert.SerializeObject(customer);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");

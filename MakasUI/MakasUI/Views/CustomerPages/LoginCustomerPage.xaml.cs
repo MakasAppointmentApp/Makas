@@ -17,7 +17,6 @@ namespace MakasUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginCustomerPage : ContentPage
     {
-        CustomerAuthServices _apiServices = new CustomerAuthServices();
         public LoginCustomerPage()
         {
             InitializeComponent();
@@ -57,7 +56,7 @@ namespace MakasUI.Views
                 CustomerEmail = email.Text,
                 CustomerPassword = Password.Text
             };
-            var result = await _apiServices.PostLoginAsync(customer);
+            var result = await App.customerAuthManager.PostLoginAsync(customer);
             if (result.IsSuccessStatusCode.Equals(true))
             {
                 string response = await result.Content.ReadAsStringAsync();

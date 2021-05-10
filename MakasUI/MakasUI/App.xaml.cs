@@ -1,4 +1,6 @@
 ﻿using MakasUI.Services;
+using MakasUI.Services.CustomerManagers;
+using MakasUI.Services.CustomerServices.Concrete;
 using MakasUI.Services.SaloonManagers;
 using MakasUI.Services.SaloonServices;
 using MakasUI.Views;
@@ -19,11 +21,16 @@ namespace MakasUI
 
         public static SaloonManager saloonManager { get; private set; }
         public static SaloonAuthManager saloonAuthManager { get; private set; }
+        public static CustomerManager customerManager { get; private set; }
+        public static CustomerAuthManager customerAuthManager { get; private set; }
+
         public App()
         {
             InitializeComponent();
             saloonManager = new SaloonManager(new SaloonRestService());
             saloonAuthManager = new SaloonAuthManager(new SaloonAuthServices());
+            customerManager = new CustomerManager(new CustomerRestService());
+            customerAuthManager = new CustomerAuthManager(new CustomerAuthService());
             Device.SetFlags(new[] {
                 "Expander_Experimental"
             });

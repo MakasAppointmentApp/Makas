@@ -45,7 +45,7 @@ namespace MakasUI.Views
                 if (result.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Başarıyla kayıt oluşturuldu", "OK");
-                    await Navigation.PopAsync();
+                    await Navigation.PushAsync(new LoginCustomerPage(customer.CustomerEmail, customer.CustomerPassword));
                 }
                 else
                 {

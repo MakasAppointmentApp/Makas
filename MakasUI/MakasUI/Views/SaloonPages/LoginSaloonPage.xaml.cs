@@ -18,8 +18,6 @@ namespace MakasUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginSaloonPage : ContentPage
     {
-        SaloonAuthServices _apiServices = new SaloonAuthServices();
-
         public LoginSaloonPage()
         {
             InitializeComponent();
@@ -61,7 +59,7 @@ namespace MakasUI.Views
                  SaloonPassword = password.Text
 
             };
-            var result = await _apiServices.PostLoginAsync(saloon);
+            var result = await App.saloonAuthManager.PostLoginAsync(saloon);
             if (result.IsSuccessStatusCode.Equals(true))
             {
                 string response = await result.Content.ReadAsStringAsync();

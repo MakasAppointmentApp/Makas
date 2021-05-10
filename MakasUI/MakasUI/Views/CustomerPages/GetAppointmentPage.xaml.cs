@@ -2,6 +2,7 @@
 using MakasUI.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,12 @@ namespace MakasUI.Views.CustomerPages
             functions.backclick(back, Navigation);
             sName.Text = saloon.SaloonName;
             sRate.Text = Convert.ToString(saloon.SaloonRate);
-            workerImage.Source = worker.WorkerImage;
+            workerImage.Source = ImageSource.FromStream(() => new MemoryStream(worker.WorkerPhoto)); 
             workerName.Text = worker.WorkerName;
             workerRate.Text = Convert.ToString(worker.WorkerRate);
             var Hours = new List<Hour>
             {
-                new Hour { Time = "10:00"},
+                new Hour { Time = worker.Id.ToString()},
                 new Hour { Time = "11:00"},
                 new Hour { Time = "12:00"},
                 new Hour { Time = "13:00"},

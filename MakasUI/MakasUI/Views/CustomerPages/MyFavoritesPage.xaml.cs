@@ -18,16 +18,16 @@ namespace MakasUI.Views.CustomerPages
         {
             InitializeComponent();
 
-            Categories.Add(new Saloon { SaloonName = "MEO kuafor",  SaloonRate = 8.2 });
-            Categories.Add(new Saloon { SaloonName = "DAN kuafor",  SaloonRate = 5.6 });
-            Categories.Add(new Saloon { SaloonName = "GWEN kuafor",  SaloonRate = 4.4 });
+            Categories.Add(new Saloon { SaloonName = "MEO kuafor", SaloonRate = 8.2 });
+            Categories.Add(new Saloon { SaloonName = "DAN kuafor", SaloonRate = 5.6 });
+            Categories.Add(new Saloon { SaloonName = "GWEN kuafor", SaloonRate = 4.4 });
 
             FavoriteListView.ItemsSource = Categories;
         }
         private async void Fav_Delete_Clicked(object sender, EventArgs e)
         {
             // DisplayAlert("asd", "Test", "OK");
-            
+
             ImageButton btn = (ImageButton)sender;
             await btn.ScaleTo(1.2, 250, Easing.SpringIn);
             var ob = btn.CommandParameter as Saloon;
@@ -39,10 +39,10 @@ namespace MakasUI.Views.CustomerPages
 
         }
 
-        private async void FavoriteListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void FavoriteListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedInstructor = e.Item as Saloon;
-            await Navigation.PushAsync(new SaloonProfilePage(selectedInstructor));
+            /* var selectedInstructor = e.Item as Saloon;
+             await Navigation.PushAsync(new SaloonProfilePage(selectedInstructor));*/
 
         }
 

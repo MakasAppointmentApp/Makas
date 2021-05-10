@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using MakasUI.Functions;
 using MakasUI.Models;
 using MakasUI.Models.DtosForCustomer;
@@ -16,6 +19,7 @@ namespace MakasUI.Views
         SearchSaloonsDto _searched;
 
         GetSaloonsByLocationService service = new GetSaloonsByLocationService();
+        public List<GetSaloonsByLocationDto> ListedSaloon { get; set; }
 
         public SaloonListPage(SearchSaloonsDto searched)
         {
@@ -24,25 +28,31 @@ namespace MakasUI.Views
             _searched = searched;
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
-
-
+            ListedSaloon = new List<GetSaloonsByLocationDto>();
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            var response = await service.ListedSaloonLocationAsync(_searched);
-            KuaforListView.ItemsSource = response;
-        }
+            await getItems();
 
+
+        }
+        public async Task getItems()
+        {
+            var response = await service.ListedSaloonLocationAsync(_searched);
+            foreach (var item in response)
+            {
+                ListedSaloon.Add(item);
+            }
+            KuaforListView.ItemsSource = ListedSaloon;
+        }
 
         private async void Go_Profile_Clicked(object sender, EventArgs e)
         {
             ImageButton btn = (ImageButton)sender;
-
-            Saloon ob = btn.CommandParameter as Saloon;
-
-            await Navigation.PushAsync(new SaloonProfilePage(ob));
+            int Id = (int)btn.CommandParameter;
+            await Navigation.PushAsync(new SaloonProfilePage(Id));
             //await Navigation.PushAsync(new SaloonProfilePage());
         }
     }

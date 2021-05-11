@@ -51,7 +51,11 @@ namespace MakasUI.Views.CustomerPages
             base.OnAppearing();
             AppointmentsCollection.Clear();
             await GetCustomerProfile();
+            await getItems();
 
+        }
+        public async Task getItems()
+        {
             try
             {
                 var result = await App.customerManager.GetCustomerFavoritesAsync(presentCustomer.Id);
@@ -65,17 +69,13 @@ namespace MakasUI.Views.CustomerPages
             {
                 await DisplayAlert("Hata", "Favori bulunamadı", "Ok");
             }
-
-        }
-        private void FavoriteListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            /* var selectedInstructor = e.Item as Saloon;
-             await Navigation.PushAsync(new SaloonProfilePage(selectedInstructor));*/
-
         }
 
-        private void ImageButton_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private async void Go_Profile_Clicked(object sender, EventArgs e)
         {
+            ImageButton btn = (ImageButton)sender;
+            int Id = (int)btn.CommandParameter;
+            await Navigation.PushAsync(new SaloonProfilePage(Id));
 
         }
     }

@@ -47,7 +47,11 @@ namespace MakasUI.Views.CustomerPages
             base.OnAppearing();
             AppointmentsCollection.Clear();
             await GetCustomerProfile();
+            await getItems();
 
+        }
+        public async Task getItems()
+        {
             try
             {
                 var result = await App.customerManager.GetCustomerAppointmentAsync(presentCustomer.Id);
@@ -61,7 +65,6 @@ namespace MakasUI.Views.CustomerPages
             {
                 await DisplayAlert("Hata", "Randevu bulunamadı", "Ok");
             }
-
         }
         /*async void Review_Clicked(object sender, EventArgs e)
         {

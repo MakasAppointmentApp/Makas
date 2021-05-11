@@ -45,5 +45,9 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.GetCustomerFavoritesAsync(customerId);
         }
+        public Task<bool> IsFavoriteByCustomer(int saloonId, int customerId)
+        {
+            return _customerRestService.IsFavoriteByCustomer(saloonId,customerId);
+        }
     }
 }

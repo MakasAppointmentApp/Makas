@@ -11,6 +11,7 @@ namespace MakasUI.Services.CustomerServices.Abstract
     public interface ICustomerRestService
     {
         Task<Customer> GetCustomerAsync(int customerId);
+        Task<bool> IsFavoriteByCustomer(int saloonId, int customerId);
         Task<List<GetSaloonsByLocationDto>> ListSaloonsByLocationAsync(SearchSaloonsDto listedSaloon);
         Task<List<CustomerAppointmentsDto>> GetCustomerAppointmentAsync(int customerId);
         Task<List<CustomerFavoritesDto>> GetCustomerFavoritesAsync(int customerId);

@@ -35,7 +35,7 @@
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="End" >
                                     <Label x:Name="labelFav" Text="Favorilere Ekle" TextColor="#16353b" FontAttributes="Bold" VerticalOptions="Center"></Label>
-                                    <ImageButton x:Name="butFav" BackgroundColor="Transparent" Source="heartFilled.png" HeightRequest="25" VerticalOptions="Center"></ImageButton>
+                                    <ImageButton x:Name="butFav" BackgroundColor="Transparent" HeightRequest="25" VerticalOptions="Center"></ImageButton>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

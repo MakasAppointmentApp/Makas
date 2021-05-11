@@ -77,5 +77,12 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var result = JsonConvert.DeserializeObject<List<CustomerFavoritesDto>>(response);
             return result;
         }
+
+        public async Task<bool> IsFavoriteByCustomer(int saloonId, int customerId)
+        {
+            var result = await client.GetStringAsync(App.API_URL + $"Customer/isfavorite?saloonId={saloonId}&customerId={customerId}");
+            bool myBool = Convert.ToBoolean(result);
+            return myBool;
+        }
     }
 }

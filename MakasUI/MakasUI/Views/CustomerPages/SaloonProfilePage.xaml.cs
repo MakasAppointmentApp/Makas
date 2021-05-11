@@ -19,6 +19,7 @@ namespace MakasUI.Views.CustomerPages
     public partial class SaloonProfilePage : ContentPage
     {
         Saloon presentSaloon;
+        bool isFavorited;
         SaloonRestService service = new SaloonRestService();
         public ObservableCollection<Worker> WorkersCollection { get; set; }
         public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
@@ -56,11 +57,21 @@ namespace MakasUI.Views.CustomerPages
         {
             base.OnAppearing();
             await GetSaloonProfile();
+            await isFavorite();
             sName.Text = presentSaloon.SaloonName;
             sRate.Text = presentSaloon.SaloonRate.ToString();
             sImage.Source = ImageSource.FromStream(() => new MemoryStream(presentSaloon.SaloonImage));
             addressLabel.Text = presentSaloon.SaloonLocation;
             labelComment.Text = $"{presentSaloon.Reviews.Count()} Yorum";
+
+            if (isFavorited==true)
+            {
+                butFav.Source = "heartFilled.png";
+            }
+            else
+            {
+                butFav.Source = "heartEmpty.png";
+            }
         }
         private async void Comments_Clicked(object sender, EventArgs e)
         {
@@ -91,6 +102,12 @@ namespace MakasUI.Views.CustomerPages
                 // open the maps app directly
                 await Launcher.OpenAsync("geo:0,0?q=" + addressLabel.Text);
             }
+        }
+        private async Task isFavorite()
+        {
+            var app = Application.Current as App;
+            bool isFav = await App.customerManager.IsFavoriteByCustomer(presentSaloon.Id, Convert.ToInt32(app.USER_ID));
+            isFavorited = isFav;
         }
     }
 }

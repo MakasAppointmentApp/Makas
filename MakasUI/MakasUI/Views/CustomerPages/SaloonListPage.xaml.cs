@@ -34,7 +34,6 @@ namespace MakasUI.Views
             base.OnAppearing();
             await getItems();
 
-
         }
         public async Task getItems()
         {

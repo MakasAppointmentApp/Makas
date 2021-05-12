@@ -56,7 +56,7 @@
                                     <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center"  Padding="0,5,15,5" Spacing="10">
                                         <ImageButton CommandParameter="{Binding SaloonId}" Clicked="Go_Profile_Clicked" BackgroundColor="Transparent" Source="rightArrow.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25"></ImageButton>
 
-                                        <ImageButton   CommandParameter="{Binding .}"  BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
+                                        <ImageButton   CommandParameter="{Binding Id}" Clicked="UnFavorite_Clicked" BackgroundColor="Transparent" Source="heartFilled.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="25" ></ImageButton>
                                       
                                     </StackLayout>
 

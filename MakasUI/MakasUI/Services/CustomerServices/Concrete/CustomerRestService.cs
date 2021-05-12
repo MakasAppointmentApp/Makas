@@ -84,5 +84,30 @@ namespace MakasUI.Services.CustomerServices.Concrete
             bool myBool = Convert.ToBoolean(result);
             return myBool;
         }
+        public async Task<HttpResponseMessage> UnFavoriteAsync(int Id)
+        {
+            var json = JsonConvert.SerializeObject(Id);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.DeleteAsync(App.API_URL + $"Customer/unfavorite?id={Id}");
+            return response;
+        }
+        public async Task<HttpResponseMessage> FavoriteSaloon(AddFavoriteDto fav)
+        {
+            var json = JsonConvert.SerializeObject(fav);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(App.API_URL + "Customer/addfavorite", content);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> UnfavoriteV2(UnfavoriteItDto fav)
+        {
+            var json = JsonConvert.SerializeObject(fav);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.DeleteAsync(App.API_URL + $"Customer/unfavoritev2?customerId={fav.CustomerId}&SaloonId={fav.SaloonId}");
+            return response;
+        }
     }
 }

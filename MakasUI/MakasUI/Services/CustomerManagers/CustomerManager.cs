@@ -49,5 +49,17 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.IsFavoriteByCustomer(saloonId,customerId);
         }
+        public Task<HttpResponseMessage> UnFavoriteAsync(int Id)
+        {
+            return _customerRestService.UnFavoriteAsync(Id);
+        }
+        public Task<HttpResponseMessage> UnfavoriteV2(UnfavoriteItDto fav)
+        {
+            return _customerRestService.UnfavoriteV2(fav);
+        }
+        public Task<HttpResponseMessage> FavoriteSaloon(AddFavoriteDto fav)
+        {
+            return _customerRestService.FavoriteSaloon(fav);
+        }
     }
 }

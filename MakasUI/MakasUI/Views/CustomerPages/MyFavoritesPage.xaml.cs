@@ -18,28 +18,14 @@ namespace MakasUI.Views.CustomerPages
     {
         Customer presentCustomer;
         public ObservableCollection<CustomerFavoritesDto> FavoritesCollections { get; set; }
-        //public List<Saloon> Categories = new List<Saloon>();
         public MyFavoritesPage()
         {
             InitializeComponent();
 
             FavoritesCollections = new ObservableCollection<CustomerFavoritesDto>();
+            FavoriteListView.ItemsSource = FavoritesCollections;
         }
-        /*private async void Fav_Delete_Clicked(object sender, EventArgs e)
-        {
-            // DisplayAlert("asd", "Test", "OK");
 
-            ImageButton btn = (ImageButton)sender;
-            await btn.ScaleTo(1.2, 250, Easing.SpringIn);
-            var ob = btn.CommandParameter as Saloon;
-            Categories.Remove(ob);
-            FavoriteListView.ItemsSource = Categories;
-            await btn.ScaleTo(1.0, 50, Easing.SpringOut);
-
-
-
-        }
-        */
         private async Task GetCustomerProfile()
         {
             var app = Application.Current as App;
@@ -63,7 +49,7 @@ namespace MakasUI.Views.CustomerPages
                 {
                     FavoritesCollections.Add(item);
                 }
-                FavoriteListView.ItemsSource = FavoritesCollections;
+               
             }
             catch (Exception)
             {
@@ -86,13 +72,15 @@ namespace MakasUI.Views.CustomerPages
 
             try
             {
+                await btn.ScaleTo(1.2, 250, Easing.SpringIn);
                 var favorite = FavoritesCollections.FirstOrDefault(f => f.Id == Id);
                 var response = await App.customerManager.UnFavoriteAsync(favorite.Id);
                 if (response.IsSuccessStatusCode.Equals(true))
                 {
                     await DisplayAlert("Tebrikler", "Favorilerden çıkarıldı.", "Tamam");
-                    OnAppearing();
+                    FavoritesCollections.Remove(favorite);
                 }
+                await btn.ScaleTo(1.0, 50, Easing.SpringOut);
             }
             catch (Exception)
             {

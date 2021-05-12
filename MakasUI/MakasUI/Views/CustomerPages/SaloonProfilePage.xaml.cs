@@ -25,11 +25,11 @@ namespace MakasUI.Views.CustomerPages
         public ObservableCollection<Worker> WorkersCollection { get; set; }
         public ObservableCollection<AddPriceDto> PricesCollection { get; set; }
         private int _saloonId;
+        ItemFunctions functions = new ItemFunctions();
         public SaloonProfilePage(int Id)
         {
             _saloonId = Id;
             InitializeComponent();
-            ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
             functions.ButtonsLabelClick(labelComment, butComment);
             functions.ButtonsLabelClick(labelFav, butFav);
@@ -68,14 +68,17 @@ namespace MakasUI.Views.CustomerPages
             if (isFavorited==true)
             {
                 butFav.Source = "heartFilled.png";
+                labelFav.Text = "Favorilerden Kaldır";
             }
             else
             {
                 butFav.Source = "heartEmpty.png";
+                labelFav.Text = "Favorilere Ekle";
             }
         }
         private async void Comments_Clicked(object sender, EventArgs e)
         {
+            functions.ButtonClickWithLabel(labelComment, butComment);
             await Navigation.PushAsync(new CommentsPage(sName.Text, sRate.Text, presentSaloon.Reviews));
         }
         private async void Get_Appointment_Clicked(object sender, EventArgs e)

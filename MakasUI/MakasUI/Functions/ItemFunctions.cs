@@ -39,13 +39,23 @@ namespace MakasUI.Functions
             signup_tap.Tapped += async (s, e) =>
             {
                 await lbl.ScaleTo(1.2, 250, Easing.SpringIn);
+                await image.ScaleTo(1.2, 250, Easing.SpringIn);
                 image.PropagateUpClicked();
                 await lbl.ScaleTo(1.0, 50, Easing.SpringOut);
+                await image.ScaleTo(1.0, 50, Easing.SpringOut);
             };
             lbl.GestureRecognizers.Add(signup_tap);
             
         }
-        
+        public async void ButtonClickWithLabel(Label lbl, ImageButton image)
+        {
+            await lbl.ScaleTo(1.2, 250, Easing.SpringIn);
+            await image.ScaleTo(1.2, 250, Easing.SpringIn);
+            await lbl.ScaleTo(1.0, 50, Easing.SpringOut);
+            await image.ScaleTo(1.0, 50, Easing.SpringOut);
+        }
+
+
         public void registerCustomerclick(Label register, INavigation Navigation)
         {
             var signup_tap = new TapGestureRecognizer();

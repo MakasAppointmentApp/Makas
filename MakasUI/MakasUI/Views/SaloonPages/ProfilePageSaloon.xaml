@@ -9,7 +9,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="0" Margin="0">
+        <StackLayout Spacing="0">
             <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="0">
                 <Button Text="DÜZENLE" BackgroundColor="#EEEEEE" VerticalOptions="Fill" FontSize="16" FontAttributes="Bold"  HorizontalOptions="StartAndExpand" TextColor="#16353b" Clicked="EditClicked"/>
                 <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" Padding="0,0,10,0">

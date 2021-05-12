@@ -12,6 +12,9 @@ namespace MakasUI.Services.CustomerServices.Abstract
     {
         Task<Customer> GetCustomerAsync(int customerId);
         Task<bool> IsFavoriteByCustomer(int saloonId, int customerId);
+        Task<HttpResponseMessage> UnFavoriteAsync(int Id);
+        Task<HttpResponseMessage> UnfavoriteV2(UnfavoriteItDto fav);
+        Task<HttpResponseMessage> FavoriteSaloon(AddFavoriteDto fav);
         Task<List<GetSaloonsByLocationDto>> ListSaloonsByLocationAsync(SearchSaloonsDto listedSaloon);
         Task<List<CustomerAppointmentsDto>> GetCustomerAppointmentAsync(int customerId);
         Task<List<CustomerFavoritesDto>> GetCustomerFavoritesAsync(int customerId);

@@ -17,13 +17,13 @@ namespace MakasUI.Views.CustomerPages
     public partial class MyFavoritesPage : ContentPage
     {
         Customer presentCustomer;
-        public ObservableCollection<CustomerFavoritesDto> AppointmentsCollection { get; set; }
+        public ObservableCollection<CustomerFavoritesDto> FavoritesCollections { get; set; }
         //public List<Saloon> Categories = new List<Saloon>();
         public MyFavoritesPage()
         {
             InitializeComponent();
 
-            AppointmentsCollection = new ObservableCollection<CustomerFavoritesDto>();
+            FavoritesCollections = new ObservableCollection<CustomerFavoritesDto>();
         }
         /*private async void Fav_Delete_Clicked(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace MakasUI.Views.CustomerPages
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            AppointmentsCollection.Clear();
+            FavoritesCollections.Clear();
             await GetCustomerProfile();
             await getItems();
 
@@ -61,9 +61,9 @@ namespace MakasUI.Views.CustomerPages
                 var result = await App.customerManager.GetCustomerFavoritesAsync(presentCustomer.Id);
                 foreach (var item in result)
                 {
-                    AppointmentsCollection.Add(item);
+                    FavoritesCollections.Add(item);
                 }
-                FavoriteListView.ItemsSource = AppointmentsCollection;
+                FavoriteListView.ItemsSource = FavoritesCollections;
             }
             catch (Exception)
             {
@@ -76,6 +76,29 @@ namespace MakasUI.Views.CustomerPages
             ImageButton btn = (ImageButton)sender;
             int Id = (int)btn.CommandParameter;
             await Navigation.PushAsync(new SaloonProfilePage(Id));
+
+        }
+
+        private async void UnFavorite_Clicked(object sender, EventArgs e)
+        {
+            ImageButton btn = (ImageButton)sender;
+            int Id = (int)btn.CommandParameter;
+
+            try
+            {
+                var favorite = FavoritesCollections.FirstOrDefault(f => f.Id == Id);
+                var response = await App.customerManager.UnFavoriteAsync(favorite.Id);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Favorilerden çıkarıldı.", "Tamam");
+                    OnAppearing();
+                }
+            }
+            catch (Exception)
+            {
+
+                await DisplayAlert("Hata", "Fiyat silinemedi", "Tamam");
+            }
 
         }
     }

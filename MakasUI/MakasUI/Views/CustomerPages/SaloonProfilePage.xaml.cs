@@ -1,5 +1,6 @@
 ﻿using MakasUI.Functions;
 using MakasUI.Models;
+using MakasUI.Models.DtosForCustomer;
 using MakasUI.Models.DtosForSaloon;
 using MakasUI.Services.SaloonServices;
 using System;
@@ -108,6 +109,58 @@ namespace MakasUI.Views.CustomerPages
             var app = Application.Current as App;
             bool isFav = await App.customerManager.IsFavoriteByCustomer(presentSaloon.Id, Convert.ToInt32(app.USER_ID));
             isFavorited = isFav;
+        }
+
+        private async void FavoriteIt_Clicked(object sender, EventArgs e)
+        {
+            if (isFavorited == false)
+            {
+                var app = Application.Current as App;
+                AddFavoriteDto fav = new AddFavoriteDto
+                {
+                    SaloonId = presentSaloon.Id,
+                    CustomerId = Convert.ToInt32(app.USER_ID)
+                };
+                var response = await App.customerManager.FavoriteSaloon(fav);
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Tebrikler", "Salon favorilere eklendi.", "Tamam");
+                    OnAppearing();
+                }
+                else
+                {
+                    await DisplayAlert("Hata", "Salon favorilere eklenemedi!", "Tamam");
+                }
+            }
+            else
+            {
+                try
+                {
+                    var app = Application.Current as App;
+                    UnfavoriteItDto fav = new UnfavoriteItDto
+                    {
+                        SaloonId = presentSaloon.Id,
+                        CustomerId = Convert.ToInt32(app.USER_ID)
+                    };
+
+                    var response = await App.customerManager.UnfavoriteV2(fav);
+                    if (response.IsSuccessStatusCode.Equals(true))
+                    {
+                        await DisplayAlert("Tebrikler", "Favorilerden çıkarıldı.", "Tamam");
+                        OnAppearing();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Hata", "Salon favorilerden çıkarılamadı!", "Tamam");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    await DisplayAlert("Hata", "Favori silinemedi", "Tamam");
+                }
+            }
+
         }
     }
 }

@@ -6,6 +6,7 @@ using MakasUI.Functions;
 using MakasUI.Models;
 using MakasUI.Models.DtosForCustomer;
 using MakasUI.Services.CustomerServices;
+using MakasUI.ViewModels;
 using MakasUI.Views.CustomerPages;
 
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace MakasUI.Views
     public partial class SaloonListPage : ContentPage
     {
         SearchSaloonsDto _searched;
-        public List<GetSaloonsByLocationDto> ListedSaloon { get; set; }
+        SaloonListViewModel viewModel = new SaloonListViewModel();
 
         public SaloonListPage(SearchSaloonsDto searched)
         {
@@ -26,24 +27,17 @@ namespace MakasUI.Views
             _searched = searched;
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
-            ListedSaloon = new List<GetSaloonsByLocationDto>();
+
+
+            KuaforListView.ItemsSource = viewModel.ListedSaloon;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await getItems();
-
+            await viewModel.getItems(_searched);
         }
-        public async Task getItems()
-        {
-            var response = await App.customerManager.ListSaloonsByLocationAsync(_searched);
-            foreach (var item in response)
-            {
-                ListedSaloon.Add(item);
-            }
-            KuaforListView.ItemsSource = ListedSaloon;
-        }
+        
 
         private async void Go_Profile_Clicked(object sender, EventArgs e)
         {

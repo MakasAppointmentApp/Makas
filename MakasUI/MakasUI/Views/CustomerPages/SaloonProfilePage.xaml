@@ -9,8 +9,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="0" Margin="0">
-            <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Padding="5,0">
+        <StackLayout Spacing="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="50" BackgroundColor="#fa7a5a" Margin="0" Padding="5,0">
                 <Image Source="back.png"  HeightRequest="30" x:Name="back"></Image>
 
                 <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="Center">
@@ -21,7 +21,7 @@
                     <Label x:Name="sRate" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
                 </Frame>
             </StackLayout>
-            <ScrollView >
+            <ScrollView>
                 <StackLayout>
                     <Image x:Name="sImage" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFill" WidthRequest="500" HeightRequest="200"></Image>
                     <Label x:Name="addressLabel" Text="Eskişehir Teknik Üniversitesi 2 Eylül Kampüsü, 26555 Tepebaşı/Eskişehir" Margin="20,0" FontSize="15" TextColor="Black" HorizontalOptions="Center"></Label>

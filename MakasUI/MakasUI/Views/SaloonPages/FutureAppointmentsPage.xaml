@@ -40,16 +40,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <Frame BorderColor="#707070" BackgroundColor="#9ca7b3" CornerRadius="9"  Margin="3" Padding="0">
-                                <Frame.Background>
-                                    <LinearGradientBrush StartPoint="0,0"
-                                                                        EndPoint="1,0">
-                                        <GradientStop Color="#e8eef1"
-                                                                         Offset="0.1"/>
-                                        <GradientStop Color="#e8eef1"
-                                                                         Offset="1.0"/>
-                                    </LinearGradientBrush>
-                                </Frame.Background>
+                            <Frame BorderColor="#707070" BackgroundColor="#e8eef1" CornerRadius="9"  Margin="3" Padding="0">
                                 <StackLayout Orientation="Horizontal"  Padding="0">
                                     <StackLayout VerticalOptions="Center">
                                         <Label Text="{Binding CustomerFullName}" FontAttributes="Bold" TextColor="#16353b" FontSize="14" HorizontalTextAlignment="Start" Margin="30,0,0,0" VerticalTextAlignment="Center"></Label>

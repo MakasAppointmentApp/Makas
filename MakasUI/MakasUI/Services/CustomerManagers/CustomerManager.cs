@@ -61,5 +61,14 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.FavoriteSaloon(fav);
         }
+        public Task<List<HourDto>> GetAvailableHoursByDate(int workerId, DateTime date)
+        {
+            return _customerRestService.GetAvailableHoursByDate(workerId,date);
+        }
+        public Task<HttpResponseMessage> AddAppointmentAsync(AddAppointmentDto app)
+        {
+            return _customerRestService.AddAppointmentAsync(app);
+        }
+
     }
 }

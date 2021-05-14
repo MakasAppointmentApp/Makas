@@ -49,6 +49,7 @@
                     <BoxView WidthRequest="1" Color="#fa7a5a"></BoxView>
                     <ImageButton Clicked="ImageButton_Clicked" BackgroundColor="Transparent" Source="calendar.png" HeightRequest="25"></ImageButton>
                 </StackLayout>
+
             </yummy:PancakeView>
             <ListView x:Name="hourList" Margin="10,0" SelectionMode="Single" HasUnevenRows="True" >
                 <ListView.ItemTemplate>
@@ -56,14 +57,14 @@
                         <ViewCell Tapped="ViewCell_Tapped" >
                             <Frame x:Name="hourFrame" BorderColor="#e8eef1" HasShadow="True" BackgroundColor="#e8eef1" CornerRadius="20" Margin="0,5"  Padding="0,10">
                                 <StackLayout VerticalOptions="Center">
-                                    <Label x:Name="hourLabel" TextColor="#67b9cb" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"  Text="{Binding Time}"/>
+                                    <Label TextColor="#67b9cb" Text="{Binding Hour, StringFormat='{0:N}:00'}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="17" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="RANDEVU AL" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
+            <Button Text="RANDEVU AL" Clicked="Randevu_Al_Button_Clicked" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
 
         </StackLayout>
     </ContentPage.Content>

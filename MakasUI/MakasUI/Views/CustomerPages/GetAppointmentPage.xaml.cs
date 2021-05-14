@@ -1,7 +1,9 @@
 ﻿using MakasUI.Functions;
 using MakasUI.Models;
+using MakasUI.Models.DtosForCustomer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,9 @@ namespace MakasUI.Views.CustomerPages
     public partial class GetAppointmentPage : ContentPage
     {
         ViewCell lastCell;
+        Worker selectedWorker;
+        int _saloonId;
+        public ObservableCollection<HourDto> HoursCollection { get; set; }
 
         public GetAppointmentPage(Worker worker, Saloon saloon)
         {
@@ -24,45 +29,51 @@ namespace MakasUI.Views.CustomerPages
             datePicker.MaximumDate = DateTime.Now.AddYears(1);
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
+            selectedWorker = worker;
+            _saloonId = saloon.Id;
             sName.Text = saloon.SaloonName;
             sRate.Text = Convert.ToString(saloon.SaloonRate);
-            workerImage.Source = ImageSource.FromStream(() => new MemoryStream(worker.WorkerPhoto)); 
+            workerImage.Source = ImageSource.FromStream(() => new MemoryStream(worker.WorkerPhoto));
             workerName.Text = worker.WorkerName;
             workerRate.Text = Convert.ToString(worker.WorkerRate);
-            var Hours = new List<Hour>
-            {
-                new Hour { Time = worker.Id.ToString()},
-                new Hour { Time = "11:00"},
-                new Hour { Time = "12:00"},
-                new Hour { Time = "13:00"},
-                new Hour { Time = "14:00"},
-                new Hour { Time = "15:00"},
-                new Hour { Time = "16:00"},
-                new Hour { Time = "17:00"},
-                new Hour { Time = "18:00"},
-                new Hour { Time = "19:00"},
-                new Hour { Time = "20:00"},
-                new Hour { Time = "21:00"}
-            };
-            hourList.ItemsSource = Hours;
+            HoursCollection = new ObservableCollection<HourDto>();
+            hourList.ItemsSource = HoursCollection;
 
         }
-
-        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        protected async override void OnAppearing()
         {
-            var Hours = new List<Hour>
+            base.OnAppearing();
+            try
             {
-                new Hour { Time = "10:00"},
-                new Hour { Time = "11:00"},
-                new Hour { Time = "12:00"},
-                new Hour { Time = "13:00"},
-                new Hour { Time = "14:00"},
-                new Hour { Time = "15:00"},
-                new Hour { Time = "16:00"},
-                new Hour { Time = "17:00"}
-            };
-            hourList.ItemsSource = Hours;
-            //Burada date değiştiğinde backendden yeni date e göre değerler gelecek
+                var today = DateTime.Now.Date;
+                var response = await App.customerManager.GetAvailableHoursByDate(selectedWorker.Id, today);
+                foreach (var item in response)
+                {
+                    HoursCollection.Add(item);
+                }
+                if (HoursCollection.Count() == 0)
+                {
+                    await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
+                }
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
+            }
+           
+        }
+        private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            HoursCollection.Clear();
+            var response = await App.customerManager.GetAvailableHoursByDate(selectedWorker.Id, datePicker.Date);
+            foreach (var item in response)
+            {
+                HoursCollection.Add(item);
+            }
+            if (HoursCollection.Count() == 0)
+            {
+                await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
+            }
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
@@ -79,6 +90,31 @@ namespace MakasUI.Views.CustomerPages
             {
                 viewCell.View.BackgroundColor = Color.FromHex("#fa7a5a");
                 lastCell = viewCell;
+            }
+        }
+
+        private async void Randevu_Al_Button_Clicked(object sender, EventArgs e)
+        {
+            var app = Application.Current as App;
+            var hour = hourList.SelectedItem as HourDto;
+            var selectedDate = datePicker.Date;
+            DateTime newDate = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, Convert.ToInt32(hour.Hour), 00, 00);
+            var response = await App.customerManager.AddAppointmentAsync(
+                new AddAppointmentDto
+                {
+                    CustomerId = Convert.ToInt32(app.USER_ID),
+                    SaloonId = _saloonId,
+                    WorkerId = selectedWorker.Id,
+                    Date = newDate
+                });
+            if (response.IsSuccessStatusCode.Equals(true))
+            {
+                await DisplayAlert("Başarılı.", $" Bu ayın {newDate.Date.Day}'inde {selectedWorker.WorkerName}'e randevunuz başarıyla alınmıştır.", "Tamam");
+                App.Current.MainPage = new CustomerHomePage();
+            }
+            else
+            {
+                await DisplayAlert("Hata.", "Bizden kaynaklı bir hata oluştu.Daha sonra tekrar deneyiniz.", "Tamam");
             }
         }
     }

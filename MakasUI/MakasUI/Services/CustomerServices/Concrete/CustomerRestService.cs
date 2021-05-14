@@ -4,6 +4,7 @@ using MakasUI.Services.CustomerServices.Abstract;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -107,6 +108,21 @@ namespace MakasUI.Services.CustomerServices.Concrete
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await client.DeleteAsync(App.API_URL + $"Customer/unfavoritev2?customerId={fav.CustomerId}&SaloonId={fav.SaloonId}");
+            return response;
+        }
+        public async Task<List<HourDto>> GetAvailableHoursByDate(int workerId, DateTime date)
+        {
+            var convertedDate = $"{date.Year}-{date.Month}-{date.Day}";
+            var response = await client.GetStringAsync(App.API_URL + $"Customer/availablehours?workerId={workerId}&date={convertedDate}");
+            var result = JsonConvert.DeserializeObject<List<HourDto>>(response);
+            return result;
+        }
+        public async Task<HttpResponseMessage> AddAppointmentAsync(AddAppointmentDto app)
+        {
+            var json = JsonConvert.SerializeObject(app);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(App.API_URL + "Customer/addappointment", content);
             return response;
         }
     }

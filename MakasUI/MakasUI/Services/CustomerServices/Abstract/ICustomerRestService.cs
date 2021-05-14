@@ -21,5 +21,7 @@ namespace MakasUI.Services.CustomerServices.Abstract
         Task<HttpResponseMessage> UpdateCustomerNameAsync(UpdateCustomerNameDto customer);
         Task<HttpResponseMessage> UpdateCustomerPasswordAsync(UpdateCustomerPasswordDto customer);
         Task<HttpResponseMessage> UpdateCustomerMailAsync(UpdateCustomerMailDto customer);
+        Task<List<HourDto>> GetAvailableHoursByDate(int workerId, DateTime date);
+        Task<HttpResponseMessage> AddAppointmentAsync(AddAppointmentDto app);
     }
 }

@@ -19,11 +19,21 @@
 		<item name="colorAccent">#16353b</item>
 		<item name="colorControlNormal">@android:color/transparent</item>"
 		<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
-
+    <item name="alertDialogTheme">@style/AlertDialogTheme</item>
 
 	</style>
 	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
 		<item name="colorAccent">#2196F3</item>
 	</style>
+	<style name="AlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+    <!-- Background Color-->
+    <item name="android:background">#fa7a5a</item>
+    <!-- Text Color for title and message -->
+    <item name="android:textColorPrimary">#e8eef1</item>
+		<item name="colorAccent">#2196F3</item>
+  </style>
+
+
+
 
 </resources>

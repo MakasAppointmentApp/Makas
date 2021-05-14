@@ -47,7 +47,7 @@ namespace MakasUI.Views.CustomerPages
             }
             foreach (var item in saloon.Workers)
             {
-                WorkersCollection.Add(new Worker { WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate = item.WorkerRate });
+                WorkersCollection.Add(new Worker {Id=item.Id, WorkerName = item.WorkerName, WorkerPhoto = item.WorkerPhoto, WorkerRate = item.WorkerRate });
             }
             presentSaloon = saloon;
             workers.ItemsSource = WorkersCollection;

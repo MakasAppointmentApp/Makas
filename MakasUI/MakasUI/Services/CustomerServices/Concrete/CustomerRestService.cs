@@ -125,5 +125,11 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var response = await client.PostAsync(App.API_URL + "Customer/addappointment", content);
             return response;
         }
+
+        public async Task<HttpResponseMessage> GetReviewIfExists(int saloonId, int customerId, int workerId, int appointmentId)
+        {
+            var response = await client.GetAsync(App.API_URL + $"Customer/getexistsreviews?saloonId={saloonId}&customerId={customerId}&workerId={workerId}&appointmentId={appointmentId}");
+            return response;
+        }
     }
 }

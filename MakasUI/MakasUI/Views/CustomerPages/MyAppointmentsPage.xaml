@@ -51,9 +51,11 @@
                                         <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="12" HorizontalTextAlignment="Start" Margin="10,0" VerticalTextAlignment="Center"></Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
-                                        <Label Text="" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
-                                        <ImageButton   BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
-
+                                        <Label Text="{Binding SaloonId}" IsVisible="false" FontAttributes="Bold" TextColor="#16353b" FontSize="0"  VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding WorkerId}" IsVisible="false" FontAttributes="Bold" TextColor="#16353b" FontSize="0"  VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding AppointmentId}" IsVisible="false" FontAttributes="Bold" TextColor="#16353b" FontSize="0"  VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding reviewControl}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
+                                        <ImageButton CommandParameter="{Binding .}" Clicked="Review_Clicked" BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
                                     </StackLayout>
 
                                 </StackLayout>

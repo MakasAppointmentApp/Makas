@@ -24,5 +24,7 @@ namespace MakasUI.Services.CustomerServices.Abstract
         Task<List<HourDto>> GetAvailableHoursByDate(int workerId, DateTime date);
         Task<HttpResponseMessage> AddAppointmentAsync(AddAppointmentDto app);
         Task<HttpResponseMessage> GetReviewIfExists(int saloonId, int customerId, int workerId, int appointmentId);
+        Task<HttpResponseMessage> AddReviewAsync(AddReviewDto review);
+        Task<Review> GetReviewAsync(int Id);
     }
 }

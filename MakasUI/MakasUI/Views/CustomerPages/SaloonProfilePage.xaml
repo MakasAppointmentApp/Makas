@@ -18,7 +18,7 @@
 
                 </StackLayout>
                 <Frame  CornerRadius="20" Padding="30,0" Margin="0,8" HorizontalOptions="End"   BackgroundColor="#EEEEEE">
-                    <Label x:Name="sRate" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
+                    <Label x:Name="sRate"  HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" TextColor="#fa7a5a"></Label>
                 </Frame>
             </StackLayout>
             <ScrollView>
@@ -52,8 +52,8 @@
                                             </yummy:PancakeView.Shadow>
                                             <StackLayout Padding="5,0" Margin="0,0,5,10">
 
-                                                <yummy:PancakeView CornerRadius="90"  BackgroundColor="black" Padding="0"  Margin="55,0">
-                                                    <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFit" />
+                                                <yummy:PancakeView CornerRadius="90" HeightRequest="80"  BackgroundColor="black" Padding="0"  Margin="55,0">
+                                                    <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFill" />
                                                 </yummy:PancakeView>
                                                 <Frame  CornerRadius="10" Padding="5" Margin="50,5" >
                                                     <Frame.Background>

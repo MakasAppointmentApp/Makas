@@ -131,5 +131,19 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var response = await client.GetAsync(App.API_URL + $"Customer/getexistsreviews?saloonId={saloonId}&customerId={customerId}&workerId={workerId}&appointmentId={appointmentId}");
             return response;
         }
+        public async Task<HttpResponseMessage> AddReviewAsync(AddReviewDto review)
+        {
+            var json = JsonConvert.SerializeObject(review);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync(App.API_URL + "Customer/addreview",content);
+            return response;
+        }
+        public async Task<Review> GetReviewAsync(int Id)
+        {
+            var result = await client.GetStringAsync(App.API_URL + $"Customer/specialreview?Id={Id}");
+            var review = JsonConvert.DeserializeObject<Review>(result);
+            return review;
+        }
     }
 }

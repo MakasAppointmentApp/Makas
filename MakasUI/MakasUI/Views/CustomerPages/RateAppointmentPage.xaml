@@ -65,7 +65,7 @@
                 <Label Text="Yorum Yapın" Margin="20,0,0,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="#6b6c6c " FontSize="14"/>
                 <Frame BackgroundColor="white" Padding="20,0">
                     <StackLayout Padding="0">
-                        <Editor HeightRequest="120" Placeholder="Lütfen kuaför hakkında denetiminizi yazınız, &#10;Hem kuaförle hem de diğer kullanıcılarla paylaşınız." FontSize="14" TextColor="#16353b" PlaceholderColor="#16353b" />
+                        <Editor x:Name="commentLabel" HeightRequest="120" Placeholder="Lütfen kuaför hakkında denetiminizi yazınız, &#10;Hem kuaförle hem de diğer kullanıcılarla paylaşınız." FontSize="14" TextColor="#16353b" PlaceholderColor="#16353b" />
                     </StackLayout>
 
 
@@ -73,7 +73,7 @@
             </StackLayout>
 
 
-            <Button Text="GÖNDER" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="110,5" FontSize="18" TextColor="White" />
+            <Button Clicked="Button_Clicked" Text="GÖNDER" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="110,5" FontSize="18" TextColor="White" />
             <Image Source="logo.png" HeightRequest="80" Opacity="0.6"/>
 
         </StackLayout>

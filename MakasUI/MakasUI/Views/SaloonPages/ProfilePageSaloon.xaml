@@ -37,7 +37,7 @@
                     </StackLayout>
                     <Label Text="Salonunuzda Çalışan Kuaförler" TextColor="Black" HorizontalOptions="Center" FontAttributes="Bold" FontSize="15"></Label>
                     <StackLayout VerticalOptions="Center" Padding="0" >
-                        <CarouselView x:Name="workers"  IsScrollAnimated="True"  HorizontalScrollBarVisibility="Always" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
+                        <CarouselView x:Name="workers"  IsScrollAnimated="True"  HorizontalScrollBarVisibility="Always" Loop="False" HeightRequest="180" PeekAreaInsets="100" Margin="1,0,1,0" >
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Padding="10,0" >
@@ -47,8 +47,8 @@
                                             </yummy:PancakeView.Shadow>
                                             <StackLayout Padding="5,5" Margin="0,0,0,10">
 
-                                                <yummy:PancakeView CornerRadius="90"  BackgroundColor="black" Padding="0"  Margin="55,0">
-                                                    <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFit" />
+                                                <yummy:PancakeView CornerRadius="90" HeightRequest="80"  BackgroundColor="black" Padding="0"  Margin="55,0">
+                                                    <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFill" />
                                                 </yummy:PancakeView>
                                                 <Frame  CornerRadius="10" Padding="5" Margin="50,5" >
                                                     <Frame.Background>

@@ -13,7 +13,6 @@ namespace MakasUI.Views.CustomerPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EvaluationPage : ContentPage
     {
-         
         public EvaluationPage()
         {
             InitializeComponent();                     
@@ -21,5 +20,6 @@ namespace MakasUI.Views.CustomerPages
             functions.backclick(back, Navigation);
 
         }
+
     }
 }

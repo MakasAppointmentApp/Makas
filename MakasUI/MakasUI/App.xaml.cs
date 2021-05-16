@@ -13,7 +13,7 @@ namespace MakasUI
 {
     public partial class App : Application
     {
-        public const string API_URL = "https://192.168.1.20:45455/api/";
+        public const string API_URL = "https://192.168.1.107:45455/api/";
         public const string tokenKey = "token";
         public const string loggedInKey = "loggedIn";
         public const string userId = "userId";

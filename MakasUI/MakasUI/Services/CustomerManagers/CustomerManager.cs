@@ -73,5 +73,13 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.GetReviewIfExists(saloonId, customerId, workerId, appointmentId);
         }
+        public Task<HttpResponseMessage> AddReviewAsync(AddReviewDto review)
+        {
+            return _customerRestService.AddReviewAsync(review);
+        }
+        public Task<Review> GetReviewAsync(int Id)
+        {
+            return _customerRestService.GetReviewAsync(Id);
+        }
     }
 }

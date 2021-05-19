@@ -20,11 +20,16 @@ namespace MakasUI.Views.SaloonPages
         }
 
 
-        private void Logout_Clicked(object sender, EventArgs e)
+        private async void Logout_Clicked(object sender, EventArgs e)
         {
-            var app = Application.Current as App;
-            App.saloonAuthManager.LogOutAsync(app);  
-            App.Current.MainPage = new NavigationPage(new WelcomePage());
+            var action = await DisplayAlert("ÇIKIŞ?", "Çıkış yapmak istediğinize emin misiniz?", "Evet", "Hayır");
+            if (action)
+            {
+                var app = Application.Current as App;
+                App.saloonAuthManager.LogOutAsync(app);
+                App.Current.MainPage = new NavigationPage(new WelcomePage());
+            }
+
 
         }
 

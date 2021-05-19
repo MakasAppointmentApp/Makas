@@ -81,5 +81,9 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.GetReviewAsync(Id);
         }
+        public Task<HttpResponseMessage> CancelAppointment(int Id)
+        {
+            return _customerRestService.CancelAppointment(Id);
+        }
     }
 }

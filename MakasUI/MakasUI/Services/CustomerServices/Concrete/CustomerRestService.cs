@@ -145,5 +145,14 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var review = JsonConvert.DeserializeObject<Review>(result);
             return review;
         }
+
+        public async Task<HttpResponseMessage> CancelAppointment(int Id)
+        {
+            var json = JsonConvert.SerializeObject(Id);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.DeleteAsync(App.API_URL + $"Customer/cancelappointment?appointmentId={Id}");
+            return response;
+        }
     }
 }

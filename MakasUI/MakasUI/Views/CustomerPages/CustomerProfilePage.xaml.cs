@@ -35,9 +35,15 @@ namespace MakasUI.Views.CustomerPages
 
 
         }
-        private void ExitClicked(object sender, EventArgs e)
+        private async void ExitClicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new WelcomePage());
+            var action = await DisplayAlert("ÇIKIŞ?", "Çıkış yapmak istediğinize emin misiniz?", "Evet", "Hayır");
+            if (action)
+            {
+                var app = Application.Current as App;
+                App.customerAuthManager.LogOutAsync(app);
+                App.Current.MainPage = new NavigationPage(new WelcomePage());
+            }
 
         }
 

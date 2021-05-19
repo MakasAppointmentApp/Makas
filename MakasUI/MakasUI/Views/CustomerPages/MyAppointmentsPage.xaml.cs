@@ -85,7 +85,20 @@ namespace MakasUI.Views.CustomerPages
             await btn.ScaleTo(1.0, 50, Easing.SpringOut);
             if (ob.ReviewControl == "İptal Et")
             {
-                await DisplayAlert("İptal", "Randevuyu iptal etmek istediğinize emin misiniz?", "Ok");
+                var action = await DisplayAlert("İPTAL?", "Randevunuzu iptal etmek istediğinize emin misiniz?", "Evet", "Hayır");
+                if (action)
+                {
+                    try
+                    {
+                        var result = await App.customerManager.CancelAppointment(ob.AppointmentId);
+                        OnAppearing();
+                    }
+                    catch (Exception)
+                    {
+                        await DisplayAlert("Hata", "Randevu iptal edilemedi", "Ok");
+                    }
+                    
+                }
 
             }
             else if (ob.ReviewControl == "Değerlendirmem")

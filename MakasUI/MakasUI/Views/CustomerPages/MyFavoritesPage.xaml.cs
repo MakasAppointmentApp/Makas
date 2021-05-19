@@ -85,7 +85,7 @@ namespace MakasUI.Views.CustomerPages
             catch (Exception)
             {
 
-                await DisplayAlert("Hata", "Fiyat silinemedi", "Tamam");
+                await DisplayAlert("Hata", "Favori silinemedi", "Tamam");
             }
 
         }

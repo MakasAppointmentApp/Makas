@@ -15,6 +15,8 @@ namespace MakasUI.Views.CustomerPages
     public partial class SaloonSearchPage : ContentPage
     {
         bool genderBoolean = false;
+       
+
         public SaloonSearchPage()
         {
             InitializeComponent();
@@ -32,13 +34,16 @@ namespace MakasUI.Views.CustomerPages
 
             var SelectedCity = "";
             var SelectedDistrict = "";
-            if (cityPicker.SelectedItem != null && districtPicker.SelectedItem != null)
+
+            if (cityPicker.SelectedItem != null && districtPicker.SelectedItem != null && genderPicker.SelectedItem !=null )
             {
 
                 var selectedItem = cityPicker.SelectedItem as City;
                 SelectedCity = selectedItem.Value;
                 var selectedItem2 = districtPicker.SelectedItem as City;
                 SelectedDistrict = selectedItem2.Value;
+               
+
 
                 var listedSaloon = new SearchSaloonsDto
                 {
@@ -54,7 +59,7 @@ namespace MakasUI.Views.CustomerPages
             }
             else
             {
-                await DisplayAlert("Hata", "şehir ve ilçe seçmelisiniz", "OK");
+                await DisplayAlert("Hata", "Şehir, ilçe ve cinsiyet  seçmelisiniz", "Tamam");
             }
         }
 

@@ -24,7 +24,7 @@
                     <BoxView HeightRequest="1" BackgroundColor="#6b6c6c" Opacity="0.8"  ></BoxView>
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" Padding="10,0,0,0">
+                <StackLayout Orientation="Vertical">
 
                     <xct:Expander Margin="5,0">
                         <xct:Expander.Header>
@@ -43,10 +43,11 @@
 
                             <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Vertical">
-                                    <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
-                                    <Entry x:Name ="sName" MaxLength="30" Keyboard="Email"  Placeholder="Yeni soyisminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                    <Entry  x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                    <Entry  x:Name ="sName" MaxLength="30" Keyboard="Email"  Placeholder="Yeni soyisminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
                                 </StackLayout>
                             </Frame>
+                            <Label  Padding="70,0,0,0" Margin="0,-10,0,-10" x:Name="nameAndSurnameUpdateErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
 
                             <Button x:Name="isimGüncelle" 
                             Text="GÜNCELLE" 
@@ -62,7 +63,7 @@
 
                     <xct:Expander Margin="5,0">
                         <xct:Expander.Header>
-                            <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
+                            <StackLayout Orientation="Horizontal" Padding="20,30,0,0">
                                 <StackLayout Padding="0,0,15,0">
                                     <ImageButton  BackgroundColor="Transparent" Source="email.png"  HeightRequest="30" ></ImageButton>
                                 </StackLayout>
@@ -73,29 +74,29 @@
                             </StackLayout>
                         </xct:Expander.Header>
 
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,0" >
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,5,0,80" >
 
                             <Frame x:Name="emailEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                                <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Entry x:Name ="emailEdit" MaxLength="30" Margin="5,0,0,0" Keyboard="Email" Placeholder="Yeni E-mailiniz:" PlaceholderColor="#6b6c6c"  WidthRequest="270" TextColor="#16353b"/>
                                 </StackLayout>
                             </Frame>
-
+                            <Label Padding="70,0,0,0" Margin="0,-10,0,5" x:Name="emailUpdateErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                             <Button x:Name="emailGüncelle" 
                             Text="GÜNCELLE" 
                             Clicked="CustomerMail_Update_Button_Clicked"
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="90,5" 
+                            Margin="90,-5" 
                             TextColor="White"
                             />
                         </StackLayout>
                     </xct:Expander>
 
-                    <xct:Expander Margin="5,0">
+                    <xct:Expander Margin="5,0" Padding="0,0,0,15" >
                         <xct:Expander.Header>
-                            <StackLayout Orientation="Horizontal" Padding="20,15,0,0">
+                            <StackLayout  Orientation="Horizontal" Padding="20,30,0,0">
                                 <StackLayout Padding="0,0,15,0">
                                     <ImageButton  BackgroundColor="Transparent" Source="password.png"  HeightRequest="30" ></ImageButton>
                                 </StackLayout>
@@ -118,25 +119,26 @@
                                     </Image>
                                 </StackLayout>
                             </Frame>
-
+                            <Label   Padding="75,0,0,0" Margin="0,-5,0,0" x:Name="oldPasswordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                             <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Vertical">
-                                    <Entry x:Name ="newPassword" MaxLength="30"  Placeholder="Yeni Şifreniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
+                                    <Entry x:Name ="newPassword" MaxLength="30" Margin="0,0,0,-5"  Placeholder="Yeni Şifreniz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
                                     <Entry x:Name ="verifyPassword" MaxLength="30"  Placeholder="Yeni Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="Black"/>
                                 </StackLayout>
                             </Frame>
-
+                            <Label  Padding="75,0,0,0" Margin="0,-5,0,0" x:Name="newPasswordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                             <Button x:Name="passwordGüncelle" 
                             Text="GÜNCELLE" 
                             Clicked="PasswordChange_Button_Clicked"
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="90,5" 
-                            TextColor="White"
+                            Margin="90,5,90,45" 
+                            TextColor="White"                                                                     
                             />
                         </StackLayout>
                     </xct:Expander>
+                    
                 </StackLayout>
 
                 <StackLayout Padding="10,5">

@@ -27,15 +27,18 @@
                         <Label Text="Makas" FontSize="40" CharacterSpacing="1" TextColor="#fa7a5a"  HorizontalOptions="Center"></Label>
                     </StackLayout>
                     <Frame x:Name="emailFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="user.png" HeightRequest="25" HorizontalOptions="Start"/>
-                            <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail" PlaceholderColor="Gray" WidthRequest="300" TextColor="Black"/>
+                        <StackLayout Padding="0">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="user.png" HeightRequest="25" HorizontalOptions="Start"/>
+                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail" PlaceholderColor="Gray" WidthRequest="300" TextColor="Black"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
+                    <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="emailErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                     <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="password.png" HeightRequest="25" HorizontalOptions="Start"/>
-                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="Gray" WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="Gray" WidthRequest="275" TextColor="Black" x:Name="password"/>
                             <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
@@ -43,6 +46,7 @@
                             </Image>
                         </StackLayout>
                     </Frame>
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="passwordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Button Text="GİRİŞ YAP" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" TextColor="White" Clicked="Login_Clicked"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Padding="0,0,0,50">
                         <Label Text="Hesabın yok mu? Hemen " TextColor="#16353b" FontSize="15"></Label>

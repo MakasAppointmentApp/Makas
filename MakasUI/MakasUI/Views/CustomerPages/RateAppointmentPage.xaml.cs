@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MakasUI.Functions;
+using MakasUI.Helpers.Validations.CustomerValidations.CustomerRateValidations;
 using MakasUI.Models;
 using MakasUI.Models.DtosForCustomer;
 using Syncfusion.SfRating.XForms;
@@ -34,31 +35,40 @@ namespace MakasUI.Views.CustomerPages
             RateLabel.Text = rating.Value.ToString();
         }
 
+        CustomerRateValidator customerRateValidator = new CustomerRateValidator();
+        CustomerCommentValidator customerCommentValidator = new CustomerCommentValidator();
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var app = Application.Current as App;
+            string customerRateValidate = customerRateValidator.Validate(RateLabel.Text);
+            string customerCommentValidate = customerCommentValidator.Validate(commentLabel.Text);
 
-            var response = await App.customerManager.AddReviewAsync(
-                new AddReviewDto
-                {
-                    AppointmentId = ob.AppointmentId,
-                    CustomerId = Convert.ToInt32(app.USER_ID),
-                    SaloonId = ob.SaloonId,
-                    WorkerId = ob.WorkerId,
-                    Date = DateTime.Now,
-                    Rate = Convert.ToDouble(RateLabel.Text),
-                    Comment = commentLabel.Text,
-                });
-            if (response.IsSuccessStatusCode.Equals(true))
+            if (customerRateValidate == null && customerCommentValidate == null)
             {
-                await DisplayAlert("Başarılı", "Yorumunuz başarıyla eklendi", "Tamam");
-                App.Current.MainPage = new CustomerHomePage();
+                var app = Application.Current as App;
 
+                var response = await App.customerManager.AddReviewAsync(
+                    new AddReviewDto
+                    {
+                        AppointmentId = ob.AppointmentId,
+                        CustomerId = Convert.ToInt32(app.USER_ID),
+                        SaloonId = ob.SaloonId,
+                        WorkerId = ob.WorkerId,
+                        Date = DateTime.Now,
+                        Rate = Convert.ToDouble(RateLabel.Text),
+                        Comment = commentLabel.Text,
+                    });
+                if (response.IsSuccessStatusCode.Equals(true))
+                {
+                    await DisplayAlert("Başarılı", "Yorumunuz başarıyla eklendi", "Tamam");
+                    App.Current.MainPage = new CustomerHomePage();
+                }
             }
             else
             {
-                await DisplayAlert("Hata", "Bir hata oldu", "Tamam");
+                customerRateErrorLabel.Text = customerRateValidate;
+                customerCommentErrorLabel.Text = customerCommentValidate;
             }
+
         }
     }
 }

@@ -35,28 +35,28 @@
                                ></Label>
 
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
-                            <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="İşletme adı:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            <Entry x:Name ="registerSaloonName" MaxLength="30" Keyboard="Email"  Placeholder="İşletme adı:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                         </Frame>
-
+                        <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="saloonNameErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="phone" MaxLength="11" Keyboard="Telephone" Placeholder="Telefon numarası:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                                <Entry x:Name ="registerPhone" MaxLength="11" Keyboard="Telephone" Placeholder="Telefon numarası:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="phoneErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
-                                <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                                <Entry x:Name ="registerEmail" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="emailErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
                                 <Picker x:Name="gender"  ItemDisplayBinding="{Binding Value}" SelectedIndexChanged="gender_SelectedIndexChanged" Title="Cinsiyet seçiniz:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand">
                                 </Picker>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="genderErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
                                 <Picker x:Name="city" Title="Şehir:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand"
@@ -66,7 +66,7 @@
                                 </Picker>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="cityErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
                                 <Picker x:Name="district" Title="İlçe:" TitleColor="#6b6c6c"  HorizontalOptions="FillAndExpand"
@@ -75,7 +75,7 @@
                                 </Picker>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="districtErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,5" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
                                 <Entry x:Name="password"  Placeholder="Şifre:" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black"/>
@@ -86,13 +86,13 @@
                                 </Image>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="passwordErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Frame CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                             <StackLayout Orientation="Horizontal">
                                 <Entry x:Name="passwordVerify" MaxLength="30"  Placeholder="Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                             </StackLayout>
                         </Frame>
-
+                        <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="passwordVerifyErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                         <Button Clicked="Button_Clicked" Text="KAYIT OL" BackgroundColor="#fa7a5a" FontAttributes="Bold"  CornerRadius="20" Margin="80,10" TextColor="White"/>
 
                     </StackLayout>

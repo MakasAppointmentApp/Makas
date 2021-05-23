@@ -49,8 +49,8 @@
                     <BoxView WidthRequest="1" Color="#fa7a5a"></BoxView>
                     <ImageButton Clicked="ImageButton_Clicked" BackgroundColor="Transparent" Source="calendar.png" HeightRequest="25"></ImageButton>
                 </StackLayout>
-
             </yummy:PancakeView>
+            <Label BackgroundColor="Yellow"  Padding="20,0" Margin="0,-5,0,0" x:Name="customerGetAppErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
             <ListView x:Name="hourList" Margin="10,0" SelectionMode="Single" HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>

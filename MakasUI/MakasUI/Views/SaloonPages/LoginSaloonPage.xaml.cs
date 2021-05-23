@@ -1,4 +1,5 @@
 ﻿using MakasUI.Functions;
+using MakasUI.Helpers.Validations.SaloonValidations.SaloonLoginValidations;
 using MakasUI.Models.DtosForAuth;
 using MakasUI.Services;
 using MakasUI.Views.SaloonPages;
@@ -50,33 +51,47 @@ namespace MakasUI.Views
             EyeVisible.Source = password.IsPassword ? "eye.png" : "closedeye.png";
         }
 
+
+        PhoneNumberValidator phoneValidator = new PhoneNumberValidator();
+        PasswordValidator passwordValidator = new PasswordValidator();
         private async void LoginClicked(object sender, EventArgs e)
         {
-            var app = Application.Current as App;
-            var saloon = new SaloonForLoginDto
-            {
-                 SaloonPhone = phone.Text,
-                 SaloonPassword = password.Text
+            string phoneValidate = phoneValidator.Validate(phone.Text);
+            string passwordValidate = passwordValidator.Validate(password.Text);
 
-            };
-            var result = await App.saloonAuthManager.PostLoginAsync(saloon);
-            if (result.IsSuccessStatusCode.Equals(true))
+            phoneErrorLabel.Text = phoneValidate;
+            passwordErrorLabel.Text = passwordValidate;
+
+            if (phoneValidate == null && passwordValidate==null)
             {
-                string response = await result.Content.ReadAsStringAsync();
-                app.TOKEN = JsonConvert.DeserializeObject<string>(response);
-                var jwtHandler = new JwtSecurityTokenHandler();
-                var token = jwtHandler.ReadJwtToken(app.TOKEN); 
-                app.USER_ID = token.Claims.FirstOrDefault(c => c.Type == "nameid")?.Value;
-                app.USER_NAME = token.Claims.FirstOrDefault(c => c.Type == "unique_name")?.Value;
-                app.LoggedIn = "true";
-                await DisplayAlert("Hoş geldiniz", app.USER_NAME, "Teşekkürler");
-                App.Current.MainPage = new SaloonHomePage();
+                var app = Application.Current as App;
+                var saloon = new SaloonForLoginDto
+                {
+                    SaloonPhone = phone.Text,
+                    SaloonPassword = password.Text
+
+                };
+                var result = await App.saloonAuthManager.PostLoginAsync(saloon);
+                if (result.IsSuccessStatusCode.Equals(true))
+                {
+                    string response = await result.Content.ReadAsStringAsync();
+                    app.TOKEN = JsonConvert.DeserializeObject<string>(response);
+                    var jwtHandler = new JwtSecurityTokenHandler();
+                    var token = jwtHandler.ReadJwtToken(app.TOKEN);
+                    app.USER_ID = token.Claims.FirstOrDefault(c => c.Type == "nameid")?.Value;
+                    app.USER_NAME = token.Claims.FirstOrDefault(c => c.Type == "unique_name")?.Value;
+                    app.LoggedIn = "true";
+                    await DisplayAlert("Hoş geldiniz", app.USER_NAME, "Teşekkürler");
+                    App.Current.MainPage = new SaloonHomePage();
+                }
+                else
+                {
+                    password.Text = "";
+                    await DisplayAlert("Hata", "Telefon numaranız ya da şifreniz yanlış", "Tamam");
+                }
             }
-            else
-            {
-                password.Text = "";
-                await DisplayAlert("Hata", "Telefon numaranız ya da şifreniz yanlış", "Tamam");
-            }
+
+           
 
         }
     }

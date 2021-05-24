@@ -27,5 +27,6 @@ namespace MakasUI.Services.CustomerServices.Abstract
         Task<HttpResponseMessage> GetReviewIfExists(int saloonId, int customerId, int workerId, int appointmentId);
         Task<HttpResponseMessage> AddReviewAsync(AddReviewDto review);
         Task<Review> GetReviewAsync(int Id);
+        Task<DateTime> GetTime();
     }
 }

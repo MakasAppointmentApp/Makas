@@ -85,5 +85,9 @@ namespace MakasUI.Services.CustomerManagers
         {
             return _customerRestService.CancelAppointment(Id);
         }
+        public Task<DateTime> GetTime()
+        {
+            return _customerRestService.GetTime();
+        }
     }
 }

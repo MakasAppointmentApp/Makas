@@ -24,7 +24,7 @@ namespace MakasUI.Views.CustomerPages
             InitializeComponent();
             sName.Text = ob.SaloonName;
             wName.Text = ob.WorkerName;
-            sRate.Text = ob.SaloonRate.ToString();
+            sRate.Text = ob.SaloonRate.ToString("0.##");
             ItemFunctions functions = new ItemFunctions();
             functions.backclick(back, Navigation);
         }

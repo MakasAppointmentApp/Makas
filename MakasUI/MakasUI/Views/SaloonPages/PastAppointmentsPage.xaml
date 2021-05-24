@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="MakasUI.Views.SaloonPages.PastAppointmentsPage">
+             x:Class="MakasUI.Views.SaloonPages.PastAppointmentsPage" xmlns:Converter="clr-namespace:MakasUI.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:ByteArrayToImageSourceConverter x:Key="bic"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="0" Padding="0">
             <yummy:PancakeView BackgroundColor="#a5d3e3" HeightRequest="240" CornerRadius="0,0,30,30">
@@ -18,7 +23,7 @@
                                         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
 
                                             <Frame Padding="0" CornerRadius="6" BorderColor="#16353b" BackgroundColor="Transparent" Margin="3" HorizontalOptions="Start" VerticalOptions="Center">
-                                                <Image Source="user.png" Aspect="AspectFill" HeightRequest="50" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Center" ></Image>
+                                                <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFill" HeightRequest="50" WidthRequest="60" HorizontalOptions="Start" VerticalOptions="Center" ></Image>
                                             </Frame>
                                             <Label Text="{Binding WorkerName}" FontAttributes="Bold" TextColor="#16353b" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Start" Margin="15,0" VerticalTextAlignment="Center"></Label>
                                             <Frame HorizontalOptions="EndAndExpand" BackgroundColor="#F83B25" CornerRadius="10" Padding="20,5" VerticalOptions="Center" >

@@ -50,11 +50,12 @@ namespace MakasUI.Views.CustomerPages
                     {
                         SaloonId = item.SaloonId,
                         WorkerId = item.WorkerId,
-                        CustomerId = Convert.ToInt32(presentCustomer.Id),
+                        CustomerId = presentCustomer.Id,
                         AppointmentId = item.AppointmentId
                     };
                     var response = await App.customerManager.GetReviewIfExists(item.SaloonId, Convert.ToInt32(presentCustomer.Id), item.WorkerId, item.AppointmentId);
-                    if (item.Date > DateTime.Now)
+                    var timeResponse = await App.customerManager.GetTime();
+                    if (item.Date > timeResponse.AddHours(3))
                     {
                         item.ReviewControl = "İptal Et";
                         item.ButtonImage = "cancel.png";

@@ -43,8 +43,8 @@
 
                             <Frame x:Name="nameEditFrame" CornerRadius="20" Margin="60,0,60,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                                 <StackLayout Orientation="Vertical">
-                                    <Entry  x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Yeni isminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
-                                    <Entry  x:Name ="sName" MaxLength="30" Keyboard="Email"  Placeholder="Yeni soyisminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                    <Entry  x:Name ="name" MaxLength="30" Keyboard="Text"  Placeholder="Yeni isminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
+                                    <Entry  x:Name ="sName" MaxLength="30" Keyboard="Text"  Placeholder="Yeni soyisminiz:" PlaceholderColor="#6b6c6c"  WidthRequest="250" TextColor="#16353b"/>
                                 </StackLayout>
                             </Frame>
                             <Label  Padding="70,0,0,0" Margin="0,-10,0,-10" x:Name="nameAndSurnameUpdateErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
@@ -69,7 +69,7 @@
                                 </StackLayout>
                                 <StackLayout>
                                     <Label Text="Email" TextColor="#16353b" FontSize="17" FontAttributes="Bold" Margin="0,-5,0,-10" ></Label>
-                                    <Label x:Name="changeEmail" Text="danyelkar@gmail.com" TextColor="#16353b" FontSize="14" ></Label>
+                                    <Label x:Name="changeEmail"  TextColor="#16353b" FontSize="14" ></Label>
                                 </StackLayout>
                             </StackLayout>
                         </xct:Expander.Header>
@@ -88,7 +88,7 @@
                             BackgroundColor="#16353b" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Margin="90,-5" 
+                            Margin="90,0" 
                             TextColor="White"
                             />
                         </StackLayout>

@@ -57,14 +57,17 @@ namespace MakasUI.Views.CustomerPages
                     if (item.Date > DateTime.Now)
                     {
                         item.ReviewControl = "İptal Et";
+                        item.ButtonImage = "cancel.png";
                     }
                     else if (response.IsSuccessStatusCode.Equals(true))
                     {
                         item.ReviewControl = "Değerlendirmem";
+                        item.ButtonImage = "comment.png";
                     }
                     else
                     {
                         item.ReviewControl = "Değerlendir";
+                        item.ButtonImage = "comment.png";
                     }
                     AppointmentsCollection.Add(item);
                 }

@@ -43,7 +43,7 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="End"  Padding="0,0,5,5" Spacing="2">
                                         <Label Text="{Binding ReviewControl}" FontAttributes="Bold" TextColor="#16353b" FontSize="13"  VerticalTextAlignment="Center"></Label>
-                                        <ImageButton CommandParameter="{Binding .}" Clicked="Review_Clicked" BackgroundColor="Transparent" Source="comment.png"  HeightRequest="25" ></ImageButton>
+                                        <ImageButton CommandParameter="{Binding .}" Clicked="Review_Clicked" BackgroundColor="Transparent" Source="{Binding ButtonImage}"  HeightRequest="25" ></ImageButton>
                                     </StackLayout>
 
                                 </StackLayout>

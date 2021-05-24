@@ -34,25 +34,25 @@
                                ></Label>
                     <Frame x:Name="nameFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
-                            <Entry x:Name ="name" MaxLength="30" Keyboard="Email"  Placeholder="Adınız:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            <Entry x:Name ="customerName" MaxLength="30" Keyboard="Email"  Placeholder="Adınız:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                         </StackLayout>
                     </Frame>
-
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="customerNameErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Frame x:Name="surnameFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
-                            <Entry x:Name ="surname" MaxLength="30" Keyboard="Email" Placeholder="Soyadınız:" PlaceholderColor="#6b6c6c"   WidthRequest="300" TextColor="Black"/>
+                            <Entry x:Name ="customerSurname" MaxLength="30" Keyboard="Email" Placeholder="Soyadınız:" PlaceholderColor="#6b6c6c"   WidthRequest="300" TextColor="Black"/>
                         </StackLayout>
                     </Frame>
-
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="customerSurnameErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Frame x:Name="emailFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
-                            <Entry x:Name ="email" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            <Entry x:Name ="customerEmail" MaxLength="30" Keyboard="Email" Placeholder="E-mail:" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                         </StackLayout>
                     </Frame>
-
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="customerEmailErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Frame x:Name="passwordFrame" CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,5" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
-                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="Password"/>
+                            <Entry  Placeholder="Şifre" MaxLength="20" IsPassword="True" PlaceholderColor="#6b6c6c"  WidthRequest="275" TextColor="Black" x:Name="customerPassword"/>
                             <Image Source="eye.png" HeightRequest="25" HorizontalOptions="EndAndExpand" x:Name="EyeVisible">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
@@ -60,19 +60,19 @@
                             </Image>
                         </StackLayout>
                     </Frame>
-
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="customerPasswordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Frame x:Name="checkPasswordFrame" CornerRadius="20" Margin="10,0,10,5" BorderColor="#fa7a5a" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
-                            <Entry x:Name ="checkPasswordEntry" MaxLength="30"  Placeholder="Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
+                            <Entry x:Name ="checkPassword" MaxLength="30"  Placeholder="Şifreniz(Tekrar):" PlaceholderColor="#6b6c6c"  WidthRequest="300" TextColor="Black"/>
                         </StackLayout>
                     </Frame>
-
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="verifyPasswordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Button x:Name="register" 
                             Text="KAYIT OL" 
                             BackgroundColor="#fa7a5a" 
                             FontAttributes="Bold"                             
                             CornerRadius="20" 
-                            Clicked="registerClicked"
+                            Clicked="Register_Clicked"
                             Margin="80,10" 
                             TextColor="White"
                             />

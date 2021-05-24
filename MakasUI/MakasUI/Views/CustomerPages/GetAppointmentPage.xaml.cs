@@ -2,12 +2,9 @@
 using MakasUI.Models;
 using MakasUI.Models.DtosForCustomer;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -60,7 +57,7 @@ namespace MakasUI.Views.CustomerPages
             {
                 await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
             }
-           
+
         }
         private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
@@ -95,27 +92,32 @@ namespace MakasUI.Views.CustomerPages
 
         private async void Randevu_Al_Button_Clicked(object sender, EventArgs e)
         {
-            var app = Application.Current as App;
-            var hour = hourList.SelectedItem as HourDto;
-            var selectedDate = datePicker.Date;
-            DateTime newDate = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, Convert.ToInt32(hour.Hour), 00, 00);
-            var response = await App.customerManager.AddAppointmentAsync(
-                new AddAppointmentDto
+            if (hourList.SelectedItem != null)
+            {
+                var app = Application.Current as App;
+                var hour = hourList.SelectedItem as HourDto;
+                var selectedDate = datePicker.Date;
+
+                DateTime newDate = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, Convert.ToInt32(hour.Hour), 00, 00);
+                var response = await App.customerManager.AddAppointmentAsync(
+                    new AddAppointmentDto
+                    {
+                        CustomerId = Convert.ToInt32(app.USER_ID),
+                        SaloonId = _saloonId,
+                        WorkerId = selectedWorker.Id,
+                        Date = newDate
+                    });
+                if (response.IsSuccessStatusCode.Equals(true))
                 {
-                    CustomerId = Convert.ToInt32(app.USER_ID),
-                    SaloonId = _saloonId,
-                    WorkerId = selectedWorker.Id,
-                    Date = newDate
-                });
-            if (response.IsSuccessStatusCode.Equals(true))
-            {
-                await DisplayAlert("Başarılı.", $" Bu ayın {newDate.Date.Day}'inde {selectedWorker.WorkerName}'e randevunuz başarıyla alınmıştır.", "Tamam");
-                App.Current.MainPage = new CustomerHomePage();
+                    await DisplayAlert("Başarılı.", $" Bu ayın {newDate.Date.Day}'inde {selectedWorker.WorkerName}'e randevunuz başarıyla alınmıştır.", "Tamam");
+                    App.Current.MainPage = new CustomerHomePage();
+                }
+                else
+                {
+                    await DisplayAlert("Hata.", "Bizden kaynaklı bir hata oluştu ya da bu randevu saati dolu.", "Tamam");
+                }
             }
-            else
-            {
-                await DisplayAlert("Hata.", "Bizden kaynaklı bir hata oluştu.Daha sonra tekrar deneyiniz.", "Tamam");
-            }
+            customerGetAppErrorLabel.Text = "Bir randevu saati seçmelisiniz!:";
         }
     }
 }

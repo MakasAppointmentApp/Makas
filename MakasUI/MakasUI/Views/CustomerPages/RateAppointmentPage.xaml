@@ -61,6 +61,7 @@
 
                 </Frame>
             </StackLayout>
+            <Label   Padding="20,0" Margin="0,-5,0,0" x:Name="customerRateErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
             <StackLayout Margin="0,0,0,0">
                 <Label Text="Yorum Yapın" Margin="20,0,0,0" HorizontalOptions="Start" FontAttributes="Bold" TextColor="#6b6c6c " FontSize="14"/>
                 <Frame BackgroundColor="white" Padding="20,0">
@@ -71,6 +72,7 @@
 
                 </Frame>
             </StackLayout>
+            <Label  Padding="20,0" Margin="0,-5,0,0" x:Name="customerCommentErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
 
 
             <Button Clicked="Button_Clicked" Text="GÖNDER" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="110,5" FontSize="18" TextColor="White" />

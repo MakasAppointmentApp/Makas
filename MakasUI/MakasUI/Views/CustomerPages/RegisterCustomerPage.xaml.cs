@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MakasUI.Helpers.Validations.CustomerValidations.CustomerRegisterValidations;
 
 namespace MakasUI.Views
 {
@@ -24,38 +25,62 @@ namespace MakasUI.Views
         }
         public void ShowPass(object sender, EventArgs args)
         {
-            Password.IsPassword = Password.IsPassword ? false : true;
-            EyeVisible.Source = Password.IsPassword ? "eye.png" : "closedeye.png";
+            customerPassword.IsPassword = customerPassword.IsPassword ? false : true;
+            EyeVisible.Source = customerPassword.IsPassword ? "eye.png" : "closedeye.png";
         }
 
-        async void registerClicked(object sender, EventArgs e)
+        CustomerNameValidator customerNameValidator = new CustomerNameValidator();
+        CustomerSurnameValidator customerSurnameValidator = new CustomerSurnameValidator();
+        CustomerEmailValidator customerEmailValidator = new CustomerEmailValidator();
+        CustomerPasswordValidator customerPasswordValidator = new CustomerPasswordValidator();
+        CustomerVerifyValidator customerVerifyValidator = new CustomerVerifyValidator();
+        async void Register_Clicked(object sender, EventArgs e)
         {
+            string customerNameValidate = customerNameValidator.Validate(customerName.Text);
+            string customerSurnameValidate = customerPasswordValidator.Validate(customerSurname.Text);
+            string customerEmailValidate = customerEmailValidator.Validate(customerEmail.Text);
+            string customerPasswordValidate = customerPasswordValidator.Validate(customerPassword.Text);
+            string customerVerifyValidate = customerVerifyValidator.Validate(checkPassword.Text);
 
-            if (Password.Text == checkPasswordEntry.Text)
+
+            if (customerPassword.Text != checkPassword.Text)
             {
-                var customer = new CustomerForRegisterDto
-                {
-                    CustomerName = name.Text,
-                    CustomerSurname = surname.Text,
-                    CustomerEmail = email.Text,
-                    CustomerPassword = Password.Text
-                };
-                var result = await App.customerAuthManager.PostRegisterAsync(customer);
-                if (result.IsSuccessStatusCode.Equals(true))
-                {
-                    await DisplayAlert("Tebrikler", "Başarıyla kayıt oluşturuldu", "OK");
-                    await Navigation.PushAsync(new LoginCustomerPage(customer.CustomerEmail, customer.CustomerPassword));
-                }
-                else
-                {
-                    email.Text = "";
-                    await DisplayAlert("Hata", "Bu E-Mail daha önceden kullanılıyor.", "OK");
-                }
+                verifyPasswordErrorLabel.Text = "Şifreler uyuşmamaktadır.";
+                customerPasswordErrorLabel.Text = "Şifreler uyuşmamaktadır.";
             }
             else
             {
-                await DisplayAlert("Şifre", "Şifreler aynı değil!", "OK");
-            }
+                if (customerNameValidate == null &&
+               customerSurnameValidate == null &&
+               customerEmailValidate == null &&
+               customerPasswordValidate == null &&
+               customerVerifyValidate == null
+               )
+                {
+                    var customer = new CustomerForRegisterDto
+                    {
+                        CustomerName = customerName.Text,
+                        CustomerSurname = customerSurname.Text,
+                        CustomerEmail = customerEmail.Text,
+                        CustomerPassword = customerPassword.Text
+                    };
+                    var result = await App.customerAuthManager.PostRegisterAsync(customer);
+                    if (result.IsSuccessStatusCode.Equals(true))
+                    {
+                        await DisplayAlert("Tebrikler", "Başarıyla kayıt oluşturuldu.", "Tamam");
+                        await Navigation.PushAsync(new LoginCustomerPage(customer.CustomerEmail, customer.CustomerPassword));
+                    }
+                    else
+                    {
+                        await DisplayAlert("Hata", "Bu email kullanılmaktadır.", "Tamam");
+                    }
+                }
+                customerNameErrorLabel.Text = customerNameValidate;
+                customerSurnameErrorLabel.Text = customerSurnameValidate;
+                customerEmailErrorLabel.Text = customerEmailValidate;
+                customerPasswordErrorLabel.Text = customerPasswordValidate;
+                verifyPasswordErrorLabel.Text = customerVerifyValidate;
+            }  
 
         }
     }

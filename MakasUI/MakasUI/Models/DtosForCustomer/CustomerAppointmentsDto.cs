@@ -15,5 +15,7 @@ namespace MakasUI.Models.DtosForCustomer
         public string WorkerName { get; set; }
         public DateTime Date { get; set; }
         public double SaloonRate { get; set; }
+
+        public string ButtonImage { get; set; }
     }
 }

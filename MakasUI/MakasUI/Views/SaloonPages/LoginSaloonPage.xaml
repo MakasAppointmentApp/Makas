@@ -32,6 +32,7 @@
                             <Entry x:Name ="phone" MaxLength="11" Keyboard="Telephone" Placeholder="Telefon Numarası" PlaceholderColor="Gray" WidthRequest="300" TextColor="Black"/>
                         </StackLayout>
                     </Frame>
+                    <Label Padding="50,0" Margin="0,-10,0,-5" x:Name="phoneErrorLabel"  TextColor="Red" FontAttributes="Bold" FontSize="12" ></Label>
                     <Frame CornerRadius="20" BorderColor="#fa7a5a" Margin="10,0,10,0" BackgroundColor="#FFFFFF" Padding="7,0">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="password.png" HeightRequest="25" HorizontalOptions="Start"/>
@@ -43,6 +44,7 @@
                             </Image>
                         </StackLayout>
                     </Frame>
+                    <Label  Padding="50,0" Margin="0,-5,0,0" x:Name="passwordErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
                     <Button Text="GİRİŞ YAP" BackgroundColor="#fa7a5a" FontAttributes="Bold" CornerRadius="20" Margin="80,10" TextColor="White" Clicked="LoginClicked"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0" Padding="0,0,0,50">
                         <Label Text="Salonun mu var? Hemen " TextColor="#16353b" FontSize="15"></Label>

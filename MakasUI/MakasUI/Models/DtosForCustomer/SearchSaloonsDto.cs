@@ -9,5 +9,7 @@ namespace MakasUI.Models.DtosForCustomer
         public string SaloonCity { get; set; }
         public string SaloonDistrict { get; set; }
         public bool SaloonGender { get; set; }
+
+     
     }
 }

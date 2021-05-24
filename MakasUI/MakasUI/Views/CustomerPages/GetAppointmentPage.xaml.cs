@@ -29,7 +29,7 @@ namespace MakasUI.Views.CustomerPages
             selectedWorker = worker;
             _saloonId = saloon.Id;
             sName.Text = saloon.SaloonName;
-            sRate.Text = Convert.ToString(saloon.SaloonRate);
+            sRate.Text = saloon.SaloonRate.ToString("0.##");
             workerImage.Source = ImageSource.FromStream(() => new MemoryStream(worker.WorkerPhoto));
             workerName.Text = worker.WorkerName;
             workerRate.Text = Convert.ToString(worker.WorkerRate);
@@ -50,6 +50,7 @@ namespace MakasUI.Views.CustomerPages
                 }
                 if (HoursCollection.Count() == 0)
                 {
+                    randevuAlButton.IsVisible = false;
                     await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
                 }
             }
@@ -57,10 +58,12 @@ namespace MakasUI.Views.CustomerPages
             {
                 await DisplayAlert("Üzgünüz.", $" Bu ayın {datePicker.Date.Day}'inde {selectedWorker.WorkerName}'in tüm randevuları dolu.", "Tamam");
             }
-
+            
         }
         private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
+            customerGetAppErrorLabel.Text = null;
+            randevuAlButton.IsVisible = true;
             HoursCollection.Clear();
             var response = await App.customerManager.GetAvailableHoursByDate(selectedWorker.Id, datePicker.Date);
             foreach (var item in response)
@@ -80,6 +83,7 @@ namespace MakasUI.Views.CustomerPages
 
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
+            customerGetAppErrorLabel.Text = null;
             if (lastCell != null)
                 lastCell.View.BackgroundColor = Color.FromHex("#e8eef1");
             var viewCell = (ViewCell)sender;
@@ -117,7 +121,7 @@ namespace MakasUI.Views.CustomerPages
                     await DisplayAlert("Hata.", "Bizden kaynaklı bir hata oluştu ya da bu randevu saati dolu.", "Tamam");
                 }
             }
-            customerGetAppErrorLabel.Text = "Bir randevu saati seçmelisiniz!:";
+            customerGetAppErrorLabel.Text = "Bir randevu saati seçmelisiniz!";
         }
     }
 }

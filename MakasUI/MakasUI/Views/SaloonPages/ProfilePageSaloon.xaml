@@ -41,13 +41,13 @@
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Padding="10,0" >
-                                        <yummy:PancakeView CornerRadius="30" Padding="0" BackgroundColor="#e8eef1" >
+                                        <yummy:PancakeView CornerRadius="30" Padding="0"  HeightRequest="170" BackgroundColor="#e8eef1" >
                                             <yummy:PancakeView.Shadow>
                                                 <yummy:DropShadow Color="Black" Offset="10,10"></yummy:DropShadow>
                                             </yummy:PancakeView.Shadow>
                                             <StackLayout Padding="5,5" Margin="0,0,0,10">
 
-                                                <yummy:PancakeView CornerRadius="90" HeightRequest="80"  BackgroundColor="black" Padding="0"  Margin="55,0">
+                                                <yummy:PancakeView CornerRadius="90" HeightRequest="60"  BackgroundColor="black" Padding="0"  Margin="55,0">
                                                     <Image Source="{Binding WorkerPhoto,Converter={StaticResource bic}}" Aspect="AspectFill" />
                                                 </yummy:PancakeView>
                                                 <Frame  CornerRadius="10" Padding="5" Margin="50,5" >
@@ -72,7 +72,7 @@
                     </StackLayout>
                     <StackLayout VerticalOptions="Start" Padding="0" >
 
-                        <Frame BackgroundColor="#e8eef1" CornerRadius="10"  Margin="5,5" HeightRequest="300">
+                        <Frame BackgroundColor="#e8eef1" CornerRadius="10"  Margin="5,5" HeightRequest="200">
                             <ListView x:Name="PriceListView" >
                                 <ListView.ItemTemplate>
                                     <DataTemplate>

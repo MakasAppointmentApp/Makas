@@ -50,7 +50,7 @@
                     <ImageButton Clicked="ImageButton_Clicked" BackgroundColor="Transparent" Source="calendar.png" HeightRequest="25"></ImageButton>
                 </StackLayout>
             </yummy:PancakeView>
-            <Label BackgroundColor="Yellow"  Padding="20,0" Margin="0,-5,0,0" x:Name="customerGetAppErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="12"></Label>
+            <Label  HorizontalOptions="Center"  Padding="20,0"  x:Name="customerGetAppErrorLabel" TextColor="Red" FontAttributes="Bold" FontSize="14"></Label>
             <ListView x:Name="hourList" Margin="10,0" SelectionMode="Single" HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -64,7 +64,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="RANDEVU AL" Clicked="Randevu_Al_Button_Clicked" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
+            <Button x:Name="randevuAlButton" Text="RANDEVU AL" Clicked="Randevu_Al_Button_Clicked" BackgroundColor="#fa7a5a" TextColor="White" FontAttributes="Bold" FontSize="18" CornerRadius="25" HorizontalOptions="Center" ></Button>
 
         </StackLayout>
     </ContentPage.Content>

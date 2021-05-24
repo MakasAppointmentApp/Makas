@@ -11,7 +11,7 @@
 
             </StackLayout>
             <ListView x:Name="AppointmentsListView" Margin="1,5"
-                      RowHeight="90" IsPullToRefreshEnabled="True" 
+                      RowHeight="90" 
                       SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>

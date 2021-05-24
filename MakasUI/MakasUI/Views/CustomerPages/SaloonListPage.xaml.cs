@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using MakasUI.Functions;
 using MakasUI.Models;
@@ -36,8 +37,10 @@ namespace MakasUI.Views
         {
             base.OnAppearing();
             await viewModel.getItems(_searched);
+            KuaforListView.ItemsSource = viewModel.ListedSaloon.OrderByDescending(a => a.SaloonRate);
+
         }
-        
+
 
         private async void Go_Profile_Clicked(object sender, EventArgs e)
         {

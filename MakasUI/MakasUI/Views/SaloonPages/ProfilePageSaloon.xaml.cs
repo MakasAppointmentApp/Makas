@@ -31,7 +31,7 @@ namespace MakasUI.Views.SaloonPages
             base.OnAppearing();
             await GetSaloonProfile();
             sName.Text = presentSaloon.SaloonName;
-            sRate.Text = presentSaloon.SaloonRate.ToString();
+            sRate.Text = presentSaloon.SaloonRate.ToString("0.##");
             sImage.Source = ImageSource.FromStream(() => new MemoryStream(presentSaloon.SaloonImage));
             sLocation.Text = presentSaloon.SaloonLocation;
             commentLabel.Text = $"{presentSaloon.Reviews.Count()} Yorum";

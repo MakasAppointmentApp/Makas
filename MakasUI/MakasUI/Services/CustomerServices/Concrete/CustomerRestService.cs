@@ -154,5 +154,10 @@ namespace MakasUI.Services.CustomerServices.Concrete
             var response = await client.DeleteAsync(App.API_URL + $"Customer/cancelappointment?appointmentId={Id}");
             return response;
         }
+        public async Task<DateTime> GetTime()
+        {
+            var result = await client.GetStringAsync(App.API_URL + "Customer/gettime");
+            return JsonConvert.DeserializeObject<DateTime>(result);
+        }
     }
 }

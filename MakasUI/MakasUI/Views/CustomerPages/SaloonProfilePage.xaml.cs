@@ -60,7 +60,7 @@ namespace MakasUI.Views.CustomerPages
             await GetSaloonProfile();
             await isFavorite();
             sName.Text = presentSaloon.SaloonName;
-            sRate.Text = presentSaloon.SaloonRate.ToString();
+            sRate.Text = presentSaloon.SaloonRate.ToString("0.##");
             sImage.Source = ImageSource.FromStream(() => new MemoryStream(presentSaloon.SaloonImage));
             addressLabel.Text = presentSaloon.SaloonLocation;
             labelComment.Text = $"{presentSaloon.Reviews.Count()} Yorum";
